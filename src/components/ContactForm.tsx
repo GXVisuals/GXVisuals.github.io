@@ -50,8 +50,41 @@ const ContactForm = () => {
       return;
     }
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+try {
+  const response = await fetch("https://formspree.io/f/mlgdkokg", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    },
+    body: JSON.stringify({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to send message");
+  }
+
+  toast({
+    title: "Message sent!",
+    description: "We'll get back to you within 24 hours.",
+  });
+
+  setFormData({ name: "", email: "", phone: "", message: "" });
+} catch (error) {
+  toast({
+    title: "Something went wrong",
+    description: "Please try again later.",
+    variant: "destructive",
+  });
+} finally {
+  setIsSubmitting(false);
+}
+
     
     toast({
       title: "Message sent!",

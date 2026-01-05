@@ -26,7 +26,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="font-display text-2xl font-semibold text-foreground tracking-tight">
-          RENDER<span className="text-primary">STUDIO</span>
+          GX<span className="text-primary">VISUALS</span>
         </a>
         
         <nav className="hidden md:flex items-center gap-8">

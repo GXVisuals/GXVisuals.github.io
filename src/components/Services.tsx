@@ -1,4 +1,4 @@
-import { Building2, Home, Layers, Video } from "lucide-react";
+import { Building2, Home, Layers } from "lucide-react";
 
 const services = [
   {
@@ -15,11 +15,6 @@ const services = [
     icon: Layers,
     title: "Interior Design",
     description: "Detailed interior renders showcasing materials, lighting, and furniture layouts.",
-  },
-  {
-    icon: Video,
-    title: "Animation & Walkthroughs",
-    description: "Immersive 3D animations that bring architectural projects to life with movement.",
   },
 ];
 

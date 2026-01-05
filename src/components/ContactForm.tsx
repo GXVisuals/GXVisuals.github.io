@@ -96,7 +96,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Phone</p>
-                  <p className="text-foreground font-body">+1 (555) 123-4567</p>
+                  <p className="text-foreground font-body">+35795115014</p>
                 </div>
               </div>
               
@@ -106,7 +106,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Location</p>
-                  <p className="text-foreground font-body">New York, NY</p>
+                  <p className="text-foreground font-body">Limassol, Cyprus</p>
                 </div>
               </div>
             </div>

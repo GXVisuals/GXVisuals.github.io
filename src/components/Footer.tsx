@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="font-display text-xl font-semibold text-foreground">
-            RENDER<span className="text-primary">STUDIO</span>
+            GX<span className="text-primary">VISUALS</span>
           </div>
           
           <nav className="flex items-center gap-8">
@@ -20,7 +20,7 @@ const Footer = () => {
           </nav>
           
           <p className="text-sm text-muted-foreground">
-            © 2026 RenderStudio. All rights reserved.
+            © 2026 GXVisuals. All rights reserved.
           </p>
         </div>
       </div>

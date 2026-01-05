@@ -158,7 +158,7 @@ const ContactForm = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="+1 (555) 123-4567"
+                  placeholder="+357 99 123456"
                   className="bg-background border-border"
                 />
               </div>

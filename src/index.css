@@ -6,42 +6,42 @@
 
 @layer base {
   :root {
-    --background: 20 10% 8%;
-    --foreground: 40 20% 95%;
+    --background: 0 0% 12%;
+    --foreground: 0 0% 95%;
 
-    --card: 20 10% 11%;
-    --card-foreground: 40 20% 95%;
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 20 10% 11%;
-    --popover-foreground: 40 20% 95%;
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 30 60% 55%;
-    --primary-foreground: 20 10% 8%;
+    --primary: 189 100% 35%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 20 8% 16%;
-    --secondary-foreground: 40 20% 95%;
+    --secondary: 0 0% 22%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 20 8% 20%;
-    --muted-foreground: 40 10% 60%;
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 30 60% 55%;
-    --accent-foreground: 20 10% 8%;
+    --accent: 0 100% 58%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 100% 58%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 20 8% 20%;
-    --input: 20 8% 16%;
-    --ring: 30 60% 55%;
+    --border: 0 0% 25%;
+    --input: 0 0% 18%;
+    --ring: 189 100% 35%;
 
     --radius: 0.5rem;
 
     /* Custom tokens */
-    --gradient-hero: linear-gradient(135deg, hsl(20 10% 8%) 0%, hsl(20 12% 12%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(20 10% 14%) 0%, hsl(20 10% 10%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(30 60% 55%) 0%, hsl(25 70% 45%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 12%) 0%, hsl(0 0% 16%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 18%) 0%, hsl(0 0% 14%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(189 100% 35%) 0%, hsl(189 100% 28%) 100%);
     --shadow-card: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
-    --shadow-glow: 0 0 60px hsl(30 60% 55% / 0.15);
+    --shadow-glow: 0 0 60px hsl(189 100% 35% / 0.2);
 
     --font-display: 'Playfair Display', serif;
     --font-body: 'Outfit', sans-serif;

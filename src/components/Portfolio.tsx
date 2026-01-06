@@ -8,7 +8,7 @@ import portfolio6 from "@/assets/portfolio-6.jpg";
 
 const projects = [
   { id: 1, image: portfolio1, title: "Modern Villa", category: "Residential Exterior" },
-  { id: 2, image: portfolio2, title: "Minimalist Estate", category: "Home Facade Design" },
+  { id: 2, image: portfolio2, title: "Sleek Country Home", category: "Home Facade Design" },
   { id: 3, image: portfolio3, title: "Luxury Eco‑Villa", category: "House Exterior Styling" },
   { id: 4, image: portfolio4, title: "Contemporary Modern Kitchen", category: "Interior Design" },
   { id: 5, image: portfolio5, title: "Modern Living Room", category: "Residential Interior" },

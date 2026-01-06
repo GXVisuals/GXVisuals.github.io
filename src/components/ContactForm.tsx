@@ -119,7 +119,7 @@ try {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="text-foreground font-body">hello@renderstudio.com</p>
+                  <p className="text-foreground font-body">giorgoscharitonos@gmail.com</p>
                 </div>
               </div>
               

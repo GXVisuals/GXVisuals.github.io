@@ -32,67 +32,52 @@ const ContactForm = () => {
     setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setErrors({});
+  import React from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 
-    const result = contactSchema.safeParse(formData);
-    
-    if (!result.success) {
-      const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
-      result.error.errors.forEach((err) => {
-        const field = err.path[0] as keyof ContactFormData;
-        fieldErrors[field] = err.message;
-      });
-      setErrors(fieldErrors);
-      setIsSubmitting(false);
-      return;
-    }
-
-try {
-  const response = await fetch("https://formspree.io/f/mlgdkokg", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json",
-    },
-    body: JSON.stringify({
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      message: formData.message,
-    }),
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to send message");
+function ContactForm() {
+  const [state, handleSubmit] = useForm("mdakqleg");
+  if (state.succeeded) {
+      return <p>Thanks for joining!</p>;
   }
-
-  toast({
-    title: "Message sent!",
-    description: "We'll get back to you within 24 hours.",
-  });
-
-  setFormData({ name: "", email: "", phone: "", message: "" });
-} catch (error) {
-  toast({
-    title: "Something went wrong",
-    description: "Please try again later.",
-    variant: "destructive",
-  });
-} finally {
-  setIsSubmitting(false);
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="email">
+        Email Address
+      </label>
+      <input
+        id="email"
+        type="email" 
+        name="email"
+      />
+      <ValidationError 
+        prefix="Email" 
+        field="email"
+        errors={state.errors}
+      />
+      <textarea
+        id="message"
+        name="message"
+      />
+      <ValidationError 
+        prefix="Message" 
+        field="message"
+        errors={state.errors}
+      />
+      <button type="submit" disabled={state.submitting}>
+        Submit
+      </button>
+    </form>
+  );
 }
 
-    
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    
-    setFormData({ name: "", email: "", phone: "", message: "" });
-    setIsSubmitting(false);
+function App() {
+  return (
+    <ContactForm />
+  );
+}
+
+export default App;
   };
 
   return (

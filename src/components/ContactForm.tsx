@@ -54,7 +54,31 @@ const ContactForm = () => {
 
     try {
       // 3. Send to Formspree
+      const response = await try {
       const response = await fetch("https://formspree.io/f/mdakqleg", {
+        method: "POST",
+        body: JSON.stringify(formData), // Use the formData from your state
+        headers: {
+            'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you within 24 hours.",
+        });
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        const data = await response.json();
+        if (Object.hasOwn(data, 'errors')) {
+          console.log(data.errors.map(error => error.message).join(", "));
+          throw new Error("Formspree rejected the data");
+        }
+      }
+    } catch (error) {
+      // ... your error toast
+    }("https://formspree.io/f/mdakqleg", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

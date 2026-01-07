@@ -129,7 +129,7 @@ try {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Phone</p>
-                  <p className="text-foreground font-body">+35795115014</p>
+                  <p className="text-foreground font-body">+357 95115014</p>
                 </div>
               </div>
               

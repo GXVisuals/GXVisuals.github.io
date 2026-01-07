@@ -235,5 +235,5 @@ function ContactForm() {
     </section>
   );
 };
-
+<form onSubmit={handleSubmit} className="space-y-6">
 export default ContactForm;

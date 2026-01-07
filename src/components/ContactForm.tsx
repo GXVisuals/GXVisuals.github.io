@@ -5,6 +5,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Mail, Phone, MapPin } from "lucide-react";
 import { z } from "zod";
+import React from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name is too long"),
@@ -31,9 +33,6 @@ const ContactForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
     setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
-
-  import React from 'react';
-import { useForm, ValidationError } from '@formspree/react';
 
 function ContactForm() {
   const [state, handleSubmit] = useForm("mdakqleg");
@@ -234,6 +233,7 @@ function ContactForm() {
       </div>
     </section>
   );
-};
 <form onSubmit={handleSubmit} className="space-y-6">
+  };
+
 export default ContactForm;

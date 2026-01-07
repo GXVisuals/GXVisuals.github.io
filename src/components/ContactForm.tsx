@@ -147,56 +147,7 @@ try {
 
           {/* Right: Form */}
           <div className="bg-card rounded-xl p-8 border border-border">
-            <form onSubmit={const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setErrors({});
-
-    const result = contactSchema.safeParse(formData);
-    
-    if (!result.success) {
-      const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
-      result.error.errors.forEach((err) => {
-        const field = err.path[0] as keyof ContactFormData;
-        fieldErrors[field] = err.message;
-      });
-      setErrors(fieldErrors);
-      setIsSubmitting(false);
-      return;
-    }
-
-    try {
-      const response = await fetch("https://formspree.io/f/mlgdkokg", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        body: JSON.stringify(formData), // Simplified: sends all fields including phone
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to send message");
-      }
-
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you within 24 hours.",
-      });
-
-      // Reset form only on success
-      setFormData({ name: "", email: "", phone: "", message: "" });
-      
-    } catch (error) {
-      toast({
-        title: "Something went wrong",
-        description: "Please try again later.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };} className="space-y-6">
+            
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-body text-muted-foreground mb-2">

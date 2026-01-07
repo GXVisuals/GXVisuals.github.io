@@ -5,9 +5,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Mail, Phone, MapPin } from "lucide-react";
 import { z } from "zod";
-import React from 'react';
-import { useForm, ValidationError } from '@formspree/react';
 
+// 1. Validation Schema
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name is too long"),
   email: z.string().trim().email("Please enter a valid email").max(255, "Email is too long"),
@@ -34,18 +33,12 @@ const ContactForm = () => {
     setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
-function ContactForm() {
-  const [state, handleSubmit] = useForm("mdakqleg");
-  if (state.succeeded) {
-      return <p>Thanks for joining!</p>;
-  }
-  return (
-    const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrors({});
 
-    // 1. Validate with Zod
+    // 2. Validate with Zod
     const result = contactSchema.safeParse(formData);
     
     if (!result.success) {
@@ -60,7 +53,7 @@ function ContactForm() {
     }
 
     try {
-      // 2. The Fetch call to Formspree
+      // 3. Send to Formspree
       const response = await fetch("https://formspree.io/f/mdakqleg", {
         method: "POST",
         headers: {
@@ -74,13 +67,11 @@ function ContactForm() {
         throw new Error("Failed to send message");
       }
 
-      // 3. Success toast
       toast({
         title: "Message sent!",
         description: "We'll get back to you within 24 hours.",
       });
 
-      // 4. Reset form fields
       setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (error) {
       toast({
@@ -91,7 +82,6 @@ function ContactForm() {
     } finally {
       setIsSubmitting(false);
     }
-  };
   };
 
   return (
@@ -146,7 +136,7 @@ function ContactForm() {
 
           {/* Right: Form */}
           <div className="bg-card rounded-xl p-8 border border-border">
-            
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-body text-muted-foreground mb-2">
@@ -203,37 +193,9 @@ function ContactForm() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your project, timeline, and any specific requirements..."
+                  placeholder="Tell us about your project..."
                   rows={5}
                   className="bg-background border-border resize-none"
                 />
                 {errors.message && (
-                  <p className="text-destructive text-xs mt-1">{errors.message}</p>
-                )}
-              </div>
-              
-              <Button
-                type="submit"
-                variant="hero"
-                size="lg"
-                disabled={isSubmitting}
-                className="w-full"
-              >
-                {isSubmitting ? (
-                  "Sending..."
-                ) : (
-                  <>
-                    Send Message <Send className="w-4 h-4 ml-2" />
-                  </>
-                )}
-              </Button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-<form onSubmit={handleSubmit} className="space-y-6">
-  };
-
-export default ContactForm;
+                  <p className="text-destructive text-xs mt-1">{errors.message}</p

@@ -37,6 +37,7 @@ const ContactForm = () => {
     setIsSubmitting(true);
     setErrors({});
 
+    // 1. Validate with Zod
     const result = contactSchema.safeParse(formData);
 
     if (!result.success) {
@@ -51,24 +52,36 @@ const ContactForm = () => {
     }
 
     try {
-      const response = await fetch("https://formspree.io/f/mlgdkokg", {
+      // 2. Prepare Data for Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: "dad3212c-5a89-4f2c-9d9c-ca8234e156f5", // Your Web3Forms Key
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        }),
       });
 
-      if (!response.ok) throw new Error();
+      const json = await response.json();
 
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you within 24 hours.",
-      });
-
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      if (response.ok) {
+        // 3. Success Notification
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you within 24 hours.",
+        });
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        throw new Error(json.message || "Submission failed");
+      }
     } catch (error) {
+      // 4. Error Notification
       toast({
         title: "Something went wrong",
         description: "Please check your internet or try again later.",
@@ -78,7 +91,6 @@ const ContactForm = () => {
       setIsSubmitting(false);
     }
   };
-
   return (
     <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-6">

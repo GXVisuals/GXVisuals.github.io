@@ -225,4 +225,12 @@ const ContactForm = () => {
 
   </form>
 </div>
+        </div> {/* grid */}
+      </div> {/* container */}
+    </section>
+  );
+};
+
+export default ContactForm;
+          
 

@@ -139,72 +139,90 @@ const ContactForm = () => {
             </div>
           </div>
 
-          {/* Right: Form */}
-          <div className="bg-card rounded-xl p-8 border border-border">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-body text-muted-foreground mb-2">
-                    Name *
-                  </label>
-                  <Input
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="John Doe"
-                    className="bg-background border-border"
-                  />
-                  {errors.name && (
-                    <p className="text-destructive text-xs mt-1">{errors.name}</p>
-                  )}
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-body text-muted-foreground mb-2">
-                    Email *
-                  </label>
-                  <Input
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="john@example.com"
-                    className="bg-background border-border"
-                  />
-                  {errors.email && (
-                    <p className="text-destructive text-xs mt-1">{errors.email}</p>
-                  )}
-                </div>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-body text-muted-foreground mb-2">
-                  Phone (optional)
-                </label>
-                <Input
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="+357 99 123456"
-                  className="bg-background border-border"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-body text-muted-foreground mb-2">
-                  Project Details *
-                </label>
-                <Textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell us about your project..."
-                  rows={5}
-                  className="bg-background border-border resize-none"
-                />
-                {errors.message && (
-  <p className="text-destructive text-xs mt-1">
-    {errors.message}
-  </p>
-)}
+         {/* Right: Form */}
+<div className="bg-card rounded-xl p-8 border border-border">
+  <form onSubmit={handleSubmit} className="space-y-6">
+
+    <div className="grid sm:grid-cols-2 gap-6">
+      <div>
+        <label className="block text-sm font-body text-muted-foreground mb-2">
+          Name *
+        </label>
+        <Input
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="John Doe"
+          className="bg-background border-border"
+        />
+        {errors.name && (
+          <p className="text-destructive text-xs mt-1">
+            {errors.name}
+          </p>
+        )}
+      </div>
+
+      <div>
+        <label className="block text-sm font-body text-muted-foreground mb-2">
+          Email *
+        </label>
+        <Input
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="john@example.com"
+          className="bg-background border-border"
+        />
+        {errors.email && (
+          <p className="text-destructive text-xs mt-1">
+            {errors.email}
+          </p>
+        )}
+      </div>
+    </div>
+
+    <div>
+      <label className="block text-sm font-body text-muted-foreground mb-2">
+        Phone (optional)
+      </label>
+      <Input
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+        placeholder="+357 99 123456"
+        className="bg-background border-border"
+      />
+    </div>
+
+    <div>
+      <label className="block text-sm font-body text-muted-foreground mb-2">
+        Project Details *
+      </label>
+      <Textarea
+        name="message"
+        value={formData.message}
+        onChange={handleChange}
+        placeholder="Tell us about your project..."
+        rows={5}
+        className="bg-background border-border resize-none"
+      />
+      {errors.message && (
+        <p className="text-destructive text-xs mt-1">
+          {errors.message}
+        </p>
+      )}
+    </div>
+
+    <Button
+      type="submit"
+      disabled={isSubmitting}
+      className="w-full flex items-center gap-2"
+    >
+      <Send className="w-4 h-4" />
+      {isSubmitting ? "Sending..." : "Send Message"}
+    </Button>
+
+  </form>
+</div>
 

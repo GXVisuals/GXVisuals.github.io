@@ -203,4 +203,8 @@ const ContactForm = () => {
                   className="bg-background border-border resize-none"
                 />
                 {errors.message && (
-                  <p className="text-destructive text-xs mt-1">{errors.message}</p
+  <p className="text-destructive text-xs mt-1">
+    {errors.message}
+  </p>
+)}
+

@@ -5,7 +5,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Mail, Phone, MapPin } from "lucide-react";
 import { z } from "zod";
-// 1. Import hCaptcha
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 const contactSchema = z.object({
@@ -20,9 +19,11 @@ type ContactFormData = z.infer<typeof contactSchema>;
 const ContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // 2. Create a ref for the captcha
   const captchaRef = useRef<HCaptcha>(null);
   
+  // NEW: Add a state to hold the captcha token
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
@@ -42,21 +43,18 @@ const ContactForm = () => {
     setIsSubmitting(true);
     setErrors({});
 
-    // 3. Check if Captcha is completed
-    const captchaToken = captchaRef.current?.getExecuteResponse();
+    // 1. Check if the state has the token
     if (!captchaToken) {
       toast({
         title: "Captcha Required",
-        description: "Please complete the captcha challenge before submitting.",
+        description: "Please complete the captcha challenge.",
         variant: "destructive",
       });
       setIsSubmitting(false);
       return;
     }
 
-    // 4. Validate with Zod
     const result = contactSchema.safeParse(formData);
-
     if (!result.success) {
       const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
       result.error.errors.forEach((err) => {
@@ -69,7 +67,6 @@ const ContactForm = () => {
     }
 
     try {
-      // 5. Prepare Data for Web3Forms (Including Captcha Token)
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -79,7 +76,7 @@ const ContactForm = () => {
         body: JSON.stringify({
           access_key: "dad3212c-5a89-4f2c-9d9c-ca8234e156f5",
           ...formData,
-          "h-captcha-response": captchaToken, // Send the token here
+          "h-captcha-response": captchaToken, // Use the state token
         }),
       });
 
@@ -91,92 +88,18 @@ const ContactForm = () => {
           description: "We'll get back to you within 24 hours.",
         });
         setFormData({ name: "", email: "", phone: "", message: "" });
-        // 6. Reset captcha on success
-        captchaRef.current?.resetCaptcha();
+        setCaptchaToken(null); // Clear token
+        captchaRef.current?.resetCaptcha(); // Reset widget
       } else {
         throw new Error(json.message || "Submission failed");
       }
     } catch (error) {
       toast({
         title: "Something went wrong",
-        description: "Please check your internet or try again later.",
+        description: "Please try again later.",
         variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  return (
-    <section id="contact" className="py-24 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16">
-          <div>
-            <span className="text-primary font-body text-sm tracking-[0.3em] uppercase">Get In Touch</span>
-            <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground mt-4 mb-6">Start Your Project</h2>
-            <p className="font-body text-muted-foreground mb-10 max-w-md">Ready to transform your architectural vision into reality?</p>
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <Mail className="w-5 h-5 text-primary" />
-                <p className="text-foreground font-body">giorgoscharitonos@gmail.com</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <Phone className="w-5 h-5 text-primary" />
-                <p className="text-foreground font-body">+357 95115014</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <MapPin className="w-5 h-5 text-primary" />
-                <p className="text-foreground font-body">Limassol, Cyprus</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-card rounded-xl p-8 border border-border">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-body text-muted-foreground mb-2">Name *</label>
-                  <Input name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" />
-                  {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
-                </div>
-                <div>
-                  <label className="block text-sm font-body text-muted-foreground mb-2">Email *</label>
-                  <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" />
-                  {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-body text-muted-foreground mb-2">Phone</label>
-                <Input name="phone" value={formData.phone} onChange={handleChange} placeholder="+357 99 123456" />
-              </div>
-              <div>
-                <label className="block text-sm font-body text-muted-foreground mb-2">Project Details *</label>
-                <Textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your project..." rows={5} />
-                {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
-              </div>
-
-              {/* 7. The hCaptcha Component */}
-              <div className="flex justify-center py-2">
-                <HCaptcha
-                  sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-                  ref={captchaRef}
-                  reCaptchaCompat={false}
-                  onVerify={(token) => {
-                    // Token is automatically handled by the ref in handleSubmit
-                  }}
-                />
-              </div>
-
-              <Button type="submit" disabled={isSubmitting} className="w-full flex items-center gap-2">
-                <Send className="w-4 h-4" />
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default ContactForm;

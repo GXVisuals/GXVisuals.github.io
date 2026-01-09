@@ -20,8 +20,6 @@ const ContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const captchaRef = useRef<HCaptcha>(null);
-  
-  // NEW: Add a state to hold the captcha token
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const [formData, setFormData] = useState<ContactFormData>({
@@ -43,7 +41,6 @@ const ContactForm = () => {
     setIsSubmitting(true);
     setErrors({});
 
-    // 1. Check if the state has the token
     if (!captchaToken) {
       toast({
         title: "Captcha Required",
@@ -76,7 +73,7 @@ const ContactForm = () => {
         body: JSON.stringify({
           access_key: "dad3212c-5a89-4f2c-9d9c-ca8234e156f5",
           ...formData,
-          "h-captcha-response": captchaToken, // Use the state token
+          "h-captcha-response": captchaToken,
         }),
       });
 
@@ -88,8 +85,8 @@ const ContactForm = () => {
           description: "We'll get back to you within 24 hours.",
         });
         setFormData({ name: "", email: "", phone: "", message: "" });
-        setCaptchaToken(null); // Clear token
-        captchaRef.current?.resetCaptcha(); // Reset widget
+        setCaptchaToken(null);
+        captchaRef.current?.resetCaptcha();
       } else {
         throw new Error(json.message || "Submission failed");
       }
@@ -103,3 +100,74 @@ const ContactForm = () => {
       setIsSubmitting(false);
     }
   };
+
+  return (
+    <section id="contact" className="py-24 bg-background">
+      <div className="container mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16">
+          <div>
+            <span className="text-primary font-body text-sm tracking-[0.3em] uppercase">Get In Touch</span>
+            <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground mt-4 mb-6">Start Your Project</h2>
+            <p className="font-body text-muted-foreground mb-10 max-w-md">Ready to transform your architectural vision into reality?</p>
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <Mail className="w-5 h-5 text-primary" />
+                <p className="text-foreground font-body">giorgoscharitonos@gmail.com</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <Phone className="w-5 h-5 text-primary" />
+                <p className="text-foreground font-body">+357 95115014</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <MapPin className="w-5 h-5 text-primary" />
+                <p className="text-foreground font-body">Limassol, Cyprus</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-card rounded-xl p-8 border border-border">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-body text-muted-foreground mb-2">Name *</label>
+                  <Input name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" />
+                  {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
+                </div>
+                <div>
+                  <label className="block text-sm font-body text-muted-foreground mb-2">Email *</label>
+                  <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" />
+                  {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-body text-muted-foreground mb-2">Phone</label>
+                <Input name="phone" value={formData.phone} onChange={handleChange} placeholder="+357 99 123456" />
+              </div>
+              <div>
+                <label className="block text-sm font-body text-muted-foreground mb-2">Project Details *</label>
+                <Textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your project..." rows={5} />
+                {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
+              </div>
+
+              <div className="flex justify-center py-2">
+                <HCaptcha
+                  sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                  ref={captchaRef}
+                  onVerify={(token) => setCaptchaToken(token)}
+                  onExpire={() => setCaptchaToken(null)}
+                />
+              </div>
+
+              <Button type="submit" disabled={isSubmitting} className="w-full flex items-center gap-2">
+                <Send className="w-4 h-4" />
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </Button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ContactForm;

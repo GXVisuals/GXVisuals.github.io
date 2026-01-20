@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Instagram, Music2 } from "lucide-react"; // Imported Icons
+import { Instagram, Music2, Facebook, Phone } from "lucide-react"; // Added Facebook and Phone
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -58,6 +58,7 @@ const Header = () => {
         <div className="flex items-center gap-4">
           {/* SOCIAL LINKS */}
           <div className="flex items-center gap-3 mr-2">
+            {/* Instagram */}
             <a 
               href="https://www.instagram.com/gxvisuals.3drendering/" 
               target="_blank" 
@@ -66,6 +67,8 @@ const Header = () => {
             >
               <Instagram size={20} />
             </a>
+
+            {/* TikTok */}
             <a 
               href="https://www.tiktok.com/@gxvisuals.3drendering" 
               target="_blank" 
@@ -73,6 +76,26 @@ const Header = () => {
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               <Music2 size={20} />
+            </a>
+
+            {/* Facebook - Add your link here */}
+            <a 
+              href="https://www.facebook.com/people/GX-Visuals/61586672549590/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Facebook size={20} />
+            </a>
+
+            {/* WhatsApp - Use format: https://wa.me/357XXXXXXXX */}
+            <a 
+              href="https://wa.me/35795115014" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Phone size={20} />
             </a>
           </div>
 
@@ -89,5 +112,7 @@ const Header = () => {
     </header>
   );
 };
+
+export default Header;
 
 export default Header;

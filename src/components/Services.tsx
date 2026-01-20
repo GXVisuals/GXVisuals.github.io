@@ -1,4 +1,4 @@
-import { Building2, Home, Layers, Box } from "lucide-react"; // Added Box icon
+import { Building2, Home, Layers, Ruler } from "lucide-react"; // Changed Box to Ruler
 
 const services = [
   {
@@ -17,9 +17,9 @@ const services = [
     description: "Detailed interior renders showcasing materials, lighting, and furniture layouts.",
   },
   {
-    icon: Box, // New Icon
-    title: "3D Floor Plans", // New Category
-    description: "Clear, bird's-eye view 3D layouts that help clients visualize space, flow, and functionality.",
+    icon: Ruler, // Icon for technical sketching and measuring
+    title: "Kitchen Design & Technical Sketches",
+    description: "Precise kitchen layouts and detailed sketches with exact dimensions for accurate manufacturing and installation.",
   },
 ];
 
@@ -39,7 +39,6 @@ const Services = () => {
           </p>
         </div>
 
-        {/* This grid is already set to 4 columns (lg:grid-cols-4), so it will now look balanced! */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <div

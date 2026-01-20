@@ -5,6 +5,11 @@ import portfolio3 from "@/assets/portfolio-3.jpg";
 import portfolio4 from "@/assets/portfolio-4.jpg";
 import portfolio5 from "@/assets/portfolio-5.jpg";
 import portfolio6 from "@/assets/portfolio-6.jpg";
+import portfolio7 from "@/assets/portfolio-7.jpg";
+import portfolio8 from "@/assets/portfolio-8.jpg";
+import portfolio9 from "@/assets/portfolio-9.jpg";
+import portfolio10 from "@/assets/portfolio-10.jpg";
+import portfolio11 from "@/assets/portfolio-11.jpg";
 
 const projects = [
   { id: 1, image: portfolio1, title: "Modern Villa", category: "Residential Exterior" },
@@ -13,6 +18,11 @@ const projects = [
   { id: 4, image: portfolio4, title: "Contemporary Modern Kitchen", category: "Interior Design" },
   { id: 5, image: portfolio5, title: "Modern Living Room", category: "Residential Interior" },
   { id: 6, image: portfolio6, title: "Minimalist Bedroom", category: "Interior Design" },
+  { id: 7, image: portfolio7, title: "Contemporary Apartment Complex", category: "Residential Exterior" },
+  { id: 8, image: portfolio8, title: "Stone-Clad Mountain Retreat", category: "Rustic Modern Ridge House" },
+  { id: 9, image: portfolio9, title: "Midnight Navy Kitchen", category: "Interior Visualization" },
+  { id: 10, image: portfolio10, title: "Contemporary Open Living", category: "Residential Interior" },
+  { id: 11, image: portfolio11, title: "Oak & Ambient Suite", category: "Bedroom Design" },
 ];
 
 const Portfolio = () => {

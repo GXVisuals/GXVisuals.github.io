@@ -13,7 +13,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <img
           src={heroImage}
-          alt="Luxury architectural rendering"
+          alt="GXVISUALS - Luxury architectural rendering in Cyprus"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
@@ -22,18 +22,20 @@ const Hero = () => {
       {/* Content */}
       <div className="container relative z-10 px-6 py-32 text-center">
         <span className="inline-block text-primary font-body text-sm tracking-[0.3em] uppercase mb-6 animate-fade-in opacity-0 [animation-delay:200ms]">
-          Architectural Visualization
+          3D Architectural Visualization Cyprus
         </span>
         
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-foreground mb-6 animate-fade-up opacity-0 [animation-delay:400ms]">
+          {/* SEO Hidden Keywords */}
+          <span className="sr-only">GXVISUALS: Photorealistic 3D Rendering and Kitchen Design in Cyprus.</span>
           Bring Your Vision
           <br />
           <span className="text-gradient">To Life</span>
         </h1>
         
         <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up opacity-0 [animation-delay:600ms]">
-          Premium 3D rendering services for architects, developers, and real estate professionals. 
-          Transform concepts into stunning photorealistic visuals.
+          Fast, photorealistic 3D rendering and technical kitchen sketches with exact dimensions. 
+          Transforming architectural concepts across Cyprus into stunning visuals.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up opacity-0 [animation-delay:800ms]">
@@ -66,3 +68,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

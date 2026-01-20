@@ -1,4 +1,6 @@
+# GXVISUALS Robots.txt
 User-agent: *
 Allow: /
 
+# Help search engines find your portfolio images and pages faster
 Sitemap: https://www.gxvisuals.com/sitemap.xml

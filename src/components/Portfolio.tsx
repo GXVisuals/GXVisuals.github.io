@@ -1,4 +1,10 @@
 import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog"; // Ensure these components exist in your shadcn folder
+
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
@@ -18,8 +24,8 @@ const projects = [
   { id: 4, image: portfolio4, title: "Contemporary Modern Kitchen", category: "Interior Design" },
   { id: 5, image: portfolio5, title: "Modern Living Room", category: "Residential Interior" },
   { id: 6, image: portfolio6, title: "Minimalist Bedroom", category: "Interior Design" },
-  { id: 7, image: portfolio7, title: "Contemporary Apartment Complex", category: "Residential Exterior" },
-  { id: 8, image: portfolio8, title: "Stone-Clad Mountain Retreat", category: "Rustic Modern Ridge House" },
+  { id: 7, image: portfolio7, title: "Skyline Terrace Apartments", category: "Urban Residential" },
+  { id: 8, image: portfolio8, title: "Rustic Stone Villa", category: "Luxury Exterior" },
   { id: 9, image: portfolio9, title: "Midnight Navy Kitchen", category: "Interior Visualization" },
   { id: 10, image: portfolio10, title: "Contemporary Open Living", category: "Residential Interior" },
   { id: 11, image: portfolio11, title: "Oak & Ambient Suite", category: "Bedroom Design" },
@@ -38,48 +44,49 @@ const Portfolio = () => {
           <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground mt-4">
             Featured Projects
           </h2>
-          <p className="font-body text-muted-foreground mt-4 max-w-xl mx-auto">
-            A selection of our finest architectural visualizations, showcasing the breadth of our capabilities.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
-            <div
-              key={project.id}
-              className="group relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer shadow-card"
-              onMouseEnter={() => setHoveredId(project.id)}
-              onMouseLeave={() => setHoveredId(null)}
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                className={`w-full h-full object-cover transition-transform duration-700 ${
-                  hoveredId === project.id ? "scale-110" : "scale-100"
-                }`}
-              />
-              
-              {/* Overlay */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent transition-opacity duration-500 ${
-                  hoveredId === project.id ? "opacity-100" : "opacity-0"
-                }`}
-              />
-              
-              {/* Content */}
-              <div
-                className={`absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 ${
-                  hoveredId === project.id ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-                }`}
-              >
-                <span className="text-primary text-xs font-body tracking-wider uppercase">
-                  {project.category}
-                </span>
-                <h3 className="font-display text-xl text-foreground mt-1">
-                  {project.title}
-                </h3>
-              </div>
-            </div>
+            <Dialog key={project.id}>
+              {/* The Trigger is the clickable card */}
+              <DialogTrigger asChild>
+                <div
+                  className="group relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer shadow-card"
+                  onMouseEnter={() => setHoveredId(project.id)}
+                  onMouseLeave={() => setHoveredId(null)}
+                >
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className={`w-full h-full object-cover transition-transform duration-700 ${
+                      hoveredId === project.id ? "scale-110" : "scale-100"
+                    }`}
+                  />
+                  
+                  {/* Hover Overlay */}
+                  <div className={`absolute inset-0 bg-black/40 transition-opacity duration-500 ${
+                    hoveredId === project.id ? "opacity-100" : "opacity-0"
+                  }`} />
+                  
+                  <div className={`absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 ${
+                    hoveredId === project.id ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                  }`}>
+                    <span className="text-primary text-xs font-body tracking-wider uppercase">{project.category}</span>
+                    <h3 className="font-display text-xl text-white mt-1">{project.title}</h3>
+                  </div>
+                </div>
+              </DialogTrigger>
+
+              {/* The "Bigger" View Pop-up */}
+              <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-none bg-transparent flex items-center justify-center">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-auto max-h-[90vh] object-contain rounded-md"
+                />
+              </DialogContent>
+            </Dialog>
           ))}
         </div>
       </div>

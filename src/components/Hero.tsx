@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import heroImage from "@/assets/portfolio-1.jpg";
+import { useTranslation } from 'react-i18next'; // 1. Import the hook
 
 const Hero = () => {
+  const { t } = useTranslation(); // 2. Initialize the hook
+
   const scrollToPortfolio = () => {
     document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -22,20 +25,20 @@ const Hero = () => {
       {/* Content */}
       <div className="container relative z-10 px-6 py-32 text-center">
         <span className="inline-block text-primary font-body text-sm tracking-[0.3em] uppercase mb-6 animate-fade-in opacity-0 [animation-delay:200ms]">
-          3D Architectural Visualization Cyprus
+          {t('hero_eyebrow', '3D Architectural Visualization Cyprus')}
         </span>
         
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-foreground mb-6 animate-fade-up opacity-0 [animation-delay:400ms]">
-          {/* SEO Hidden Keywords */}
-          <span className="sr-only">GXVISUALS: Photorealistic 3D Rendering and Kitchen Design in Cyprus.</span>
-          Bring Your Vision
+          {/* SEO Hidden Keywords - We translate this too for Greek Google bots */}
+          <span className="sr-only">{t('hero_seo_keywords')}</span>
+          
+          {t('hero_title_part1', 'Bring Your Vision')}
           <br />
-          <span className="text-gradient">To Life</span>
+          <span className="text-gradient">{t('hero_title_part2', 'To Life')}</span>
         </h1>
         
         <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up opacity-0 [animation-delay:600ms]">
-          Fast, photorealistic 3D rendering and technical kitchen sketches with exact dimensions. 
-          Transforming architectural concepts across Cyprus into stunning visuals.
+          {t('hero_description', 'Fast, photorealistic 3D rendering and technical kitchen sketches with exact dimensions. Transforming architectural concepts across Cyprus into stunning visuals.')}
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up opacity-0 [animation-delay:800ms]">
@@ -44,14 +47,14 @@ const Hero = () => {
             size="xl"
             onClick={scrollToPortfolio}
           >
-            View Portfolio
+            {t('hero_btn_portfolio', 'View Portfolio')}
           </Button>
           <Button
             variant="outline"
             size="xl"
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
           >
-            Start a Project
+            {t('hero_btn_start', 'Start a Project')}
           </Button>
         </div>
       </div>
@@ -68,4 +71,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

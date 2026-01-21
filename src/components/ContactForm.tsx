@@ -6,21 +6,24 @@ import { useToast } from "@/hooks/use-toast";
 import { Send, Mail, Phone, MapPin } from "lucide-react";
 import { z } from "zod";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name is too long"),
-  email: z.string().trim().email("Please enter a valid email").max(255, "Email is too long"),
-  phone: z.string().trim().optional(),
-  message: z.string().trim().min(10, "Message must be at least 10 characters").max(1000, "Message is too long"),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+import { useTranslation } from "react-i18next"; // Added
 
 const ContactForm = () => {
+  const { t, i18n } = useTranslation(); // Added
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const captchaRef = useRef<HCaptcha>(null);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
+  // Dynamic Validation Schema
+  const contactSchema = z.object({
+    name: z.string().trim().min(1, t("form_name") + " is required"),
+    email: z.string().trim().email("Invalid email"),
+    phone: z.string().trim().optional(),
+    message: z.string().trim().min(10, t("form_message") + " > 10 chars"),
+  });
+
+  type ContactFormData = z.infer<typeof contactSchema>;
 
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
@@ -43,8 +46,8 @@ const ContactForm = () => {
 
     if (!captchaToken) {
       toast({
-        title: "Captcha Required",
-        description: "Please complete the captcha challenge.",
+        title: t("toast_captcha_title"),
+        description: t("toast_captcha_desc"),
         variant: "destructive",
       });
       setIsSubmitting(false);
@@ -77,23 +80,21 @@ const ContactForm = () => {
         }),
       });
 
-      const json = await response.json();
-
       if (response.ok) {
         toast({
-          title: "Message sent!",
-          description: "We'll get back to you within 24 hours.",
+          title: t("toast_success_title"),
+          description: t("toast_success_desc"),
         });
         setFormData({ name: "", email: "", phone: "", message: "" });
         setCaptchaToken(null);
         captchaRef.current?.resetCaptcha();
       } else {
-        throw new Error(json.message || "Submission failed");
+        throw new Error("Failed");
       }
     } catch (error) {
       toast({
-        title: "Something went wrong",
-        description: "Please try again later.",
+        title: t("toast_error_title"),
+        description: t("toast_error_desc"),
         variant: "destructive",
       });
     } finally {
@@ -106,9 +107,9 @@ const ContactForm = () => {
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16">
           <div>
-            <span className="text-primary font-body text-sm tracking-[0.3em] uppercase">Get In Touch</span>
-            <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground mt-4 mb-6">Start Your Project</h2>
-            <p className="font-body text-muted-foreground mb-10 max-w-md">Ready to transform your architectural vision into reality?</p>
+            <span className="text-primary font-body text-sm tracking-[0.3em] uppercase">{t("contact_eyebrow")}</span>
+            <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground mt-4 mb-6">{t("contact_header")}</h2>
+            <p className="font-body text-muted-foreground mb-10 max-w-md">{t("contact_sub")}</p>
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <Mail className="w-5 h-5 text-primary" />
@@ -120,7 +121,7 @@ const ContactForm = () => {
               </div>
               <div className="flex items-center gap-4">
                 <MapPin className="w-5 h-5 text-primary" />
-                <p className="text-foreground font-body">Limassol, Cyprus</p>
+                <p className="text-foreground font-body">{t("contact_location")}</p>
               </div>
             </div>
           </div>
@@ -129,23 +130,23 @@ const ContactForm = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-body text-muted-foreground mb-2">Name *</label>
+                  <label className="block text-sm font-body text-muted-foreground mb-2">{t("form_name")} *</label>
                   <Input name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" />
                   {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
                 </div>
                 <div>
-                  <label className="block text-sm font-body text-muted-foreground mb-2">Email *</label>
+                  <label className="block text-sm font-body text-muted-foreground mb-2">{t("form_email")} *</label>
                   <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" />
                   {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-body text-muted-foreground mb-2">Phone</label>
+                <label className="block text-sm font-body text-muted-foreground mb-2">{t("contact_phone")}</label>
                 <Input name="phone" value={formData.phone} onChange={handleChange} placeholder="+357 99 123456" />
               </div>
               <div>
-                <label className="block text-sm font-body text-muted-foreground mb-2">Project Details *</label>
-                <Textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your project..." rows={5} />
+                <label className="block text-sm font-body text-muted-foreground mb-2">{t("contact_details")}</label>
+                <Textarea name="message" value={formData.message} onChange={handleChange} placeholder={t("contact_details_placeholder")} rows={5} />
                 {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
               </div>
 
@@ -155,12 +156,13 @@ const ContactForm = () => {
                   ref={captchaRef}
                   onVerify={(token) => setCaptchaToken(token)}
                   onExpire={() => setCaptchaToken(null)}
+                  language={i18n.language.startsWith('el') ? 'el' : 'en'} // Captcha UI language
                 />
               </div>
 
               <Button type="submit" disabled={isSubmitting} className="w-full flex items-center gap-2">
                 <Send className="w-4 h-4" />
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? t("sending") : t("form_submit")}
               </Button>
             </form>
           </div>

@@ -1,6 +1,9 @@
 import { Instagram, Facebook, Phone, Music2, ArrowUp } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
@@ -21,34 +24,34 @@ const Footer = () => {
               GX<span className="text-primary">VISUALS</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Leading architectural visualization studio in Cyprus. Specializing in photorealistic 3D rendering and technical kitchen design for developers and homeowners.
+              {t("footer_bio")}
             </p>
           </div>
 
-          {/* Column 2: Services Sitemap (Internal Links) */}
+          {/* Column 2: Services Sitemap */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">Our Services</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">{t("nav_services")}</h4>
             <nav className="flex flex-col gap-2">
-              <a href="#services" onClick={(e) => handleScrollTo(e, "services")} className="text-sm text-muted-foreground hover:text-primary transition-colors">Residential Visualization</a>
-              <a href="#services" onClick={(e) => handleScrollTo(e, "services")} className="text-sm text-muted-foreground hover:text-primary transition-colors">Commercial Renders</a>
-              <a href="#services" onClick={(e) => handleScrollTo(e, "services")} className="text-sm text-muted-foreground hover:text-primary transition-colors">Interior Design</a>
-              <a href="#services" onClick={(e) => handleScrollTo(e, "services")} className="text-sm text-muted-foreground hover:text-primary transition-colors">Kitchen Technical Sketches</a>
+              <a href="#services" onClick={(e) => handleScrollTo(e, "services")} className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("s_res_title")}</a>
+              <a href="#services" onClick={(e) => handleScrollTo(e, "services")} className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("s_com_title")}</a>
+              <a href="#services" onClick={(e) => handleScrollTo(e, "services")} className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("s_int_title")}</a>
+              <a href="#services" onClick={(e) => handleScrollTo(e, "services")} className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("s_kit_title")}</a>
             </nav>
           </div>
 
           {/* Column 3: Quick Navigation */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">Quick Links</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">{t("nav_portfolio")}</h4>
             <nav className="flex flex-col gap-2">
-              <a href="#portfolio" onClick={(e) => handleScrollTo(e, "portfolio")} className="text-sm text-muted-foreground hover:text-primary transition-colors">Featured Projects</a>
-              <a href="#contact" onClick={(e) => handleScrollTo(e, "contact")} className="text-sm text-muted-foreground hover:text-primary transition-colors">Request a Quote</a>
-              <a href="#portfolio" onClick={(e) => handleScrollTo(e, "portfolio")} className="text-sm text-muted-foreground hover:text-primary transition-colors">3D Gallery</a>
+              <a href="#portfolio" onClick={(e) => handleScrollTo(e, "portfolio")} className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer_projects")}</a>
+              <a href="#contact" onClick={(e) => handleScrollTo(e, "contact")} className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("nav_quote")}</a>
+              <a href="#portfolio" onClick={(e) => handleScrollTo(e, "portfolio")} className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer_gallery")}</a>
             </nav>
           </div>
 
           {/* Column 4: Social & Contact */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">Connect With Us</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">{t("contact_eyebrow")}</h4>
             <div className="flex gap-4">
               <a href="https://www.instagram.com/gxvisuals.3drendering/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
@@ -63,7 +66,7 @@ const Footer = () => {
                 <Phone size={20} />
               </a>
             </div>
-            <p className="text-sm text-muted-foreground">Location: Cyprus, Nationwide Service</p>
+            <p className="text-sm text-muted-foreground">{t("footer_location")}</p>
           </div>
 
         </div>
@@ -71,13 +74,13 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground italic">
-            Speed. Precision. Photorealism.
+            {t("footer_tagline")}
           </p>
           <p className="text-xs text-muted-foreground">
-            © 2026 GXVisuals. All rights reserved.
+            © 2026 GXVisuals. {t("all_rights_reserved", "All rights reserved.")}
           </p>
           <a href="#" className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-widest">
-            Back to Top <ArrowUp size={14} />
+            {t("footer_back_to_top")} <ArrowUp size={14} />
           </a>
         </div>
       </div>

@@ -1,41 +1,44 @@
-import { Building2, Home, Layers, Ruler } from "lucide-react"; // Changed Box to Ruler
-
-const services = [
-  {
-    icon: Home,
-    title: "Residential Visualization",
-    description: "Stunning exterior and interior renders for homes, villas, and apartments that captivate buyers.",
-  },
-  {
-    icon: Building2,
-    title: "Commercial Renders",
-    description: "Professional visualizations for offices, retail spaces, and mixed-use developments.",
-  },
-  {
-    icon: Layers,
-    title: "Interior Design",
-    description: "Detailed interior renders showcasing materials, lighting, and furniture layouts.",
-  },
-  {
-    icon: Ruler, // Icon for technical sketching and measuring
-    title: "Kitchen Design & Technical Sketches",
-    description: "Precise kitchen layouts and detailed sketches with exact dimensions for accurate manufacturing and installation.",
-  },
-];
+import { Building2, Home, Layers, Ruler } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Services = () => {
+  const { t } = useTranslation();
+
+  const services = [
+    {
+      icon: Home,
+      title: t("s_res_title"),
+      description: t("s_res_desc"),
+    },
+    {
+      icon: Building2,
+      title: t("s_com_title"),
+      description: t("s_com_desc"),
+    },
+    {
+      icon: Layers,
+      title: t("s_int_title"),
+      description: t("s_int_desc"),
+    },
+    {
+      icon: Ruler,
+      title: t("s_kit_title"),
+      description: t("s_kit_desc"),
+    },
+  ];
+
   return (
     <section id="services" className="py-24 bg-card">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-primary font-body text-sm tracking-[0.3em] uppercase">
-            What We Offer
+            {t("services_eyebrow")}
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground mt-4">
-            Our Services
+            {t("services_header")}
           </h2>
           <p className="font-body text-muted-foreground mt-4 max-w-xl mx-auto">
-            Comprehensive rendering solutions tailored to elevate your architectural projects.
+            {t("services_sub")}
           </p>
         </div>
 

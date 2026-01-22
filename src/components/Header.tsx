@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Instagram, Music2 } from "lucide-react"; 
-import { useTranslation } from 'react-i18next'; // Import translation hook
+// Added Facebook to the imports
+import { Instagram, Music2, Facebook } from "lucide-react"; 
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const { t, i18n } = useTranslation(); // Use the translation hook
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,10 +25,9 @@ const Header = () => {
     }
   };
 
-  // Function to switch language
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
-    document.documentElement.lang = lng; // Updates the HTML tag for SEO
+    document.documentElement.lang = lng;
   };
 
   return (
@@ -73,7 +73,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-4">
-          {/* LANGUAGE SWITCHER BUTTONS */}
+          {/* LANGUAGE SWITCHER */}
           <div className="flex items-center gap-2 px-3 border-x border-border/50">
             <button
               onClick={() => changeLanguage('en')}
@@ -94,7 +94,13 @@ const Header = () => {
             </button>
           </div>
 
+          {/* SOCIAL ICONS SECTION */}
           <div className="flex items-center gap-3 mr-2">
+            {/* Added Facebook Link */}
+            <a href="https://www.facebook.com/people/GX-Visuals/61586672549590/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Facebook">
+              <Facebook size={18} />
+            </a>
+
             <a href="https://www.instagram.com/gxvisuals.3drendering/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Instagram">
               <Instagram size={18} />
             </a>

@@ -127,7 +127,7 @@ i18n
           "toast_error_desc": "Παρακαλώ δοκιμάστε ξανά αργότερα.",
           
           "portfolio_eyebrow": "Δείγματα Δουλειάς",
-          "portfolio_header": "Επιλεγμένα Έργα",
+          "portfolio_header": "Ολοκληρωμένα Έργα",
           "cat_res_ext": "Εξωτερικοί Χώροι Κατοικιών",
           "cat_facade": "Σχεδιασμός Πρόσοψης",
           "cat_styling": "Διαμόρφωση Εξωτερικού Χώρου",
@@ -142,8 +142,8 @@ i18n
           "footer_location": "Τοποθεσία: Κύπρος, Παγκύπρια Εξυπηρέτηση",
           "footer_tagline": "Ταχύτητα. Ακρίβεια. Φωτορεαλισμός.",
           "footer_back_to_top": "Επιστροφή στην Κορυφή",
-          "footer_projects": "Επιλεγμένα Έργα",
-          "footer_gallery": "3D Γκαλερί",
+          "footer_projects": "Ολοκληρωμένα Έργα",
+          "footer_gallery": "3D Galery",
           "all_rights_reserved": "Όλα τα δικαιώματα διατηρούνται."
         }
       }

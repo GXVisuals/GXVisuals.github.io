@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
-import heroImage from "@/assets/portfolio-1.jpg";
+import heroImage from "@/assets/portfolio-8.jpg";
 import { useTranslation } from 'react-i18next'; // 1. Import the hook
 
 const Hero = () => {

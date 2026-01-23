@@ -8,7 +8,7 @@ import { z } from "zod";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { useTranslation } from "react-i18next";
 
-// Προσθήκη για να μην βγάζει σφάλμα η TypeScript για το window.gtag
+// TypeScript global declaration for Google Tag
 declare global {
   interface Window {
     gtag: (...args: any[]) => void;
@@ -87,10 +87,10 @@ const ContactForm = () => {
       });
 
       if (response.ok) {
-        // --- GOOGLE ADS CONVERSION ---
+        // --- GOOGLE ADS CONVERSION TRIGGERED ON SUCCESS ---
         if (typeof window.gtag === 'function') {
           window.gtag('event', 'conversion', {
-            'send_to': 'AW-17899630675/YOUR_LABEL_HERE', // <-- Βάλε εδώ το Label από το Google Ads
+            'send_to': 'AW-17899630675/vebnCKHztusbENPgmtdC', 
             'value': 1.0,
             'currency': 'EUR',
           });

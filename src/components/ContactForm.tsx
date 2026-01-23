@@ -6,16 +6,22 @@ import { useToast } from "@/hooks/use-toast";
 import { Send, Mail, Phone, MapPin } from "lucide-react";
 import { z } from "zod";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { useTranslation } from "react-i18next"; // Added
+import { useTranslation } from "react-i18next";
+
+// Προσθήκη για να μην βγάζει σφάλμα η TypeScript για το window.gtag
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void;
+  }
+}
 
 const ContactForm = () => {
-  const { t, i18n } = useTranslation(); // Added
+  const { t, i18n } = useTranslation();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const captchaRef = useRef<HCaptcha>(null);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
-  // Dynamic Validation Schema
   const contactSchema = z.object({
     name: z.string().trim().min(1, t("form_name") + " is required"),
     email: z.string().trim().email("Invalid email"),
@@ -81,6 +87,15 @@ const ContactForm = () => {
       });
 
       if (response.ok) {
+        // --- GOOGLE ADS CONVERSION ---
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'conversion', {
+            'send_to': 'AW-17899630675/YOUR_LABEL_HERE', // <-- Βάλε εδώ το Label από το Google Ads
+            'value': 1.0,
+            'currency': 'EUR',
+          });
+        }
+
         toast({
           title: t("toast_success_title"),
           description: t("toast_success_desc"),
@@ -156,7 +171,7 @@ const ContactForm = () => {
                   ref={captchaRef}
                   onVerify={(token) => setCaptchaToken(token)}
                   onExpire={() => setCaptchaToken(null)}
-                  language={i18n.language.startsWith('el') ? 'el' : 'en'} // Captcha UI language
+                  language={i18n.language.startsWith('el') ? 'el' : 'en'}
                 />
               </div>
 

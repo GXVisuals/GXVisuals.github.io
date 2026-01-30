@@ -128,7 +128,7 @@ const ContactForm = () => {
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <Mail className="w-5 h-5 text-primary" />
-                <p className="text-foreground font-body">giorgoscharitonos@gmail.com</p>
+                <p className="text-foreground font-body">info@gxvisuals.com</p>
               </div>
               <div className="flex items-center gap-4">
                 <Phone className="w-5 h-5 text-primary" />

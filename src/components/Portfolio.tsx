@@ -17,6 +17,11 @@ import portfolio8 from "@/assets/portfolio-8.jpg";
 import portfolio9 from "@/assets/portfolio-9.jpg";
 import portfolio10 from "@/assets/portfolio-10.jpg";
 import portfolio11 from "@/assets/portfolio-11.jpg";
+import portfolio12 from "@/assets/portfolio-12.jpg";
+import portfolio13 from "@/assets/portfolio-13.jpg";
+import portfolio14 from "@/assets/portfolio-14.jpg";
+import portfolio15 from "@/assets/portfolio-15.jpg";
+import portfolio16 from "@/assets/portfolio-16.jpg";
 
 const Portfolio = () => {
   const { t } = useTranslation();
@@ -34,6 +39,11 @@ const Portfolio = () => {
     { id: 9, image: portfolio9, title: "Midnight Navy Kitchen", category: t("cat_vis") },
     { id: 10, image: portfolio10, title: "Contemporary Open Living", category: t("cat_res_int") },
     { id: 11, image: portfolio11, title: "Oak & Ambient Suite", category: t("cat_bedroom") },
+    { id: 12, image: portfolio12, title: "Minimalist Bathroom", category: t("cat_bathroom") },
+    { id: 13, image: portfolio13, title: "Modern Dining Room", category: t("cat_dining") },
+    { id: 14, image: portfolio14, title: "Transitional Kitchen", category: t("cat_interior") },
+    { id: 15, image: portfolio15, title: "Minimalist Dining Room and Living Room", category: t("cat_res_int") },
+    { id: 16, image: portfolio16, title: "Minimalist Living Room", category: t("cat_res_int") },
   ];
 
   return (

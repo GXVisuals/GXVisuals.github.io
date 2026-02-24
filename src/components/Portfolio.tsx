@@ -29,9 +29,6 @@ import portfolio19 from "@/assets/portfolio-19.jpg";
 import portfolio20 from "@/assets/portfolio-20.jpg";
 import portfolio21 from "@/assets/portfolio-21.jpg";
 
-// Video Import
-import portfolio28Video from "@/assets/portfolio-28.mp4";
-
 const Portfolio = () => {
   const { t } = useTranslation();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -62,16 +59,6 @@ const Portfolio = () => {
     { id: 18, image: portfolio18, title: "Minimalist Workspace", category: "interior", label: t("cat_interior") },
     { id: 20, image: portfolio20, title: "Luxury Marble Bath", category: "interior", label: t("cat_interior") },
     { id: 21, image: portfolio21, title: "Cozy Urban Lounge", category: "interior", label: t("cat_interior") },
-
-    // ANIMATIONS
-    { 
-      id: 28, 
-      image: portfolio4, // Use a static image (like your kitchen render) as a placeholder/thumbnail
-      title: "Modern Kitchen Animation", 
-      category: "animation", 
-      label: "3D Animation", 
-      videoFile: portfolio28Video 
-    },
   ];
 
   const filteredProjects = activeTab === "all" 
@@ -82,7 +69,6 @@ const Portfolio = () => {
     { id: "all", label: t("ALL") },
     { id: "exterior", label: t("EXTERIOR") },
     { id: "interior", label: t("INTERIOR") },
-    { id: "animation", label: t("ANIMATION") },
   ];
 
   return (

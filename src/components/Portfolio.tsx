@@ -28,7 +28,7 @@ import portfolio18 from "@/assets/portfolio-18.jpg";
 import portfolio19 from "@/assets/portfolio-19.jpg";
 import portfolio20 from "@/assets/portfolio-20.jpg";
 import portfolio21 from "@/assets/portfolio-21.jpg";
-import portfolio28 from "@/assets/portfolio-28.mp4";
+import portfolio28 from "@/assets/portfolio-28.jpg";
 
 const Portfolio = () => {
   const { t } = useTranslation();

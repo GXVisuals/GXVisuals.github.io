@@ -76,10 +76,10 @@ const Portfolio = () => {
     : projects.filter(p => p.category === activeTab);
 
   const tabs = [
-    { id: "all", label: t("filter_all") },
-    { id: "exterior", label: t("filter_exterior") },
-    { id: "interior", label: t("filter_interior") },
-    { id: "animation", label: t("filter_animation") },
+    { id: "all", label: t("ALL") },
+    { id: "exterior", label: t("EXTERIOR") },
+    { id: "interior", label: t("INTERIOR") },
+    { id: "animation", label: t("ANIMATION") },
   ];
 
   return (

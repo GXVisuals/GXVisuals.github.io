@@ -28,6 +28,7 @@ import portfolio18 from "@/assets/portfolio-18.jpg";
 import portfolio19 from "@/assets/portfolio-19.jpg";
 import portfolio20 from "@/assets/portfolio-20.jpg";
 import portfolio21 from "@/assets/portfolio-21.jpg";
+import portfolio28 from "@/assets/portfolio-28.mp4";
 
 const Portfolio = () => {
   const { t } = useTranslation();
@@ -61,14 +62,8 @@ const Portfolio = () => {
     { id: 21, image: portfolio21, title: "Cozy Urban Lounge", category: "interior", label: t("cat_interior") },
 
     // ANIMATIONS (Example: Replace 'videoUrl' with your YouTube/Vimeo link)
-    { 
-      id: 22, 
-      image: portfolio1, // Thumbnail
-      title: "Luxury Villa Walkthrough", 
-      category: "animation", 
-      label: "3D Animation", 
+    { id: 28, image: portfolio28, // Thumbnail title: "Modern Kitchen", category: "animation", label: "3D Animation" }, 
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" // Example link
-    },
   ];
 
   const filteredProjects = activeTab === "all" 

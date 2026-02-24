@@ -62,8 +62,7 @@ const Portfolio = () => {
     { id: 21, image: portfolio21, title: "Cozy Urban Lounge", category: "interior", label: t("cat_interior") },
 
     // ANIMATIONS (Example: Replace 'videoUrl' with your YouTube/Vimeo link)
-    { id: 28, image: portfolio28, // Thumbnail title: "Modern Kitchen", category: "animation", label: "3D Animation" }, 
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" // Example link
+    { id: 28, image: portfolio28, // Thumbnail title: "Modern Kitchen", category: "animation", label: "3D Animation" , videoUrl: "https://www.instagram.com/p/DTigXpCjDMf/" // Example link },
   ];
 
   const filteredProjects = activeTab === "all" 

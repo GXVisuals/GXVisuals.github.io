@@ -68,7 +68,7 @@ const Portfolio = () => {
       title: "Modern Kitchen Animation", 
       category: "animation", 
       label: "3D Animation", 
-      videoUrl: "https://www.youtube.com/embed/your_video_id" // Use an embeddable link
+      videoUrl: "https://www.instagram.com/p/DTigXpCjDMf/" // Use an embeddable link
     },
   ];
 

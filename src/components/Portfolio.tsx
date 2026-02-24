@@ -6,6 +6,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
+// Keep all your portfolio image imports here...
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
@@ -31,35 +32,60 @@ import portfolio21 from "@/assets/portfolio-21.jpg";
 const Portfolio = () => {
   const { t } = useTranslation();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState("all");
 
   const projects = [
-    { id: 1, image: portfolio1, title: "Modern Villa", category: t("cat_res_ext") },
-    { id: 2, image: portfolio2, title: "Sleek Country Home", category: t("cat_facade") },
-    { id: 3, image: portfolio3, title: "Luxury Eco‑Villa", category: t("cat_styling") },
-    { id: 4, image: portfolio4, title: "Contemporary Modern Kitchen", category: t("cat_interior") },
-    { id: 5, image: portfolio5, title: "Modern Living Room", category: t("cat_res_int") },
-    { id: 6, image: portfolio6, title: "Minimalist Bedroom", category: t("cat_interior") },
-    { id: 7, image: portfolio7, title: "Skyline Terrace Apartments", category: t("cat_urban") },
-    { id: 8, image: portfolio8, title: "Rustic Stone Villa", category: t("cat_luxury") },
-    { id: 9, image: portfolio9, title: "Midnight Navy Kitchen", category: t("cat_vis") },
-    { id: 10, image: portfolio10, title: "Contemporary Open Living", category: t("cat_res_int") },
-    { id: 11, image: portfolio11, title: "Oak & Ambient Suite", category: t("cat_bedroom") },
-    { id: 12, image: portfolio12, title: "Minimalist Bathroom", category: t("cat_interior") },
-    { id: 13, image: portfolio13, title: "Modern Dining Room", category: t("cat_res_int") },
-    { id: 14, image: portfolio14, title: "Transitional Kitchen", category: t("cat_interior") },
-    { id: 15, image: portfolio15, title: "Minimalist Dining Room and Living Room", category: t("cat_res_int") },
-    { id: 16, image: portfolio16, title: "Minimalist Living Room", category: t("cat_res_int") },
-    { id: 17, image: portfolio17, title: "Modern Living Suite", category: t("cat_res_int") },
-    { id: 18, image: portfolio18, title: "Minimalist Workspace", category: t("cat_interior") },
-    { id: 19, image: portfolio19, title: "Contemporary Exterior", category: t("cat_res_ext") },
-    { id: 20, image: portfolio20, title: "Luxury Marble Bath", category: t("cat_interior") },
-    { id: 21, image: portfolio21, title: "Cozy Urban Lounge", category: t("cat_interior") },
+    // EXTERIOR
+    { id: 1, image: portfolio1, title: "Modern Villa", category: "exterior", label: t("cat_res_ext") },
+    { id: 2, image: portfolio2, title: "Sleek Country Home", category: "exterior", label: t("cat_facade") },
+    { id: 3, image: portfolio3, title: "Luxury Eco‑Villa", category: "exterior", label: t("cat_styling") },
+    { id: 7, image: portfolio7, title: "Skyline Terrace Apartments", category: "exterior", label: t("cat_urban") },
+    { id: 8, image: portfolio8, title: "Rustic Stone Villa", category: "exterior", label: t("cat_luxury") },
+    { id: 19, image: portfolio19, title: "Contemporary Exterior", category: "exterior", label: t("cat_res_ext") },
+    
+    // INTERIOR
+    { id: 4, image: portfolio4, title: "Contemporary Modern Kitchen", category: "interior", label: t("cat_interior") },
+    { id: 5, image: portfolio5, title: "Modern Living Room", category: "interior", label: t("cat_res_int") },
+    { id: 6, image: portfolio6, title: "Minimalist Bedroom", category: "interior", label: t("cat_interior") },
+    { id: 9, image: portfolio9, title: "Midnight Navy Kitchen", category: "interior", label: t("cat_vis") },
+    { id: 10, image: portfolio10, title: "Contemporary Open Living", category: "interior", label: t("cat_res_int") },
+    { id: 11, image: portfolio11, title: "Oak & Ambient Suite", category: "interior", label: t("cat_bedroom") },
+    { id: 12, image: portfolio12, title: "Minimalist Bathroom", category: "interior", label: t("cat_interior") },
+    { id: 13, image: portfolio13, title: "Modern Dining Room", category: "interior", label: t("cat_res_int") },
+    { id: 14, image: portfolio14, title: "Transitional Kitchen", category: "interior", label: t("cat_interior") },
+    { id: 15, image: portfolio15, title: "Minimalist Dining & Living", category: "interior", label: t("cat_res_int") },
+    { id: 16, image: portfolio16, title: "Minimalist Living Room", category: "interior", label: t("cat_res_int") },
+    { id: 17, image: portfolio17, title: "Modern Living Suite", category: "interior", label: t("cat_res_int") },
+    { id: 18, image: portfolio18, title: "Minimalist Workspace", category: "interior", label: t("cat_interior") },
+    { id: 20, image: portfolio20, title: "Luxury Marble Bath", category: "interior", label: t("cat_interior") },
+    { id: 21, image: portfolio21, title: "Cozy Urban Lounge", category: "interior", label: t("cat_interior") },
+
+    // ANIMATIONS (Example: Replace 'videoUrl' with your YouTube/Vimeo link)
+    { 
+      id: 22, 
+      image: portfolio1, // Thumbnail
+      title: "Luxury Villa Walkthrough", 
+      category: "animation", 
+      label: "3D Animation", 
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" // Example link
+    },
+  ];
+
+  const filteredProjects = activeTab === "all" 
+    ? projects 
+    : projects.filter(p => p.category === activeTab);
+
+  const tabs = [
+    { id: "all", label: t("filter_all") },
+    { id: "exterior", label: t("filter_exterior") },
+    { id: "interior", label: t("filter_interior") },
+    { id: "animation", label: t("filter_animation") },
   ];
 
   return (
     <section id="portfolio" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <span className="text-primary font-body text-sm tracking-[0.3em] uppercase">
             {t("portfolio_eyebrow")}
           </span>
@@ -68,44 +94,72 @@ const Portfolio = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
+        {/* Category Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-8 py-2.5 rounded-full text-xs font-body tracking-widest uppercase transition-all duration-300 border ${
+                activeTab === tab.id
+                  ? "bg-primary text-white border-primary shadow-lg"
+                  : "bg-transparent text-muted-foreground border-muted-foreground/20 hover:border-primary hover:text-primary"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project) => (
             <Dialog key={project.id}>
               <DialogTrigger asChild>
                 <div
-                  className="group relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer shadow-card"
+                  className="group relative aspect-[4/3] overflow-hidden rounded-xl cursor-pointer shadow-card bg-muted"
                   onMouseEnter={() => setHoveredId(project.id)}
                   onMouseLeave={() => setHoveredId(null)}
                 >
                   <img
                     src={project.image}
                     alt={project.title}
-                    className={`w-full h-full object-cover transition-transform duration-700 ${
+                    className={`w-full h-full object-cover transition-transform duration-1000 ease-out ${
                       hoveredId === project.id ? "scale-110" : "scale-100"
                     }`}
                   />
                   
-                  <div className={`absolute inset-0 bg-black/40 transition-opacity duration-500 ${
+                  <div className={`absolute inset-0 bg-black/50 transition-opacity duration-500 ${
                     hoveredId === project.id ? "opacity-100" : "opacity-0"
                   }`} />
                   
-                  <div className={`absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 ${
-                    hoveredId === project.id ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                  <div className={`absolute bottom-0 left-0 right-0 p-8 transition-all duration-500 ${
+                    hoveredId === project.id ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
                   }`}>
-                    <span className="text-primary text-xs font-body tracking-wider uppercase">
-                        {project.category}
+                    <span className="text-primary text-xs font-body tracking-[0.2em] uppercase mb-2 block">
+                      {project.label}
                     </span>
-                    <h3 className="font-display text-xl text-white mt-1">{project.title}</h3>
+                    <h3 className="font-display text-2xl text-white font-light">{project.title}</h3>
                   </div>
                 </div>
               </DialogTrigger>
 
-              <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-none bg-transparent flex items-center justify-center">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-auto max-h-[90vh] object-contain rounded-md"
-                />
+              <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 border-none bg-black/90 flex items-center justify-center overflow-hidden">
+                {project.videoUrl ? (
+                  <iframe
+                    className="w-full aspect-video max-h-[85vh]"
+                    src={project.videoUrl}
+                    title={project.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-auto max-h-[85vh] object-contain"
+                  />
+                )}
               </DialogContent>
             </Dialog>
           ))}

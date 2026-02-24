@@ -28,6 +28,12 @@ import portfolio18 from "@/assets/portfolio-18.jpg";
 import portfolio19 from "@/assets/portfolio-19.jpg";
 import portfolio20 from "@/assets/portfolio-20.jpg";
 import portfolio21 from "@/assets/portfolio-21.jpg";
+import portfolio22 from "@/assets/portfolio-22.jpg";
+import portfolio23 from "@/assets/portfolio-23.jpg";
+import portfolio24 from "@/assets/portfolio-24.jpg";
+import portfolio25 from "@/assets/portfolio-25.jpg";
+import portfolio26 from "@/assets/portfolio-26.jpg";
+import portfolio27 from "@/assets/portfolio-27.jpg";
 
 const Portfolio = () => {
   const { t } = useTranslation();
@@ -42,6 +48,12 @@ const Portfolio = () => {
     { id: 7, image: portfolio7, title: "Skyline Terrace Apartments", category: "exterior", label: t("cat_urban") },
     { id: 8, image: portfolio8, title: "Rustic Stone Villa", category: "exterior", label: t("cat_luxury") },
     { id: 19, image: portfolio19, title: "Contemporary Exterior", category: "exterior", label: t("cat_res_ext") },
+    { id: 22, image: portfolio22, title: "The Arch House", category: "exterior", label: t("cat_res_ext") },
+    { id: 23, image: portfolio23, title: "Isometric View with Section", category: "exterior", label: t("cat_res_ext") },
+    { id: 24, image: portfolio24, title: "Minimalist Villa", category: "exterior", label: t("cat_res_ext") },
+    { id: 26, image: portfolio26, title: "Isometric View", category: "exterior", label: t("cat_res_ext") },
+    { id: 27, image: portfolio27, title: "3D Floor Plan", category: "exterior", label: t("cat_res_ext") },
+
     
     // INTERIOR
     { id: 4, image: portfolio4, title: "Contemporary Modern Kitchen", category: "interior", label: t("cat_interior") },
@@ -59,6 +71,7 @@ const Portfolio = () => {
     { id: 18, image: portfolio18, title: "Minimalist Workspace", category: "interior", label: t("cat_interior") },
     { id: 20, image: portfolio20, title: "Luxury Marble Bath", category: "interior", label: t("cat_interior") },
     { id: 21, image: portfolio21, title: "Cozy Urban Lounge", category: "interior", label: t("cat_interior") },
+    { id: 25, image: portfolio25, title: "Workspace Interior", category: "interior", label: t("cat_interior") },
   ];
 
   const filteredProjects = activeTab === "all" 

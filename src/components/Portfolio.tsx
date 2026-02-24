@@ -6,7 +6,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-// Imports
+// Image Imports
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
@@ -28,7 +28,9 @@ import portfolio18 from "@/assets/portfolio-18.jpg";
 import portfolio19 from "@/assets/portfolio-19.jpg";
 import portfolio20 from "@/assets/portfolio-20.jpg";
 import portfolio21 from "@/assets/portfolio-21.jpg";
-import portfolio28 from "@/assets/portfolio-28.jpg";
+
+// Video Import
+import portfolio28Video from "@/assets/portfolio-28.mp4";
 
 const Portfolio = () => {
   const { t } = useTranslation();
@@ -61,14 +63,14 @@ const Portfolio = () => {
     { id: 20, image: portfolio20, title: "Luxury Marble Bath", category: "interior", label: t("cat_interior") },
     { id: 21, image: portfolio21, title: "Cozy Urban Lounge", category: "interior", label: t("cat_interior") },
 
-    // ANIMATIONS - (Fixed syntax error below)
+    // ANIMATIONS
     { 
       id: 28, 
-      image: portfolio28, 
+      image: portfolio4, // Use a static image (like your kitchen render) as a placeholder/thumbnail
       title: "Modern Kitchen Animation", 
       category: "animation", 
       label: "3D Animation", 
-      videoUrl: "https://www.instagram.com/p/DTigXpCjDMf/" // Use an embeddable link
+      videoFile: portfolio28Video 
     },
   ];
 
@@ -145,15 +147,16 @@ const Portfolio = () => {
                 </div>
               </DialogTrigger>
 
-              <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 border-none bg-black/90 flex items-center justify-center overflow-hidden">
-                {project.videoUrl ? (
-                  <iframe
-                    className="w-full aspect-video max-h-[85vh]"
-                    src={project.videoUrl}
-                    title={project.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
+              <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 border-none bg-black flex items-center justify-center overflow-hidden">
+                {project.videoFile ? (
+                  <video 
+                    controls 
+                    autoPlay 
+                    className="w-full max-h-[85vh] outline-none"
+                  >
+                    <source src={project.videoFile} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 ) : (
                   <img
                     src={project.image}

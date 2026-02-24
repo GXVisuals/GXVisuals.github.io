@@ -6,7 +6,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-// Keep all your portfolio image imports here...
+// Imports
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
@@ -61,8 +61,15 @@ const Portfolio = () => {
     { id: 20, image: portfolio20, title: "Luxury Marble Bath", category: "interior", label: t("cat_interior") },
     { id: 21, image: portfolio21, title: "Cozy Urban Lounge", category: "interior", label: t("cat_interior") },
 
-    // ANIMATIONS (Example: Replace 'videoUrl' with your YouTube/Vimeo link)
-    { id: 28, image: portfolio28, // Thumbnail title: "Modern Kitchen", category: "animation", label: "3D Animation" , videoUrl: "https://www.instagram.com/p/DTigXpCjDMf/" // Example link },
+    // ANIMATIONS - (Fixed syntax error below)
+    { 
+      id: 28, 
+      image: portfolio28, 
+      title: "Modern Kitchen Animation", 
+      category: "animation", 
+      label: "3D Animation", 
+      videoUrl: "https://www.youtube.com/embed/your_video_id" // Use an embeddable link
+    },
   ];
 
   const filteredProjects = activeTab === "all" 

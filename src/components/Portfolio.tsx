@@ -34,6 +34,9 @@ import portfolio24 from "@/assets/portfolio-24.jpg";
 import portfolio25 from "@/assets/portfolio-25.jpg";
 import portfolio26 from "@/assets/portfolio-26.jpg";
 import portfolio27 from "@/assets/portfolio-27.jpg";
+import portfolio28 from "@/assets/portfolio-28.jpg";
+import portfolio29 from "@/assets/portfolio-29.jpg";
+import portfolio30 from "@/assets/portfolio-30.jpg";
 
 const Portfolio = () => {
   const { t } = useTranslation();
@@ -53,6 +56,9 @@ const Portfolio = () => {
     { id: 24, image: portfolio24, title: "Minimalist Villa", category: "exterior", label: t("cat_res_ext") },
     { id: 26, image: portfolio26, title: "Isometric View", category: "exterior", label: t("cat_res_ext") },
     { id: 27, image: portfolio27, title: "3D Floor Plan", category: "exterior", label: t("cat_res_ext") },
+    { id: 28, image: portfolio28, title: "Modern Facade Villa", category: "exterior", label: t("cat_res_ext") },
+    { id: 29, image: portfolio29, title: "Aerial Perspective", category: "exterior", label: t("cat_res_ext") },
+    { id: 30, image: portfolio30, title: "3D Plan View", category: "exterior", label: t("cat_res_ext") },
 
     
     // INTERIOR

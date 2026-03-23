@@ -5,8 +5,9 @@ import {
   DialogContent,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { ArrowRight } from "lucide-react";
 
-// Imports για όλες τις εικόνες (Βεβαιώσου ότι είναι .webp στο assets)
+// Imports για όλες τις εικόνες
 import portfolio1 from "@/assets/portfolio-1.webp";
 import portfolio2 from "@/assets/portfolio-2.webp";
 import portfolio3 from "@/assets/portfolio-3.webp";
@@ -51,9 +52,9 @@ const Portfolio = () => {
 
   const projects = [
     // EXTERIOR
-    { id: 1, image: portfolio1, title: "Modern Villa", category: "exterior", label: t("cat_res_ext"), altText: "Photorealistic 3D exterior render of a modern luxury villa" },
+    { id: 1, image: portfolio1, title: "Modern Villa", category: "exterior", label: t("cat_res_ext"), altText: "Photorealistic 3D exterior render of a modern luxury villa in Cyprus" },
     { id: 2, image: portfolio2, title: "Sleek Country Home", category: "exterior", label: t("cat_facade"), altText: "Modern country house facade design 3D visualization" },
-    { id: 3, image: portfolio3, title: "Luxury Eco‑Villa", category: "exterior", label: t("cat_styling"), altText: "Eco-friendly luxury villa exterior styling architectural render" },
+    { id: 3, image: portfolio3, title: "Luxury Eco-Villa", category: "exterior", label: t("cat_styling"), altText: "Eco-friendly luxury villa exterior architectural render" },
     { id: 7, image: portfolio7, title: "Skyline Terrace Apartments", category: "exterior", label: t("cat_urban"), altText: "Urban apartment building 3D rendering skyline view" },
     { id: 8, image: portfolio8, title: "Rustic Stone Villa", category: "exterior", label: t("cat_luxury"), altText: "Traditional stone villa exterior architectural visualization" },
     { id: 19, image: portfolio19, title: "Contemporary Exterior", category: "exterior", label: t("cat_res_ext"), altText: "Contemporary residential architecture 3D render" },
@@ -65,7 +66,7 @@ const Portfolio = () => {
     { id: 28, image: portfolio28, title: "Modern Facade Villa", category: "exterior", label: t("cat_res_ext"), altText: "Luxury villa facade design 3D rendering" },
     { id: 29, image: portfolio29, title: "Aerial Perspective", category: "exterior", label: t("cat_res_ext"), altText: "Aerial 3D view of architectural site development" },
     { id: 30, image: portfolio30, title: "3D Plan View", category: "exterior", label: t("cat_res_ext"), altText: "Master plan 3D architectural visualization" },
-    { id: 35, image: portfolio35, title: "Urban Skyscraper Plaza", category: "exterior", label: t("cat_urban"), altText: "Architectural visualization of luxury urban residential skyscrapers and public plaza" },
+    { id: 35, image: portfolio35, title: "Urban Skyscraper Plaza", category: "exterior", label: t("cat_urban"), altText: "Architectural visualization of luxury urban residential skyscrapers" },
     { id: 36, image: portfolio36, title: "Modern Mixed-Use Complex", category: "exterior", label: t("cat_res_ext"), altText: "Photorealistic 3D exterior render of modern mixed-use architecture" },
 
     // INTERIOR
@@ -113,6 +114,7 @@ const Portfolio = () => {
           </h2>
         </div>
 
+        {/* Filter Tabs */}
         <div className="flex flex-wrap justify-center gap-3 mb-16">
           {tabs.map((tab) => (
             <button
@@ -129,6 +131,7 @@ const Portfolio = () => {
           ))}
         </div>
 
+        {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
             <Dialog key={project.id}>
@@ -170,6 +173,23 @@ const Portfolio = () => {
             </Dialog>
           ))}
         </div>
+
+        {/* --- CONTACT US BUTTON AT THE BOTTOM --- */}
+        <div className="mt-20 text-center">
+          <button
+            onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="group relative inline-flex items-center justify-center px-12 py-4 font-body text-xs tracking-[0.3em] uppercase transition-all duration-500 bg-primary text-white rounded-full hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(0,186,211,0.4)] transform hover:-translate-y-1"
+          >
+            <span className="relative z-10 font-bold">{t("CONTACT US", "CONTACT US")}</span>
+            <ArrowRight size={18} className="ml-3 transition-transform duration-300 group-hover:translate-x-2" />
+          </button>
+        </div>
+        {/* ---------------------------------------- */}
       </div>
     </section>
   );

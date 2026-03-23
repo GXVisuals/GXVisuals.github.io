@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { ArrowRight } from "lucide-react"; // Αν χρησιμοποιείς lucide-react για εικονίδια
+import { ArrowRight } from "lucide-react";
+// 1. Εδώ γίνονται σωστά τα imports
 import portfolio1 from "@/assets/portfolio-1.webp";
 import portfolio32 from "@/assets/portfolio-32.webp";
 
@@ -11,7 +12,7 @@ const CaseStudies = () => {
       id: 1,
       title: "Japandi Kitchen Concept in Limassol",
       location: "Limassol, Cyprus",
-      image: "/assets/portfolio-32.webp", 
+      image: portfolio32, // ΠΡΟΣΟΧΗ: Εδώ ΔΕΝ βάζουμε εισαγωγικά, χρησιμοποιούμε τη μεταβλητή
       challenge: "The client wanted a serene, minimalist kitchen that maximizes natural light. The challenge was to balance warm wood textures with functional modern surfaces in a compact space.",
       solution: "We applied Japandi design principles, using high-fidelity 3D visualization to test various oak finishes and ambient lighting scenarios before the construction phase.",
       keywords: ["Interior Design", "3D Rendering Limassol", "Kitchen Visualization"]
@@ -20,7 +21,7 @@ const CaseStudies = () => {
       id: 2,
       title: "Luxury Modern Villa Exterior",
       location: "Paphos, Cyprus",
-      image: "/assets/portfolio-1.webp", 
+      image: portfolio1, // ΠΡΟΣΟΧΗ: Εδώ ΔΕΝ βάζουμε εισαγωγικά
       challenge: "A high-end architectural project required realistic environmental rendering to showcase how the villa interacts with the Mediterranean landscape and sunlight.",
       solution: "Using advanced sunlight simulation, we created a series of renders that highlight the villa's geometric lines and the integration of indoor-outdoor living spaces.",
       keywords: ["Architectural Visualization", "Exterior Rendering", "Luxury Real Estate"]
@@ -49,7 +50,7 @@ const CaseStudies = () => {
               <div className="w-full lg:w-1/2 group">
                 <div className="overflow-hidden rounded-2xl shadow-2xl bg-black">
                   <img 
-                    src={study.image} 
+                    src={study.image} // Εδώ η React θα βάλει το σωστό path αυτόματα
                     alt={study.title} 
                     className="w-full h-full object-cover aspect-[16/10] group-hover:scale-105 transition-transform duration-1000 opacity-90 group-hover:opacity-100"
                   />

@@ -6,37 +6,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-// Image Imports
-import portfolio1 from "@/assets/portfolio-1.jpg";
-import portfolio2 from "@/assets/portfolio-2.jpg";
-import portfolio3 from "@/assets/portfolio-3.jpg";
-import portfolio4 from "@/assets/portfolio-4.jpg";
-import portfolio5 from "@/assets/portfolio-5.jpg";
-import portfolio6 from "@/assets/portfolio-6.jpg";
-import portfolio7 from "@/assets/portfolio-7.jpg";
-import portfolio8 from "@/assets/portfolio-8.jpg";
-import portfolio9 from "@/assets/portfolio-9.jpg";
-import portfolio10 from "@/assets/portfolio-10.jpg";
-import portfolio11 from "@/assets/portfolio-11.jpg";
-import portfolio12 from "@/assets/portfolio-12.jpg";
-import portfolio13 from "@/assets/portfolio-13.jpg";
-import portfolio14 from "@/assets/portfolio-14.jpg";
-import portfolio15 from "@/assets/portfolio-15.jpg";
-import portfolio16 from "@/assets/portfolio-16.jpg";
-import portfolio17 from "@/assets/portfolio-17.jpg";
-import portfolio18 from "@/assets/portfolio-18.jpg";
-import portfolio19 from "@/assets/portfolio-19.jpg";
-import portfolio20 from "@/assets/portfolio-20.jpg";
-import portfolio21 from "@/assets/portfolio-21.jpg";
-import portfolio22 from "@/assets/portfolio-22.jpg";
-import portfolio23 from "@/assets/portfolio-23.jpg";
-import portfolio24 from "@/assets/portfolio-24.jpg";
-import portfolio25 from "@/assets/portfolio-25.jpg";
-import portfolio26 from "@/assets/portfolio-26.jpg";
-import portfolio27 from "@/assets/portfolio-27.jpg";
-import portfolio28 from "@/assets/portfolio-28.png";
-import portfolio29 from "@/assets/portfolio-29.png";
-import portfolio30 from "@/assets/portfolio-30.png";
+// ... (Κράτησε όλα τα imports των εικόνων σου όπως είναι)
 
 const Portfolio = () => {
   const { t } = useTranslation();
@@ -44,82 +14,48 @@ const Portfolio = () => {
   const [activeTab, setActiveTab] = useState("all");
 
   const projects = [
-    // EXTERIOR
-    { id: 1, image: portfolio1, title: "Modern Villa", category: "exterior", label: t("cat_res_ext") },
-    { id: 2, image: portfolio2, title: "Sleek Country Home", category: "exterior", label: t("cat_facade") },
-    { id: 3, image: portfolio3, title: "Luxury Eco‑Villa", category: "exterior", label: t("cat_styling") },
-    { id: 7, image: portfolio7, title: "Skyline Terrace Apartments", category: "exterior", label: t("cat_urban") },
-    { id: 8, image: portfolio8, title: "Rustic Stone Villa", category: "exterior", label: t("cat_luxury") },
-    { id: 19, image: portfolio19, title: "Contemporary Exterior", category: "exterior", label: t("cat_res_ext") },
-    { id: 22, image: portfolio22, title: "The Arch House", category: "exterior", label: t("cat_res_ext") },
-    { id: 23, image: portfolio23, title: "Isometric View with Section", category: "exterior", label: t("cat_res_ext") },
-    { id: 24, image: portfolio24, title: "Minimalist Villa", category: "exterior", label: t("cat_res_ext") },
-    { id: 26, image: portfolio26, title: "Isometric View", category: "exterior", label: t("cat_res_ext") },
-    { id: 27, image: portfolio27, title: "3D Floor Plan", category: "exterior", label: t("cat_res_ext") },
-    { id: 28, image: portfolio28, title: "Modern Facade Villa", category: "exterior", label: t("cat_res_ext") },
-    { id: 29, image: portfolio29, title: "Aerial Perspective", category: "exterior", label: t("cat_res_ext") },
-    { id: 30, image: portfolio30, title: "3D Plan View", category: "exterior", label: t("cat_res_ext") },
+    // EXTERIOR - Προσθήκη SEO Alt Texts
+    { id: 1, image: portfolio1, title: "Modern Villa", category: "exterior", label: t("cat_res_ext"), altText: "Photorealistic 3D exterior render of a modern luxury villa" },
+    { id: 2, image: portfolio2, title: "Sleek Country Home", category: "exterior", label: t("cat_facade"), altText: "Modern country house facade design 3D visualization" },
+    { id: 3, image: portfolio3, title: "Luxury Eco‑Villa", category: "exterior", label: t("cat_styling"), altText: "Eco-friendly luxury villa exterior styling architectural render" },
+    { id: 7, image: portfolio7, title: "Skyline Terrace Apartments", category: "exterior", label: t("cat_urban"), altText: "Urban apartment building 3D rendering skyline view" },
+    { id: 8, image: portfolio8, title: "Rustic Stone Villa", category: "exterior", label: t("cat_luxury"), altText: "Traditional stone villa exterior architectural visualization" },
+    { id: 19, image: portfolio19, title: "Contemporary Exterior", category: "exterior", label: t("cat_res_ext"), altText: "Contemporary residential architecture 3D render" },
+    { id: 22, image: portfolio22, title: "The Arch House", category: "exterior", label: t("cat_res_ext"), altText: "Modern arch-style house exterior visualization" },
+    { id: 23, image: portfolio23, title: "Isometric View with Section", category: "exterior", label: t("cat_res_ext"), altText: "3D isometric section view of a residential building" },
+    { id: 24, image: portfolio24, title: "Minimalist Villa", category: "exterior", label: t("cat_res_ext"), altText: "Minimalist luxury villa architectural visualization" },
+    { id: 26, image: portfolio26, title: "Isometric View", category: "exterior", label: t("cat_res_ext"), altText: "3D isometric house plan visualization" },
+    { id: 27, image: portfolio27, title: "3D Floor Plan", category: "exterior", label: t("cat_res_ext"), altText: "Detailed 3D floor plan for interior and exterior layout" },
+    { id: 28, image: portfolio28, title: "Modern Facade Villa", category: "exterior", label: t("cat_res_ext"), altText: "Luxury villa facade design 3D rendering" },
+    { id: 29, image: portfolio29, title: "Aerial Perspective", category: "exterior", label: t("cat_res_ext"), altText: "Aerial 3D view of architectural site development" },
+    { id: 30, image: portfolio30, title: "3D Plan View", category: "exterior", label: t("cat_res_ext"), altText: "Master plan 3D architectural visualization" },
 
-    
-    // INTERIOR
-    { id: 4, image: portfolio4, title: "Contemporary Modern Kitchen", category: "interior", label: t("cat_interior") },
-    { id: 5, image: portfolio5, title: "Modern Living Room", category: "interior", label: t("cat_res_int") },
-    { id: 6, image: portfolio6, title: "Minimalist Bedroom", category: "interior", label: t("cat_interior") },
-    { id: 9, image: portfolio9, title: "Midnight Navy Kitchen", category: "interior", label: t("cat_vis") },
-    { id: 10, image: portfolio10, title: "Contemporary Open Living", category: "interior", label: t("cat_res_int") },
-    { id: 11, image: portfolio11, title: "Oak & Ambient Suite", category: "interior", label: t("cat_bedroom") },
-    { id: 12, image: portfolio12, title: "Minimalist Bathroom", category: "interior", label: t("cat_interior") },
-    { id: 13, image: portfolio13, title: "Modern Dining Room", category: "interior", label: t("cat_res_int") },
-    { id: 14, image: portfolio14, title: "Transitional Kitchen", category: "interior", label: t("cat_interior") },
-    { id: 15, image: portfolio15, title: "Minimalist Dining & Living", category: "interior", label: t("cat_res_int") },
-    { id: 16, image: portfolio16, title: "Minimalist Living Room", category: "interior", label: t("cat_res_int") },
-    { id: 17, image: portfolio17, title: "Modern Living Suite", category: "interior", label: t("cat_res_int") },
-    { id: 18, image: portfolio18, title: "Minimalist Workspace", category: "interior", label: t("cat_interior") },
-    { id: 20, image: portfolio20, title: "Luxury Marble Bath", category: "interior", label: t("cat_interior") },
-    { id: 21, image: portfolio21, title: "Cozy Urban Lounge", category: "interior", label: t("cat_interior") },
-    { id: 25, image: portfolio25, title: "Workspace Interior", category: "interior", label: t("cat_interior") },
+    // INTERIOR - Προσθήκη SEO Alt Texts
+    { id: 4, image: portfolio4, title: "Contemporary Modern Kitchen", category: "interior", label: t("cat_interior"), altText: "Modern kitchen design with photorealistic 3D rendering" },
+    { id: 5, image: portfolio5, title: "Modern Living Room", category: "interior", label: t("cat_res_int"), altText: "Luxury interior design 3D visualization for living room" },
+    { id: 6, image: portfolio6, title: "Minimalist Bedroom", category: "interior", label: t("cat_interior"), altText: "Minimalist bedroom interior render with realistic lighting" },
+    { id: 9, image: portfolio9, title: "Midnight Navy Kitchen", category: "interior", label: t("cat_vis"), altText: "High-end kitchen 3D visualization navy blue cabinets" },
+    { id: 10, image: portfolio10, title: "Contemporary Open Living", category: "interior", label: t("cat_res_int"), altText: "Open plan living room and dining interior visualization" },
+    { id: 11, image: portfolio11, title: "Oak & Ambient Suite", category: "interior", label: t("cat_bedroom"), altText: "Master bedroom 3D render with oak materials" },
+    { id: 12, image: portfolio12, title: "Minimalist Bathroom", category: "interior", label: t("cat_interior"), altText: "Modern bathroom 3D visualization with luxury fixtures" },
+    { id: 13, image: portfolio13, title: "Modern Dining Room", category: "interior", label: t("cat_res_int"), altText: "Luxury dining room interior photorealistic render" },
+    { id: 14, image: portfolio14, title: "Transitional Kitchen", category: "interior", label: t("cat_interior"), altText: "Technical kitchen design and 3D visualization" },
+    { id: 15, image: portfolio15, title: "Minimalist Dining & Living", category: "interior", label: t("cat_res_int"), altText: "Minimalist apartment interior 3D rendering" },
+    { id: 16, image: portfolio16, title: "Minimalist Living Room", category: "interior", label: t("cat_res_int"), altText: "Bright minimalist living room interior visualization" },
+    { id: 17, image: portfolio17, title: "Modern Living Suite", category: "interior", label: t("cat_res_int"), altText: "High-end hotel suite interior design 3D render" },
+    { id: 18, image: portfolio18, title: "Minimalist Workspace", category: "interior", label: t("cat_interior"), altText: "Modern home office workspace 3D interior render" },
+    { id: 20, image: portfolio20, title: "Luxury Marble Bath", category: "interior", label: t("cat_interior"), altText: "Luxury marble bathroom interior visualization" },
+    { id: 21, image: portfolio21, title: "Cozy Urban Lounge", category: "interior", label: t("cat_interior"), altText: "Urban lounge interior design photorealistic rendering" },
+    { id: 25, image: portfolio25, title: "Workspace Interior", category: "interior", label: t("cat_interior"), altText: "Professional office interior 3D visualization" },
   ];
 
-  const filteredProjects = activeTab === "all" 
-    ? projects 
-    : projects.filter(p => p.category === activeTab);
-
-  const tabs = [
-    { id: "all", label: t("ALL") },
-    { id: "exterior", label: t("EXTERIOR") },
-    { id: "interior", label: t("INTERIOR") },
-  ];
+  // ... (Κράτησε το filteredProjects και τα tabs όπως είναι)
 
   return (
     <section id="portfolio" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <span className="text-primary font-body text-sm tracking-[0.3em] uppercase">
-            {t("portfolio_eyebrow")}
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground mt-4">
-            {t("portfolio_header")}
-          </h2>
-        </div>
+        {/* ... Header και Tabs ... */}
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-8 py-2.5 rounded-full text-xs font-body tracking-widest uppercase transition-all duration-300 border ${
-                activeTab === tab.id
-                  ? "bg-primary text-white border-primary shadow-lg"
-                  : "bg-transparent text-muted-foreground border-muted-foreground/20 hover:border-primary hover:text-primary"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
             <Dialog key={project.id}>
@@ -131,44 +67,23 @@ const Portfolio = () => {
                 >
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={project.altText} // Χρήση του SEO Alt Text εδώ
+                    loading="lazy" // Βοηθάει στην ταχύτητα φόρτωσης (SEO)
                     className={`w-full h-full object-cover transition-transform duration-1000 ease-out ${
                       hoveredId === project.id ? "scale-110" : "scale-100"
                     }`}
                   />
                   
-                  <div className={`absolute inset-0 bg-black/50 transition-opacity duration-500 ${
-                    hoveredId === project.id ? "opacity-100" : "opacity-0"
-                  }`} />
-                  
-                  <div className={`absolute bottom-0 left-0 right-0 p-8 transition-all duration-500 ${
-                    hoveredId === project.id ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-                  }`}>
-                    <span className="text-primary text-xs font-body tracking-[0.2em] uppercase mb-2 block">
-                      {project.label}
-                    </span>
-                    <h3 className="font-display text-2xl text-white font-light">{project.title}</h3>
-                  </div>
+                  {/* ... Υπόλοιπος κώδικας (Overlays κλπ) ... */}
                 </div>
               </DialogTrigger>
 
               <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 border-none bg-black flex items-center justify-center overflow-hidden">
-                {project.videoFile ? (
-                  <video 
-                    controls 
-                    autoPlay 
-                    className="w-full max-h-[85vh] outline-none"
-                  >
-                    <source src={project.videoFile} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                ) : (
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={project.altText} // Επανάληψη και στο Modal
                     className="w-full h-auto max-h-[85vh] object-contain"
                   />
-                )}
               </DialogContent>
             </Dialog>
           ))}

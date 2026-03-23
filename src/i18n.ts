@@ -68,6 +68,13 @@ i18n
           "cat_vis": "Interior Visualization",
           "cat_bedroom": "Bedroom Design",
 
+          "s_res_more": "We create high-end visuals that highlight textures, lighting, and spatial flow, helping developers sell properties faster.",
+          "s_com_more": "Detailed visualizations for commercial projects, emphasizing brand identity and professional aesthetics for investors.",
+          "s_int_more": "Photo-accurate representations of materials and lighting to help interior designers present their vision to clients.",
+          "s_kit_more": "We provide millwork-ready drawings with exact millimeter precision, ensuring perfect fit for all kitchen appliances.",
+          "read_more": "Read More",
+          "read_less": "Read Less",
+
           "footer_bio": "Leading architectural visualization studio. Specializing in photorealistic 3D rendering and technical kitchen design for developers and homeowners.",
           "footer_location": "Global Service",
           "footer_tagline": "Speed. Precision. Photorealism.",
@@ -137,6 +144,13 @@ i18n
           "cat_luxury": "Πολυτελείς Εξωτερικοί Χώροι",
           "cat_vis": "Απεικόνιση Εσωτερικών Χώρων",
           "cat_bedroom": "Σχεδιασμός Υπνοδωματίου",
+
+          "s_res_more": "Δημιουργούμε εικόνες υψηλής ποιότητας που αναδεικνύουν τις υφές και τον φωτισμό, βοηθώντας στην ταχύτερη πώληση ακινήτων.",
+          "s_com_more": "Λεπτομερείς απεικονίσεις για εμπορικά έργα, δίνοντας έμφαση στην επαγγελματική αισθητική για επενδυτές.",
+          "s_int_more": "Ακριβείς αναπαραστάσεις υλικών και φωτισμού για να βοηθήσουμε τους διακοσμητές να παρουσιάσουν το όραμά τους.",
+          "s_kit_more": "Παρέχουμε κατασκευαστικά σχέδια με ακρίβεια χιλιοστού, διασφαλίζοντας την τέλεια εφαρμογή όλων των συσκευών.",
+          "read_more": "Περισσότερα",
+          "read_less": "Λιγότερα",
 
           "footer_bio": "Κορυφαίο γραφείο αρχιτεκτονικού φωτορεαλισμού. Ειδικευόμαστε σε φωτορεαλιστικά 3D renders και τεχνικό σχεδιασμό κουζίνας για κατασκευαστές και ιδιώτες.",
           "footer_location": "Διεθνής Εξυπηρέτηση",

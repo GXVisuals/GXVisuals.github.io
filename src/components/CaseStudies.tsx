@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { ArrowRight } from "lucide-react";
 // 1. Εδώ γίνονται σωστά τα imports
 import portfolio1 from "@/assets/portfolio-1.webp";
-import portfolio32 from "@/assets/portfolio-32.webp";
+import portfolio31 from "@/assets/portfolio-31.webp";
 
 const CaseStudies = () => {
   const { t } = useTranslation();
@@ -12,7 +12,7 @@ const CaseStudies = () => {
       id: 1,
       title: "Japandi Kitchen Concept in Limassol",
       location: "Limassol, Cyprus",
-      image: portfolio32, // ΠΡΟΣΟΧΗ: Εδώ ΔΕΝ βάζουμε εισαγωγικά, χρησιμοποιούμε τη μεταβλητή
+      image: portfolio31, // ΠΡΟΣΟΧΗ: Εδώ ΔΕΝ βάζουμε εισαγωγικά, χρησιμοποιούμε τη μεταβλητή
       challenge: "The client wanted a serene, minimalist kitchen that maximizes natural light. The challenge was to balance warm wood textures with functional modern surfaces in a compact space.",
       solution: "We applied Japandi design principles, using high-fidelity 3D visualization to test various oak finishes and ambient lighting scenarios before the construction phase.",
       keywords: ["Interior Design", "3D Rendering Limassol", "Kitchen Visualization"]
@@ -40,7 +40,7 @@ const CaseStudies = () => {
           </h2>
         </div>
 
-        <div className="space-y-32">
+        <div className="space-y-31">
           {studies.map((study, index) => (
             <div 
               key={study.id} 
@@ -92,7 +92,7 @@ const CaseStudies = () => {
         </div>
 
         {/* Call to Action Section */}
-        <div className="mt-32 p-12 rounded-3xl bg-foreground text-background text-center space-y-8">
+        <div className="mt-31 p-12 rounded-3xl bg-foreground text-background text-center space-y-8">
           <h3 className="font-display text-3xl md:text-4xl">Ready to visualize your next project?</h3>
           <p className="font-body text-muted max-w-xl mx-auto opacity-80">
             Let's transform your architectural concepts into photorealistic experiences that captivate your clients.

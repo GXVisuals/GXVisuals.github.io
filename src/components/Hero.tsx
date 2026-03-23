@@ -38,7 +38,7 @@ const Hero = () => {
         </h1>
         
         <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up opacity-0 [animation-delay:600ms]">
-          {t('hero_description', 'Fast, photorealistic 3D rendering and technical kitchen sketches with exact dimensions. Transforming architectural concepts across Cyprus into stunning visuals.')}
+          {t('hero_description', 'Fast, photorealistic 3D rendering and technical kitchen sketches with exact dimensions. Transforming architectural concepts into stunning visuals.')}
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up opacity-0 [animation-delay:800ms]">

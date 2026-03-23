@@ -1,13 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import heroImage from "@/assets/portfolio-8.jpg";
-import { useTranslation } from 'react-i18next'; // 1. Import the hook
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
-  const { t } = useTranslation(); // 2. Initialize the hook
+  const { t } = useTranslation();
 
   const scrollToPortfolio = () => {
     document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -29,7 +33,7 @@ const Hero = () => {
         </span>
         
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-foreground mb-6 animate-fade-up opacity-0 [animation-delay:400ms]">
-          {/* SEO Hidden Keywords - We translate this too for Greek Google bots */}
+          {/* SEO Hidden Keywords */}
           <span className="sr-only">{t('hero_seo_keywords')}</span>
           
           {t('hero_title_part1', 'Bring Your Vision')}
@@ -49,10 +53,12 @@ const Hero = () => {
           >
             {t('hero_btn_portfolio', 'View Portfolio')}
           </Button>
+          
+          {/* Τώρα και αυτό το κουμπί έχει variant="hero" για να είναι μπλε */}
           <Button
-            variant="outline"
+            variant="hero" 
             size="xl"
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={scrollToContact}
           >
             {t('hero_btn_start', 'Start a Project')}
           </Button>

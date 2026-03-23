@@ -6,48 +6,44 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      // Σύνδεση με Google Analytics
       gtag('config', 'G-WCJG806M4H');
-      // Σύνδεση με Google Ads
       gtag('config', 'AW-17899630675');
     </script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
     <title>GXVISUALS | 3D Visualization & Kitchen Design Cyprus</title>
-    <meta name="description" content="GXVISUALS: Premium 3D architectural visualization in Limassol & Cyprus. Photorealistic renders & technical kitchen sketches with exact dimensions. Request a quote." />
-    
-    <meta name="google-site-verification" content="google861a9cb6cefbf58f" />
-    <link rel="canonical" href="https://www.gxvisuals.com/" />
-    
-    <link rel="alternate" hreflang="en" href="https://www.gxvisuals.com/" />
-    <link rel="alternate" hreflang="el" href="https://www.gxvisuals.com/" />
-    <link rel="alternate" hreflang="x-default" href="https://www.gxvisuals.com/" />
-    
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-    
-    <meta name="author" content="GXVISUALS" />
-    <meta name="keywords" content="3D rendering Cyprus, architectural visualization Limassol, kitchen design sketches, photorealistic renders Cyprus, GXVISUALS" />
 
-    <link rel="icon" type="image/png" sizes="256x256" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
-    <link rel="shortcut icon" href="/favicon.png" />
-
-    <meta property="og:title" content="GXVISUALS | Premium Architectural Visualization Cyprus" />
-    <meta property="og:description" content="Transform your architectural vision into stunning photorealistic 3D renders. Specialized in residential and commercial projects." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.gxvisuals.com" />
-    <meta property="og:image" content="https://www.gxvisuals.com/og-image.jpg" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="GXVISUALS" />
-    <meta name="twitter:image" content="https://www.gxvisuals.com/og-image.jpg" />
+    <style>
+        .scroll-btn {
+            position: fixed;
+            right: 20px;
+            z-index: 9999;
+            width: 45px;
+            height: 45px;
+            background-color: #000; /* Μαύρο για να ταιριάζει με GXVisuals */
+            color: white;
+            border: 1px solid #444;
+            border-radius: 5px; /* Τετραγωνισμένο με λίγη κλίση */
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .scroll-btn:hover { background-color: #333; }
+        #topBtn { bottom: 75px; }
+        #bottomBtn { bottom: 20px; }
+    </style>
 </head>
 
 <body>
     <div id="root"></div>
+
+    <button class="scroll-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="topBtn">↑</button>
+    <button class="scroll-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})" id="bottomBtn">↓</button>
+
     <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { ArrowRight } from "lucide-react"; // Αν χρησιμοποιείς lucide-react για εικονίδια
+import portfolio1 from "@/assets/portfolio-1.webp";
+import portfolio32 from "@/assets/portfolio-32.webp";
 
 const CaseStudies = () => {
   const { t } = useTranslation();

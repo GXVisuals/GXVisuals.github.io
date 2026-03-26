@@ -1,28 +1,34 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Portfolio from "@/components/Portfolio";
-import Testimonials from "@/components/Testimonials";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
 
-const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <Hero />
-      <div id="portfolio">
-        <Portfolio />
-      </div>
-      
-      {/* Προσθήκη Testimonials εδώ */}
-      <Testimonials />
-      
-      <div id="contact">
-        <Contact />
-      </div>
-      <Footer />
-    </div>
-  );
-};
+// Δημιουργία του Query Client για τη διαχείριση των δεδομένων και cache
+const queryClient = new QueryClient();
 
-export default Index;
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      {/* Notifications / Pop-ups */}
+      <Toaster />
+      <Sonner />
+      
+      <BrowserRouter>
+        <Routes>
+          {/* Η κύρια διαδρομή που οδηγεί στο Index.tsx. 
+            Εκεί μέσα έχουμε βάλει το Hero, Portfolio, Testimonials και Contact.
+          */}
+          <Route path="/" element={<Index />} />
+          
+          {/* Catch-all διαδρομή για 404 Error σελίδες */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
+
+export default App;

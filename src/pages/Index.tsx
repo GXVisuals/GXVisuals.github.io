@@ -1,38 +1,25 @@
-import Header from "@/components/Header";
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
-import CaseStudies from "@/components/CaseStudies";
-import Testimonials from "@/components/Testimonials"; // Το import είναι ήδη εδώ σωστά
-import Services from "@/components/Services";
-import ContactForm from "@/components/ContactForm";
+import Testimonials from "@/components/Testimonials"; // Σιγουρέψου ότι το Τ είναι κεφαλαίο στο αρχείο!
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Navbar />
       <Hero />
-      
-      {/* Ενότητα Portfolio */}
-      <section id="portfolio">
+      <div id="portfolio">
         <Portfolio />
-      </section>
-
-      {/* Case Studies */}
-      <CaseStudies />
-
-      {/* --- ΠΡΟΣΘΗΚΗ TESTIMONIALS ΕΔΩ --- */}
-      <Testimonials /> 
-      {/* ---------------------------------- */}
-
-      {/* Ενότητα Υπηρεσιών */}
-      <Services />
-
-      {/* Φόρμα Επικοινωνίας */}
-      <section id="contact">
-        <ContactForm />
-      </section>
-
+      </div>
+      
+      {/* Εδώ εμφανίζονται τα Testimonials */}
+      <Testimonials />
+      
+      <div id="contact">
+        <Contact />
+      </div>
       <Footer />
     </div>
   );

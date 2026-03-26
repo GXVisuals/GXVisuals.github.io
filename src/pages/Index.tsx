@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
-import CaseStudies from "@/components/CaseStudies"; // Το νέο component που φτιάξαμε
+import CaseStudies from "@/components/CaseStudies";
+import Testimonials from "@/components/Testimonials";
 import Services from "@/components/Services";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";

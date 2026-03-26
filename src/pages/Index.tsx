@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
 import CaseStudies from "@/components/CaseStudies";
-import Testimonials from "@/components/Testimonials";
+import Testimonials from "@/components/Testimonials"; // Το import είναι ήδη εδώ σωστά
 import Services from "@/components/Services";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
@@ -18,8 +18,12 @@ const Index = () => {
         <Portfolio />
       </section>
 
-      {/* Η νέα ενότητα με τα Case Studies που βοηθάει το SEO */}
+      {/* Case Studies */}
       <CaseStudies />
+
+      {/* --- ΠΡΟΣΘΗΚΗ TESTIMONIALS ΕΔΩ --- */}
+      <Testimonials /> 
+      {/* ---------------------------------- */}
 
       {/* Ενότητα Υπηρεσιών */}
       <Services />

@@ -11,7 +11,7 @@ i18n
         translation: {
           "nav_portfolio": "Portfolio",
           "nav_services": "Our Services",
-          "nav_contact": "Contact Us",
+          "nav_contact": "Get a free Quote",
           "nav_quote": "Get a Quote",
           
           // Hero Section

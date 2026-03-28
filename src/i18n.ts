@@ -9,7 +9,7 @@ i18n
     resources: {
       en: {
         translation: {
-          "nav_portfolio": "Featured Portfolio",
+          "nav_portfolio": "Portfolio",
           "nav_services": "Our Services",
           "nav_contact": "Contact Us",
           "nav_quote": "Get a Quote",

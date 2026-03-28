@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-// Added Facebook to the imports
-import { Instagram, Music2, Facebook } from "lucide-react"; 
+// Προστέθηκε το Phone στα imports
+import { Instagram, Music2, Facebook, Phone } from "lucide-react"; 
 import { useTranslation } from 'react-i18next';
 
 const Header = () => {
@@ -73,6 +73,15 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-4">
+          {/* PHONE NUMBER SECTION - Εμφανίζεται μόνο σε μεγάλα Desktop (lg) */}
+          <a 
+            href="tel:+35795115014" 
+            className="hidden xl:flex items-center gap-2 text-foreground hover:text-primary transition-colors font-body text-sm font-medium mr-2"
+          >
+            <Phone size={14} className="text-primary" />
+            <span>+357 95 115014</span>
+          </a>
+
           {/* LANGUAGE SWITCHER */}
           <div className="flex items-center gap-2 px-3 border-x border-border/50">
             <button
@@ -96,7 +105,6 @@ const Header = () => {
 
           {/* SOCIAL ICONS SECTION */}
           <div className="flex items-center gap-3 mr-2">
-            {/* Added Facebook Link */}
             <a href="https://www.facebook.com/people/GX-Visuals/61586672549590/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Facebook">
               <Facebook size={18} />
             </a>

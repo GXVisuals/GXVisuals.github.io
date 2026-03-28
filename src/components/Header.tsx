@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Instagram, Music2, Facebook, Phone } from "lucide-react"; 
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { NavLink } from "@/components/ui/NavLink";
+import { NavLink } from "@/components/NavLink";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);

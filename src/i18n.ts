@@ -21,7 +21,7 @@ i18n
           "hero_title_part2": "To Life",
           "hero_description": "Fast, photorealistic 3D rendering and technical kitchen sketches with exact dimensions. Transforming architectural concepts into stunning visuals.",
           "hero_btn_portfolio": "View Portfolio",
-          "hero_btn_start": "Contact us",
+          "hero_btn_start": "Get a free Quote",
 
           "services_eyebrow": "What We Offer",
           "services_header": "Our Services",

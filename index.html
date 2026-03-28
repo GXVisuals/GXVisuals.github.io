@@ -1,10 +1,14 @@
 <!doctype html>
 <html lang="el"> 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preload" as="image" href="/src/assets/portfolio-8.webp" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
+    <link rel="preload" as="image" href="/src/assets/portfolio-8.webp" fetchpriority="high">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCJG806M4H"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,10 +17,12 @@
       gtag('config', 'G-WCJG806M4H');
       gtag('config', 'AW-17899630675');
     </script>
-
     <script src="https://t.contentsquare.net/uxa/1adca1878f977.js" async></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <meta name="description" content="GXVISUALS - High-end 3D Architectural Visualization and Kitchen Design in Cyprus. Photorealistic interior and exterior renders." />
+    <title>GXVISUALS | 3D Visualization & Kitchen Design</title>
 
     <script type="application/ld+json">
     {
@@ -27,27 +33,13 @@
       "description": "Premium 3D architectural visualization, interior design rendering, and custom kitchen design services in Limassol, Cyprus.",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "", 
         "addressLocality": "Limassol",
         "addressCountry": "CY"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "34.6786",
-        "longitude": "33.0413"
-      },
       "url": "https://www.gxvisuals.com",
-      "telephone": "+357XXXXXXXX", 
-      "priceRange": "$$$",
-      "openingHours": "Mo,Tu,We,Th,Fr 09:00-18:00"
+      "priceRange": "$$$"
     }
     </script>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <meta name="description" content="GXVISUALS - High-end 3D Architectural Visualization and Kitchen Design in Cyprus. Photorealistic interior and exterior renders." />
-    <title>GXVISUALS | 3D Visualization & Kitchen Design</title>
 
     <style>
         .scroll-btn {
@@ -71,6 +63,8 @@
         .scroll-btn:hover { background-color: #333; border-color: #00bad3; }
         #topBtn { bottom: 75px; }
         #bottomBtn { bottom: 20px; }
+        /* Prevent layout shift for the hero height */
+        #root { min-height: 100vh; }
     </style>
 </head>
 

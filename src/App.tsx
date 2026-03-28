@@ -6,24 +6,22 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
-// Δημιουργία του Query Client για τη διαχείριση των δεδομένων και cache
+// Αρχικοποίηση του QueryClient για τη διαχείριση δεδομένων
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      {/* Notifications / Pop-ups */}
+      {/* Εξαρτήματα για τα αναδυόμενα μηνύματα (Notifications) */}
       <Toaster />
       <Sonner />
       
       <BrowserRouter>
         <Routes>
-          {/* Η κύρια διαδρομή που οδηγεί στο Index.tsx. 
-            Εκεί μέσα έχουμε βάλει το Hero, Portfolio, Testimonials και Contact.
-          */}
+          {/* Η κεντρική σελίδα (Home) */}
           <Route path="/" element={<Index />} />
           
-          {/* Catch-all διαδρομή για 404 Error σελίδες */}
+          {/* Σελίδα 404 - αν ο χρήστης γράψει λάθος URL */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

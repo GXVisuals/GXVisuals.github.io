@@ -29,7 +29,7 @@ const Hero = () => {
       {/* Content */}
       <div className="container relative z-10 px-6 py-32 text-center">
         <span className="inline-block text-primary font-body text-sm tracking-[0.3em] uppercase mb-6 animate-fade-in opacity-0 [animation-delay:200ms]">
-          {t('hero_eyebrow', '3D Architectural Visualization')}
+          {t('hero_eyebrow', '3D Visualization Studio')}
         </span>
         
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-foreground mb-6 animate-fade-up opacity-0 [animation-delay:400ms]">

@@ -43,7 +43,7 @@ const Header = () => {
         
         <nav className="hidden md:flex items-center gap-8">
           <NavLink to="/portfolio" className="text-muted-foreground hover:text-foreground transition-colors font-body text-sm tracking-wide" activeClassName="text-primary font-bold">
-            {t('nav_portfolio', 'Featured Portfolio')}
+            {t('nav_portfolio', 'Portfolio')}
           </NavLink>
           <a href="#services" onClick={(e) => handleNavClick(e, "services")} className="text-muted-foreground hover:text-foreground transition-colors font-body text-sm tracking-wide">
             {t('nav_services', 'Our Services')}

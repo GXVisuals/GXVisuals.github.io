@@ -1,7 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
-import Testimonials from "@/components/Testimonials"; // Σιγουρέψου ότι το Τ είναι κεφαλαίο στο αρχείο!
+import CaseStudies from "@/components/CaseStudies";
+import Testimonials from "@/components/Testimonials";
+import Services from "@/components/Services";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -9,17 +11,31 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <Hero />
-      <div id="portfolio">
-        <Portfolio />
-      </div>
       
-      {/* Εδώ εμφανίζονται τα Testimonials */}
-      <Testimonials />
-      
-      <div id="contact">
-        <Contact />
-      </div>
+      <main>
+        {/* Κεντρικό μήνυμα και Renders */}
+        <Hero />
+        
+        {/* Ενότητα Portfolio με ID για το Menu */}
+        <section id="portfolio" className="scroll-mt-20">
+          <Portfolio />
+        </section>
+
+        {/* Case Studies - Αναλυτική παρουσίαση έργων */}
+        <CaseStudies />
+
+        {/* Testimonials - Κοινωνική απόδειξη (Social Proof) */}
+        <Testimonials />
+
+        {/* Υπηρεσίες - Τι προσφέρεις σε Architects/Developers */}
+        <Services />
+
+        {/* Επικοινωνία */}
+        <section id="contact" className="scroll-mt-20">
+          <Contact />
+        </section>
+      </main>
+
       <Footer />
     </div>
   );

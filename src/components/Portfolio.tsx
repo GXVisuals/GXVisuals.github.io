@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Dialog,
@@ -6,6 +6,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Imports για όλες τις εικόνες
 import portfolio1 from "@/assets/portfolio-1.webp";
@@ -49,57 +50,73 @@ const Portfolio = () => {
   const { t } = useTranslation();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState("all");
+  const [activeSubTab, setActiveSubTab] = useState("all");
 
   const projects = [
     // EXTERIOR
-    { id: 1, image: portfolio1, title: "Modern Villa", category: "exterior", label: t("cat_res_ext"), altText: "Photorealistic 3D exterior render of a modern luxury villa in Cyprus" },
-    { id: 2, image: portfolio2, title: "Sleek Country Home", category: "exterior", label: t("cat_facade"), altText: "Modern country house facade design 3D visualization" },
-    { id: 3, image: portfolio3, title: "Luxury Eco-Villa", category: "exterior", label: t("cat_styling"), altText: "Eco-friendly luxury villa exterior architectural render" },
-    { id: 7, image: portfolio7, title: "Skyline Terrace Apartments", category: "exterior", label: t("cat_urban"), altText: "Urban apartment building 3D rendering skyline view" },
-    { id: 8, image: portfolio8, title: "Rustic Stone Villa", category: "exterior", label: t("cat_luxury"), altText: "Traditional stone villa exterior architectural visualization" },
-    { id: 19, image: portfolio19, title: "Contemporary Exterior", category: "exterior", label: t("cat_res_ext"), altText: "Contemporary residential architecture 3D render" },
-    { id: 22, image: portfolio22, title: "The Arch House", category: "exterior", label: t("cat_res_ext"), altText: "Modern arch-style house exterior visualization" },
-    { id: 23, image: portfolio23, title: "Isometric View with Section", category: "exterior", label: t("cat_res_ext"), altText: "3D isometric section view of a residential building" },
-    { id: 24, image: portfolio24, title: "Minimalist Villa", category: "exterior", label: t("cat_res_ext"), altText: "Minimalist luxury villa architectural visualization" },
-    { id: 26, image: portfolio26, title: "Isometric View", category: "exterior", label: t("cat_res_ext"), altText: "3D isometric house plan visualization" },
-    { id: 27, image: portfolio27, title: "3D Floor Plan", category: "exterior", label: t("cat_res_ext"), altText: "Detailed 3D floor plan for interior and exterior layout" },
-    { id: 28, image: portfolio28, title: "Modern Facade Villa", category: "exterior", label: t("cat_res_ext"), altText: "Luxury villa facade design 3D rendering" },
-    { id: 29, image: portfolio29, title: "Aerial Perspective", category: "exterior", label: t("cat_res_ext"), altText: "Aerial 3D view of architectural site development" },
-    { id: 30, image: portfolio30, title: "3D Plan View", category: "exterior", label: t("cat_res_ext"), altText: "Master plan 3D architectural visualization" },
-    { id: 35, image: portfolio35, title: "Urban Skyscraper Plaza", category: "exterior", label: t("cat_urban"), altText: "Architectural visualization of luxury urban residential skyscrapers" },
-    { id: 36, image: portfolio36, title: "Modern Mixed-Use Complex", category: "exterior", label: t("cat_res_ext"), altText: "Photorealistic 3D exterior render of modern mixed-use architecture" },
+    { id: 1, image: portfolio1, title: "Modern Villa", category: "exterior", subCategory: "all", label: t("cat_res_ext"), altText: "Photorealistic 3D exterior render" },
+    { id: 2, image: portfolio2, title: "Sleek Country Home", category: "exterior", subCategory: "all", label: t("cat_facade"), altText: "Modern country house facade" },
+    { id: 3, image: portfolio3, title: "Luxury Eco-Villa", category: "exterior", subCategory: "all", label: t("cat_styling"), altText: "Eco-friendly luxury villa" },
+    { id: 7, image: portfolio7, title: "Skyline Terrace Apartments", category: "exterior", subCategory: "all", label: t("cat_urban"), altText: "Urban apartment building 3D" },
+    { id: 8, image: portfolio8, title: "Rustic Stone Villa", category: "exterior", subCategory: "all", label: t("cat_luxury"), altText: "Traditional stone villa" },
+    { id: 19, image: portfolio19, title: "Contemporary Exterior", category: "exterior", subCategory: "all", label: t("cat_res_ext"), altText: "Contemporary residential architecture" },
+    { id: 22, image: portfolio22, title: "The Arch House", category: "exterior", subCategory: "all", label: t("cat_res_ext"), altText: "Modern arch-style house" },
+    { id: 23, image: portfolio23, title: "Isometric View with Section", category: "exterior", subCategory: "all", label: t("cat_res_ext"), altText: "3D isometric section view" },
+    { id: 24, image: portfolio24, title: "Minimalist Villa", category: "exterior", subCategory: "all", label: t("cat_res_ext"), altText: "Minimalist luxury villa" },
+    { id: 26, image: portfolio26, title: "Isometric View", category: "exterior", subCategory: "all", label: t("cat_res_ext"), altText: "3D isometric house plan" },
+    { id: 27, image: portfolio27, title: "3D Floor Plan", category: "exterior", subCategory: "all", label: t("cat_res_ext"), altText: "Detailed 3D floor plan" },
+    { id: 28, image: portfolio28, title: "Modern Facade Villa", category: "exterior", subCategory: "all", label: t("cat_res_ext"), altText: "Luxury villa facade design" },
+    { id: 29, image: portfolio29, title: "Aerial Perspective", category: "exterior", subCategory: "all", label: t("cat_res_ext"), altText: "Aerial 3D view" },
+    { id: 30, image: portfolio30, title: "3D Plan View", category: "exterior", subCategory: "all", label: t("cat_res_ext"), altText: "Master plan 3D visualization" },
+    { id: 35, image: portfolio35, title: "Urban Skyscraper Plaza", category: "exterior", subCategory: "all", label: t("cat_urban"), altText: "Architectural visualization of skyscrapers" },
+    { id: 36, image: portfolio36, title: "Modern Mixed-Use Complex", category: "exterior", subCategory: "all", label: t("cat_res_ext"), altText: "Photorealistic 3D exterior render" },
 
-    // INTERIOR
-    { id: 4, image: portfolio4, title: "Contemporary Modern Kitchen", category: "interior", label: t("cat_interior"), altText: "Modern kitchen design with photorealistic 3D rendering" },
-    { id: 5, image: portfolio5, title: "Modern Living Room", category: "interior", label: t("cat_res_int"), altText: "Luxury interior design 3D visualization for living room" },
-    { id: 6, image: portfolio6, title: "Minimalist Bedroom", category: "interior", label: t("cat_interior"), altText: "Minimalist bedroom interior render with realistic lighting" },
-    { id: 9, image: portfolio9, title: "Midnight Navy Kitchen", category: "interior", label: t("cat_vis"), altText: "High-end kitchen 3D visualization navy blue cabinets" },
-    { id: 10, image: portfolio10, title: "Contemporary Open Living", category: "interior", label: t("cat_res_int"), altText: "Open plan living room and dining interior visualization" },
-    { id: 11, image: portfolio11, title: "Oak & Ambient Suite", category: "interior", label: t("cat_bedroom"), altText: "Master bedroom 3D render with oak materials" },
-    { id: 12, image: portfolio12, title: "Minimalist Bathroom", category: "interior", label: t("cat_interior"), altText: "Modern bathroom 3D visualization with luxury fixtures" },
-    { id: 13, image: portfolio13, title: "Modern Dining Room", category: "interior", label: t("cat_res_int"), altText: "Luxury dining room interior photorealistic render" },
-    { id: 14, image: portfolio14, title: "Transitional Kitchen", category: "interior", label: t("cat_interior"), altText: "Technical kitchen design and 3D visualization" },
-    { id: 15, image: portfolio15, title: "Minimalist Dining & Living", category: "interior", label: t("cat_res_int"), altText: "Minimalist apartment interior 3D rendering" },
-    { id: 16, image: portfolio16, title: "Minimalist Living Room", category: "interior", label: t("cat_res_int"), altText: "Bright minimalist living room interior visualization" },
-    { id: 17, image: portfolio17, title: "Modern Living Suite", category: "interior", label: t("cat_res_int"), altText: "High-end hotel suite interior design 3D render" },
-    { id: 18, image: portfolio18, title: "Minimalist Workspace", category: "interior", label: t("cat_interior"), altText: "Modern home office workspace 3D interior render" },
-    { id: 20, image: portfolio20, title: "Luxury Marble Bath", category: "interior", label: t("cat_interior"), altText: "Luxury marble bathroom interior visualization" },
-    { id: 21, image: portfolio21, title: "Cozy Urban Lounge", category: "interior", label: t("cat_interior"), altText: "Urban lounge interior design photorealistic rendering" },
-    { id: 25, image: portfolio25, title: "Workspace Interior", category: "interior", label: t("cat_interior"), altText: "Professional office interior 3D visualization" },
-    { id: 31, image: portfolio31, title: "Japandi Kitchen Concept", category: "interior", label: t("cat_interior"), altText: "Minimalist Japandi kitchen design 3D visualization" },
-    { id: 32, image: portfolio32, title: "Luxury Sectional Living", category: "interior", label: t("cat_res_int"), altText: "High-end living room interior design with large sectional sofa" },
-    { id: 33, image: portfolio33, title: "Boho-Luxe Master Bedroom", category: "interior", label: t("cat_bedroom"), altText: "Luxury Boho-style bedroom visualization with rattan bed" },
-    { id: 34, image: portfolio34, title: "Contemporary Media Lounge", category: "interior", label: t("cat_res_int"), altText: "Modern media room 3D render with large TV" },
+    // INTERIOR (Με Subcategories)
+    { id: 4, image: portfolio4, title: "Contemporary Modern Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_interior"), altText: "Modern kitchen design" },
+    { id: 9, image: portfolio9, title: "Midnight Navy Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_vis"), altText: "High-end kitchen 3D visualization" },
+    { id: 14, image: portfolio14, title: "Transitional Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_interior"), altText: "Technical kitchen design" },
+    { id: 31, image: portfolio31, title: "Japandi Kitchen Concept", category: "interior", subCategory: "kitchen", label: t("cat_interior"), altText: "Minimalist Japandi kitchen" },
+    
+    { id: 12, image: portfolio12, title: "Minimalist Bathroom", category: "interior", subCategory: "bathroom", label: t("cat_interior"), altText: "Modern bathroom 3D visualization" },
+    { id: 20, image: portfolio20, title: "Luxury Marble Bath", category: "interior", subCategory: "bathroom", label: t("cat_interior"), altText: "Luxury marble bathroom" },
+    
+    { id: 5, image: portfolio5, title: "Modern Living Room", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Luxury interior design living room" },
+    { id: 10, image: portfolio10, title: "Contemporary Open Living", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Open plan living room interior" },
+    { id: 13, image: portfolio13, title: "Modern Dining Room", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Luxury dining room interior" },
+    { id: 15, image: portfolio15, title: "Minimalist Dining & Living", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Minimalist apartment interior" },
+    { id: 16, image: portfolio16, title: "Minimalist Living Room", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Bright minimalist living room" },
+    { id: 17, image: portfolio17, title: "Modern Living Suite", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "High-end hotel suite interior" },
+    { id: 21, image: portfolio21, title: "Cozy Urban Lounge", category: "interior", subCategory: "living room", label: t("cat_interior"), altText: "Urban lounge interior design" },
+    { id: 32, image: portfolio32, title: "Luxury Sectional Living", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "High-end living room design" },
+    { id: 34, image: portfolio34, title: "Contemporary Media Lounge", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Modern media room 3D" },
+    
+    { id: 6, image: portfolio6, title: "Minimalist Bedroom", category: "interior", subCategory: "bedroom", label: t("cat_interior"), altText: "Minimalist bedroom interior" },
+    { id: 11, image: portfolio11, title: "Oak & Ambient Suite", category: "interior", subCategory: "bedroom", label: t("cat_bedroom"), altText: "Master bedroom 3D render" },
+    { id: 33, image: portfolio33, title: "Boho-Luxe Master Bedroom", category: "interior", subCategory: "bedroom", label: t("cat_bedroom"), altText: "Luxury Boho-style bedroom" },
+    
+    { id: 18, image: portfolio18, title: "Minimalist Workspace", category: "interior", subCategory: "office", label: t("cat_interior"), altText: "Modern home office" },
+    { id: 25, image: portfolio25, title: "Workspace Interior", category: "interior", subCategory: "office", label: t("cat_interior"), altText: "Professional office interior" },
   ];
 
-  const filteredProjects = activeTab === "all" 
-    ? projects 
-    : projects.filter(p => p.category === activeTab);
+  const filteredProjects = projects.filter(p => {
+    const matchesMain = activeTab === "all" || p.category === activeTab;
+    const matchesSub = activeTab !== "interior" || activeSubTab === "all" || p.subCategory === activeSubTab;
+    return matchesMain && matchesSub;
+  });
 
   const tabs = [
     { id: "all", label: t("ALL") },
     { id: "exterior", label: t("EXTERIOR") },
     { id: "interior", label: t("INTERIOR") },
+  ];
+
+  const subTabs = [
+    { id: "all", label: t("ALL") },
+    { id: "kitchen", label: t("KITCHEN") },
+    { id: "bathroom", label: t("BATHROOM") },
+    { id: "living room", label: t("LIVING ROOM") },
+    { id: "bedroom", label: t("BEDROOM") },
+    { id: "office", label: t("OFFICE") },
   ];
 
   return (
@@ -109,20 +126,23 @@ const Portfolio = () => {
           <span className="text-primary font-body text-sm tracking-[0.3em] uppercase">
             {t("portfolio_eyebrow")}
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground mt-4">
+          <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground mt-4 italic">
             {t("portfolio_header")}
           </h2>
         </div>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
+        {/* Main Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => {
+                setActiveTab(tab.id);
+                setActiveSubTab("all");
+              }}
               className={`px-8 py-2.5 rounded-full text-xs font-body tracking-widest uppercase transition-all duration-300 border ${
                 activeTab === tab.id
-                  ? "bg-primary text-white border-primary shadow-lg"
+                  ? "bg-primary text-white border-primary shadow-[0_0_20px_rgba(0,186,211,0.3)]"
                   : "bg-transparent text-muted-foreground border-muted-foreground/20 hover:border-primary hover:text-primary"
               }`}
             >
@@ -131,50 +151,87 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <Dialog key={project.id}>
-              <DialogTrigger asChild>
-                <div
-                  className="group relative aspect-[4/3] overflow-hidden rounded-xl cursor-pointer shadow-card bg-muted"
-                  onMouseEnter={() => setHoveredId(project.id)}
-                  onMouseLeave={() => setHoveredId(null)}
+        {/* Sub Tabs (Only for Interior) */}
+        <AnimatePresence>
+          {activeTab === "interior" && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="flex flex-wrap justify-center gap-2 mb-12"
+            >
+              {subTabs.map((sub) => (
+                <button
+                  key={sub.id}
+                  onClick={() => setActiveSubTab(sub.id)}
+                  className={`px-5 py-1.5 rounded-full text-[10px] font-body tracking-[0.15em] uppercase transition-all border ${
+                    activeSubTab === sub.id
+                      ? "bg-primary/10 border-primary text-primary"
+                      : "bg-transparent text-muted-foreground border-border hover:border-primary/50"
+                  }`}
                 >
-                  <img
-                    src={project.image}
-                    alt={project.altText}
-                    loading="lazy"
-                    className={`w-full h-full object-cover transition-transform duration-1000 ease-out ${
-                      hoveredId === project.id ? "scale-110" : "scale-100"
-                    }`}
-                  />
-                  <div className={`absolute inset-0 bg-black/50 transition-opacity duration-500 ${
-                    hoveredId === project.id ? "opacity-100" : "opacity-0"
-                  }`} />
-                  <div className={`absolute bottom-0 left-0 right-0 p-8 transition-all duration-500 ${
-                    hoveredId === project.id ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-                  }`}>
-                    <span className="text-primary text-xs font-body tracking-[0.2em] uppercase mb-2 block">
-                      {project.label}
-                    </span>
-                    <h3 className="font-display text-2xl text-white font-light">{project.title}</h3>
-                  </div>
-                </div>
-              </DialogTrigger>
+                  {sub.label}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-              <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 border-none bg-black flex items-center justify-center overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.altText}
-                  className="w-full h-auto max-h-[85vh] object-contain"
-                />
-              </DialogContent>
-            </Dialog>
-          ))}
-        </div>
+        {/* Project Grid */}
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4 }}
+              >
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div
+                      className="group relative aspect-[4/3] overflow-hidden rounded-xl cursor-pointer shadow-card bg-muted"
+                      onMouseEnter={() => setHoveredId(project.id)}
+                      onMouseLeave={() => setHoveredId(null)}
+                    >
+                      <img
+                        src={project.image}
+                        alt={project.altText}
+                        loading="lazy"
+                        className={`w-full h-full object-cover transition-transform duration-1000 ease-out ${
+                          hoveredId === project.id ? "scale-110" : "scale-100"
+                        }`}
+                      />
+                      <div className={`absolute inset-0 bg-black/60 transition-opacity duration-500 ${
+                        hoveredId === project.id ? "opacity-100" : "opacity-0"
+                      }`} />
+                      <div className={`absolute bottom-0 left-0 right-0 p-8 transition-all duration-500 ${
+                        hoveredId === project.id ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+                      }`}>
+                        <span className="text-primary text-[10px] font-body tracking-[0.2em] uppercase mb-2 block">
+                          {project.label}
+                        </span>
+                        <h3 className="font-display text-xl text-white font-light italic">{project.title}</h3>
+                      </div>
+                    </div>
+                  </DialogTrigger>
 
-        {/* --- CONTACT US BUTTON AT THE BOTTOM --- */}
+                  <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-none bg-black/90 flex items-center justify-center overflow-hidden backdrop-blur-xl">
+                    <img
+                      src={project.image}
+                      alt={project.altText}
+                      className="w-full h-auto max-h-[90vh] object-contain"
+                    />
+                  </DialogContent>
+                </Dialog>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* --- CONTACT US BUTTON --- */}
         <div className="mt-20 text-center">
           <button
             onClick={() => {
@@ -189,7 +246,6 @@ const Portfolio = () => {
             <ArrowRight size={18} className="ml-3 transition-transform duration-300 group-hover:translate-x-2" />
           </button>
         </div>
-        {/* ---------------------------------------- */}
       </div>
     </section>
   );

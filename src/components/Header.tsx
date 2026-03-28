@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-// Προστέθηκε το Phone στα imports
 import { Instagram, Music2, Facebook, Phone } from "lucide-react"; 
 import { useTranslation } from 'react-i18next';
+import { Link, useLocation, useNavigate } from "react-router-dom"; // Προσθήκη Routing εργαλείων
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const { t, i18n } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,12 +18,18 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      window.history.pushState(null, "", `#${id}`);
+  // Έξυπνο scroll: Αν είμαστε στην αρχική κάνει scroll, αν όχι μας πάει στην αρχική και μετά κάνει scroll
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (location.pathname === "/") {
+      e.preventDefault();
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `#${id}`);
+      }
+    } else {
+      // Αν είμαστε στο /portfolio, πήγαινέ μας στην αρχική στο συγκεκριμένο section
+      navigate(`/#${id}`);
     }
   };
 
@@ -39,33 +47,36 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        {/* LOGO SECTION */}
-        <a href="/" className="flex items-center gap-2" aria-label="GXVISUALS Home">
+        {/* LOGO SECTION - Πάντα οδηγεί στην αρχική */}
+        <Link to="/" className="flex items-center gap-2" aria-label="GXVISUALS Home">
           <img src="/logo.png" alt="GXVISUALS Logo" className="h-8 w-auto" /> 
           <span className="font-display text-2xl font-semibold text-foreground tracking-tight hidden sm:inline-block">
             GX<span className="text-primary">VISUALS</span>
           </span>
-        </a>
+        </Link>
         
         {/* NAVIGATION */}
         <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
-          <a 
-            href="#portfolio" 
-            onClick={(e) => handleScrollTo(e, "portfolio")}
-            className="text-muted-foreground hover:text-foreground transition-colors font-body text-sm tracking-wide"
+          {/* To Portfolio είναι πλέον Link σε νέα σελίδα */}
+          <Link 
+            to="/portfolio" 
+            className={`transition-colors font-body text-sm tracking-wide ${
+              location.pathname === "/portfolio" ? "text-primary font-bold" : "text-muted-foreground hover:text-foreground"
+            }`}
           >
             {t('nav_portfolio', 'Featured Portfolio')}
-          </a>
+          </Link>
+
           <a 
             href="#services" 
-            onClick={(e) => handleScrollTo(e, "services")}
+            onClick={(e) => handleNavClick(e, "services")}
             className="text-muted-foreground hover:text-foreground transition-colors font-body text-sm tracking-wide"
           >
             {t('nav_services', 'Our Services')}
           </a>
           <a 
             href="#contact" 
-            onClick={(e) => handleScrollTo(e, "contact")}
+            onClick={(e) => handleNavClick(e, "contact")}
             className="text-muted-foreground hover:text-foreground transition-colors font-body text-sm tracking-wide"
           >
             {t('nav_contact', 'Contact Us')}
@@ -73,7 +84,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-4">
-          {/* PHONE NUMBER SECTION - Εμφανίζεται μόνο σε μεγάλα Desktop (lg) */}
+          {/* PHONE NUMBER */}
           <a 
             href="tel:+35795115014" 
             className="hidden xl:flex items-center gap-2 text-foreground hover:text-primary transition-colors font-body text-sm font-medium mr-2"
@@ -103,27 +114,24 @@ const Header = () => {
             </button>
           </div>
 
-          {/* SOCIAL ICONS SECTION */}
+          {/* SOCIAL ICONS */}
           <div className="flex items-center gap-3 mr-2">
-            <a href="https://www.facebook.com/people/GX-Visuals/61586672549590/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Facebook">
+            <a href="https://www.facebook.com/people/GX-Visuals/61586672549590/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
               <Facebook size={18} />
             </a>
-
-            <a href="https://www.instagram.com/gxvisuals.3drendering/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Instagram">
+            <a href="https://www.instagram.com/gxvisuals.3drendering/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
               <Instagram size={18} />
             </a>
-
-            <a href="https://www.tiktok.com/@gxvisuals.3drendering" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="TikTok">
+            <a href="https://www.tiktok.com/@gxvisuals.3drendering" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
               <Music2 size={18} />
             </a>
-
-            <a href="https://wa.me/35795115014" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="WhatsApp">
+            <a href="https://wa.me/35795115014" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-10.4 8.38 8.38 0 0 1 3.8.9L21 4.2Z"></path></svg>
             </a>
           </div>
 
           <Button asChild variant="outline" size="sm" className="hidden lg:inline-flex">
-            <a href="#contact" onClick={(e) => handleScrollTo(e, "contact")}>
+            <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>
               {t('nav_quote', 'Get a Quote')}
             </a>
           </Button>

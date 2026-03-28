@@ -12,7 +12,7 @@ i18n
           "nav_portfolio": "Portfolio",
           "nav_services": "Our Services",
           "nav_contact": "Get a free Quote",
-          "nav_quote": "Get a Quote",
+          "nav_quote": "Contact us",
           
           // Hero Section
           "hero_eyebrow": "3D Visualization Studio",

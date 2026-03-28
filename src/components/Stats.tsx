@@ -2,7 +2,7 @@ const Stats = () => {
   const stats = [
     { label: "PROJECTS DELIVERED", value: "50+" },
     { label: "CLIENT SATISFACTION", value: "98%" },
-    { label: "AVERAGE TURNAROUND", value: "24h" },
+    { label: "AVERAGE TURNAROUND", value: "48h" },
     { label: "YEARS OF EXPERIENCE", value: "2+" },
   ];
 

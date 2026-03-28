@@ -15,13 +15,13 @@ i18n
           "nav_quote": "Get a Quote",
           
           // Hero Section
-          "hero_eyebrow": "3D Architectural Visualization",
+          "hero_eyebrow": "3D Visualization Studio",
           "hero_seo_keywords": "GXVISUALS: Photorealistic 3D Rendering and Kitchen Design",
           "hero_title_part1": "Bring Your Vision",
           "hero_title_part2": "To Life",
           "hero_description": "Fast, photorealistic 3D rendering and technical kitchen sketches with exact dimensions. Transforming architectural concepts into stunning visuals.",
           "hero_btn_portfolio": "View Portfolio",
-          "hero_btn_start": "Start a Project",
+          "hero_btn_start": "Contact us",
 
           "services_eyebrow": "What We Offer",
           "services_header": "Our Services",

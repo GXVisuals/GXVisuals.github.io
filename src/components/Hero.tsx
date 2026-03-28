@@ -60,7 +60,7 @@ const Hero = () => {
             size="xl"
             onClick={scrollToContact}
           >
-            {t('hero_btn_start', 'Start a Project')}
+            {t('hero_btn_start', 'Contact us')}
           </Button>
         </div>
       </div>

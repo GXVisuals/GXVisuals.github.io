@@ -43,7 +43,7 @@ const Hero = () => {
             <Link to="/portfolio">{t('hero_btn_portfolio', 'View Portfolio')}</Link>
           </Button>
           <Button variant="hero" size="xl" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="glass-morphism">
-            {t('hero_btn_start', 'Contact us')}
+            {t('hero_btn_start', 'Get a free Quote')}
           </Button>
         </div>
       </div>

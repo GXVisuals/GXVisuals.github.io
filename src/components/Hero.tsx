@@ -20,35 +20,37 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#121212]">
-      {/* Optimized Background Image Container */}
-      <div className="absolute inset-0 z-0">
+      {/* Background Image Container */}
+      <div className="absolute inset-0 z-0 bg-[#121212]">
         <img
           src={heroImage}
           alt="GXVISUALS - Luxury architectural rendering"
-          className={`w-full h-full object-cover transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full object-cover transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           fetchPriority="high" 
           loading="eager"
+          decoding="async"
           onLoad={() => setIsLoaded(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
       </div>
 
       <div className="container relative z-10 px-6 py-32 text-center">
-        <span className="inline-block text-primary font-body text-sm tracking-[0.3em] uppercase mb-6 animate-fade-in">
+        {/* Αφαίρεση animate-fade-in/up για σταθερότητα (CLS fix) */}
+        <span className="inline-block text-primary font-body text-sm tracking-[0.3em] uppercase mb-6">
           {t('hero_eyebrow', '3D Visualization Studio')}
         </span>
         
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-foreground mb-6 animate-fade-up">
+        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-foreground mb-6">
           {t('hero_title_part1', 'Bring Your Vision')}
           <br />
           <span className="text-gradient">{t('hero_title_part2', 'To Life')}</span>
         </h1>
         
-        <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up">
+        <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
           {t('hero_description', 'Fast, photorealistic 3D rendering and technical kitchen sketches.')}
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             asChild
             variant="hero"

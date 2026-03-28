@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Instagram, Music2, Facebook, Phone } from "lucide-react"; 
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation, useNavigate } from "react-router-dom"; // Προσθήκη Routing εργαλείων
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { NavLink } from "./ui/NavLink"; // Χρησιμοποιούμε το component που έφτιαξες
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -18,17 +19,17 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Έξυπνο scroll: Αν είμαστε στην αρχική κάνει scroll, αν όχι μας πάει στην αρχική και μετά κάνει scroll
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     if (location.pathname === "/") {
       e.preventDefault();
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
+        // Ενημέρωση του URL χωρίς να κάνει reload
         window.history.pushState(null, "", `#${id}`);
       }
     } else {
-      // Αν είμαστε στο /portfolio, πήγαινέ μας στην αρχική στο συγκεκριμένο section
+      // Αν είμαστε σε άλλη σελίδα (π.χ. Portfolio), πήγαινέ μας στην αρχική στο σωστό section
       navigate(`/#${id}`);
     }
   };
@@ -47,7 +48,8 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        {/* LOGO SECTION - Πάντα οδηγεί στην αρχική */}
+        
+        {/* LOGO SECTION */}
         <Link to="/" className="flex items-center gap-2" aria-label="GXVISUALS Home">
           <img src="/logo.png" alt="GXVISUALS Logo" className="h-8 w-auto" /> 
           <span className="font-display text-2xl font-semibold text-foreground tracking-tight hidden sm:inline-block">
@@ -57,15 +59,15 @@ const Header = () => {
         
         {/* NAVIGATION */}
         <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
-          {/* To Portfolio είναι πλέον Link σε νέα σελίδα */}
-          <Link 
+          
+          {/* Portfolio Link - Χρησιμοποιούμε το NavLink για το Active state */}
+          <NavLink 
             to="/portfolio" 
-            className={`transition-colors font-body text-sm tracking-wide ${
-              location.pathname === "/portfolio" ? "text-primary font-bold" : "text-muted-foreground hover:text-foreground"
-            }`}
+            className="text-muted-foreground hover:text-foreground transition-colors font-body text-sm tracking-wide"
+            activeClassName="text-primary font-bold"
           >
             {t('nav_portfolio', 'Featured Portfolio')}
-          </Link>
+          </NavLink>
 
           <a 
             href="#services" 
@@ -74,6 +76,7 @@ const Header = () => {
           >
             {t('nav_services', 'Our Services')}
           </a>
+          
           <a 
             href="#contact" 
             onClick={(e) => handleNavClick(e, "contact")}
@@ -84,6 +87,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-4">
+          
           {/* PHONE NUMBER */}
           <a 
             href="tel:+35795115014" 
@@ -116,20 +120,21 @@ const Header = () => {
 
           {/* SOCIAL ICONS */}
           <div className="flex items-center gap-3 mr-2">
-            <a href="https://www.facebook.com/people/GX-Visuals/61586672549590/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="https://www.facebook.com/people/GX-Visuals/61586672549590/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Facebook">
               <Facebook size={18} />
             </a>
-            <a href="https://www.instagram.com/gxvisuals.3drendering/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="https://www.instagram.com/gxvisuals.3drendering/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Instagram">
               <Instagram size={18} />
             </a>
-            <a href="https://www.tiktok.com/@gxvisuals.3drendering" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="https://www.tiktok.com/@gxvisuals.3drendering" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="TikTok">
               <Music2 size={18} />
             </a>
-            <a href="https://wa.me/35795115014" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="https://wa.me/35795115014" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="WhatsApp">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-10.4 8.38 8.38 0 0 1 3.8.9L21 4.2Z"></path></svg>
             </a>
           </div>
 
+          {/* CTA BUTTON */}
           <Button asChild variant="outline" size="sm" className="hidden lg:inline-flex">
             <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>
               {t('nav_quote', 'Get a Quote')}

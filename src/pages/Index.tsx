@@ -2,8 +2,9 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
-import Stats from "@/components/Stats"; // 1. Κάνε το import
+import Stats from "@/components/Stats";
 import Services from "@/components/Services";
+import Process from "@/components/Process"; // 1. Κάνε το import
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -13,20 +14,18 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <section id="portfolio">
-          <Portfolio />
-        </section>
-        
+        <section id="portfolio"><Portfolio /></section>
         <Testimonials />
-
-        {/* 2. Πρόσθεσε τα Stats εδώ */}
         <Stats />
         
-        <Services />
-
-        <section id="contact">
-          <ContactForm />
+        <section id="services">
+          <Services />
         </section>
+
+        {/* 2. Πρόσθεσε το Process εδώ */}
+        <Process />
+        
+        <section id="contact"><ContactForm /></section>
       </main>
       <Footer />
     </div>

@@ -11,8 +11,8 @@ i18n
         translation: {
           "nav_portfolio": "Portfolio",
           "nav_services": "Our Services",
-          "nav_contact": "Get a free Quote",
-          "nav_quote": "Contact us",
+          "nav_contact": "Contact us",
+          "nav_quote": "Get a Quote",
           
           // Hero Section
           "hero_eyebrow": "3D Visualization Studio",

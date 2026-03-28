@@ -3,15 +3,15 @@ import { ArrowDown } from "lucide-react";
 import heroImage from "@/assets/portfolio-8.webp"; 
 import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Hero = () => {
   const { t } = useTranslation();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const scrollToContent = () => {
     const nextSection = document.getElementById("services");
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
-    }
+    nextSection?.scrollIntoView({ behavior: "smooth" });
   };
 
   const scrollToContact = () => {
@@ -19,17 +19,16 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image Optimization */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#121212]">
+      {/* Optimized Background Image Container */}
       <div className="absolute inset-0 z-0">
         <img
           src={heroImage}
           alt="GXVISUALS - Luxury architectural rendering"
-          className="w-full h-full object-cover"
-          /* ΚΡΙΣΙΜΟ ΓΙΑ ΤΟ PAGESPEED: */
+          className={`w-full h-full object-cover transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           fetchPriority="high" 
           loading="eager"
-          decoding="async"
+          onLoad={() => setIsLoaded(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
       </div>
@@ -39,7 +38,6 @@ const Hero = () => {
           {t('hero_eyebrow', '3D Visualization Studio')}
         </span>
         
-        {/* Χρήση H1 για SEO χωρίς sr-only αν είναι δυνατόν */}
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-foreground mb-6 animate-fade-up">
           {t('hero_title_part1', 'Bring Your Vision')}
           <br />
@@ -55,7 +53,7 @@ const Hero = () => {
             asChild
             variant="hero"
             size="xl"
-            className="shadow-glow hover:shadow-primary/40 transition-shadow"
+            className="shadow-glow hover:shadow-primary/40 transition-all duration-300"
           >
             <Link to="/portfolio">
               {t('hero_btn_portfolio', 'View Portfolio')}
@@ -66,7 +64,7 @@ const Hero = () => {
             variant="hero" 
             size="xl"
             onClick={scrollToContact}
-            className="glass-morphism"
+            className="glass-morphism hover:bg-white/10 transition-all"
           >
             {t('hero_btn_start', 'Contact us')}
           </Button>

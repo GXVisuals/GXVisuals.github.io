@@ -45,20 +45,20 @@ import portfolio33 from "@/assets/portfolio-33.webp";
 import portfolio34 from "@/assets/portfolio-34.webp"; 
 import portfolio35 from "@/assets/portfolio-35.webp"; 
 import portfolio36 from "@/assets/portfolio-36.webp"; 
-import portfolio37 from "@/assets/portfolio-37.jpg";
+import portfolio37 from "@/assets/portfolio-37.webp";
 import portfolio38 from "@/assets/portfolio-38.webp";
 import portfolio39 from "@/assets/portfolio-39.webp";
 import portfolio40 from "@/assets/portfolio-40.webp";
-import portfolio41 from "@/assets/portfolio-41.jpg";
+import portfolio41 from "@/assets/portfolio-41.webp";
 import portfolio42 from "@/assets/portfolio-42.webp";
 import portfolio43 from "@/assets/portfolio-43.webp";
 import portfolio44 from "@/assets/portfolio-44.webp";
 import portfolio45 from "@/assets/portfolio-45.webp";
 import portfolio46 from "@/assets/portfolio-46.webp";
-import portfolio47 from "@/assets/portfolio-47.jpg";
+import portfolio47 from "@/assets/portfolio-47.webp";
 import portfolio48 from "@/assets/portfolio-48.webp";
-import portfolio49 from "@/assets/portfolio-49.jpg";
-import portfolio50 from "@/assets/portfolio-50.jpg";
+import portfolio49 from "@/assets/portfolio-49.webp";
+import portfolio50 from "@/assets/portfolio-50.webp";
 
 const Portfolio = () => {
   const { t } = useTranslation();

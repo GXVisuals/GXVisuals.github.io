@@ -1,10 +1,14 @@
 import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Imports για όλες τις εικόνες
+// --- IMAGE IMPORTS ---
 import portfolio1 from "@/assets/portfolio-1.webp";
 import portfolio2 from "@/assets/portfolio-2.webp";
 import portfolio3 from "@/assets/portfolio-3.webp";
@@ -41,20 +45,20 @@ import portfolio33 from "@/assets/portfolio-33.webp";
 import portfolio34 from "@/assets/portfolio-34.webp"; 
 import portfolio35 from "@/assets/portfolio-35.webp"; 
 import portfolio36 from "@/assets/portfolio-36.webp"; 
-import portfolio36 from "@/assets/portfolio-37.webp";
-import portfolio36 from "@/assets/portfolio-38.webp";
-import portfolio36 from "@/assets/portfolio-39.webp";
-import portfolio36 from "@/assets/portfolio-40.webp";
-import portfolio36 from "@/assets/portfolio-41.webp";
-import portfolio36 from "@/assets/portfolio-42.webp";
-import portfolio36 from "@/assets/portfolio-43.webp";
-import portfolio36 from "@/assets/portfolio-44.webp";
-import portfolio36 from "@/assets/portfolio-45.webp";
-import portfolio36 from "@/assets/portfolio-46.webp";
-import portfolio36 from "@/assets/portfolio-47.webp";
-import portfolio36 from "@/assets/portfolio-48.webp";
-import portfolio36 from "@/assets/portfolio-49.webp";
-import portfolio36 from "@/assets/portfolio-50.webp";
+import portfolio37 from "@/assets/portfolio-37.jpg";
+import portfolio38 from "@/assets/portfolio-38.webp";
+import portfolio39 from "@/assets/portfolio-39.webp";
+import portfolio40 from "@/assets/portfolio-40.webp";
+import portfolio41 from "@/assets/portfolio-41.jpg";
+import portfolio42 from "@/assets/portfolio-42.webp";
+import portfolio43 from "@/assets/portfolio-43.webp";
+import portfolio44 from "@/assets/portfolio-44.webp";
+import portfolio45 from "@/assets/portfolio-45.webp";
+import portfolio46 from "@/assets/portfolio-46.webp";
+import portfolio47 from "@/assets/portfolio-47.jpg";
+import portfolio48 from "@/assets/portfolio-48.webp";
+import portfolio49 from "@/assets/portfolio-49.jpg";
+import portfolio50 from "@/assets/portfolio-50.jpg";
 
 const Portfolio = () => {
   const { t } = useTranslation();
@@ -81,7 +85,7 @@ const Portfolio = () => {
     { id: 35, image: portfolio35, title: "Urban Skyscraper Plaza", category: "exterior", subCategory: "all", label: t("cat_urban"), altText: "Architectural visualization of skyscrapers" },
     { id: 36, image: portfolio36, title: "Modern Mixed-Use Complex", category: "exterior", subCategory: "all", label: t("cat_res_ext"), altText: "Photorealistic 3D exterior render" },
 
-    // INTERIOR (Με Subcategories)
+    // INTERIOR - KITCHEN
     { id: 4, image: portfolio4, title: "Contemporary Modern Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_interior"), altText: "Modern kitchen design" },
     { id: 9, image: portfolio9, title: "Midnight Navy Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_vis"), altText: "High-end kitchen 3D visualization" },
     { id: 14, image: portfolio14, title: "Transitional Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_interior"), altText: "Technical kitchen design" },
@@ -89,11 +93,14 @@ const Portfolio = () => {
     { id: 39, image: portfolio39, title: "Modern Gray Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_interior"), altText: "Minimalist gray kitchen with island" },
     { id: 40, image: portfolio40, title: "Marble & Wood Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_interior"), altText: "White marble kitchen with wood accents" },
     { id: 44, image: portfolio44, title: "Contemporary Open Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_interior"), altText: "Large kitchen with dark stone island" },
+    
+    // INTERIOR - BATHROOM
     { id: 12, image: portfolio12, title: "Minimalist Bathroom", category: "interior", subCategory: "bathroom", label: t("cat_interior"), altText: "Modern bathroom 3D visualization" },
     { id: 20, image: portfolio20, title: "Luxury Marble Bath", category: "interior", subCategory: "bathroom", label: t("cat_interior"), altText: "Luxury marble bathroom" },
     { id: 42, image: portfolio42, title: "Mood Lighting Bathroom", category: "interior", subCategory: "bathroom", label: t("cat_interior"), altText: "Dark wood bathroom with round mirror" },
     { id: 43, image: portfolio43, title: "Cream Stone Bathroom", category: "interior", subCategory: "bathroom", label: t("cat_interior"), altText: "Bright cream tiled luxury bathroom" },
     
+    // INTERIOR - LIVING ROOM / DINING
     { id: 5, image: portfolio5, title: "Modern Living Room", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Luxury interior design living room" },
     { id: 10, image: portfolio10, title: "Contemporary Open Living", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Open plan living room interior" },
     { id: 13, image: portfolio13, title: "Modern Dining Room", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Luxury dining room interior" },
@@ -104,28 +111,32 @@ const Portfolio = () => {
     { id: 32, image: portfolio32, title: "Luxury Sectional Living", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "High-end living room design" },
     { id: 34, image: portfolio34, title: "Contemporary Media Lounge", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Modern media room 3D" },
     { id: 41, image: portfolio41, title: "Slatted Wood Dining", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Dining area with vertical wood slats" },
-    { id: 47, image: portfolio47, title: "Artisan Wood Dining", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Modern dining room with dark wood table and designer lighting" },
-    { id: 48, image: portfolio48, title: "Luminous Urban Living", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Spacious white living room with QLED TV and corner fireplace" },
-    { id: 49, image: portfolio49, title: "Panoramic Lounge View", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Large open plan living area with floor to ceiling windows" },
-    { id: 50, image: portfolio50, title: "Modernist Timber Dining", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Luxury dining space with geometric wall art and timber paneling" },
+    { id: 47, image: portfolio47, title: "Artisan Wood Dining", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Modern dining room with dark wood table" },
+    { id: 48, image: portfolio48, title: "Luminous Urban Living", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Spacious white living room" },
+    { id: 49, image: portfolio49, title: "Panoramic Lounge View", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Large open plan living area" },
+    { id: 50, image: portfolio50, title: "Modernist Timber Dining", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Luxury dining space with timber paneling" },
     
+    // INTERIOR - BEDROOM
     { id: 6, image: portfolio6, title: "Minimalist Bedroom", category: "interior", subCategory: "bedroom", label: t("cat_interior"), altText: "Minimalist bedroom interior" },
     { id: 11, image: portfolio11, title: "Oak & Ambient Suite", category: "interior", subCategory: "bedroom", label: t("cat_bedroom"), altText: "Master bedroom 3D render" },
     { id: 33, image: portfolio33, title: "Boho-Luxe Master Bedroom", category: "interior", subCategory: "bedroom", label: t("cat_bedroom"), altText: "Luxury Boho-style bedroom" },
     { id: 38, image: portfolio38, title: "Emerald Accent Suite", category: "interior", subCategory: "bedroom", label: t("cat_bedroom"), altText: "Master bedroom with dark green wall" },
     { id: 45, image: portfolio45, title: "Sage Green Master", category: "interior", subCategory: "bedroom", label: t("cat_bedroom"), altText: "Modern sage green bedroom" },
-    { id: 46, image: portfolio46, title: "Forest Green Detail", category: "interior", subCategory: "bedroom", label: t("cat_bedroom"), altText: "Close up of forest green paneled headboard" },
+    { id: 46, image: portfolio46, title: "Forest Green Detail", category: "interior", subCategory: "bedroom", label: t("cat_bedroom"), altText: "Forest green paneled headboard" },
     
+    // INTERIOR - OFFICE
     { id: 18, image: portfolio18, title: "Minimalist Workspace", category: "interior", subCategory: "office", label: t("cat_interior"), altText: "Modern home office" },
     { id: 25, image: portfolio25, title: "Workspace Interior", category: "interior", subCategory: "office", label: t("cat_interior"), altText: "Professional office interior" },
     { id: 37, image: portfolio37, title: "Executive Home Office", category: "interior", subCategory: "office", label: t("cat_interior"), altText: "Minimalist office" },
   ];
 
-  const filteredProjects = projects.filter(p => {
-    const matchesMain = activeTab === "all" || p.category === activeTab;
-    const matchesSub = activeTab !== "interior" || activeSubTab === "all" || p.subCategory === activeSubTab;
-    return matchesMain && matchesSub;
-  });
+  const filteredProjects = useMemo(() => {
+    return projects.filter(p => {
+      const matchesMain = activeTab === "all" || p.category === activeTab;
+      const matchesSub = activeTab !== "interior" || activeSubTab === "all" || p.subCategory === activeSubTab;
+      return matchesMain && matchesSub;
+    });
+  }, [activeTab, activeSubTab]);
 
   const tabs = [
     { id: "all", label: t("ALL") },
@@ -275,3 +286,4 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
+

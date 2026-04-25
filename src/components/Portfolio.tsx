@@ -45,6 +45,20 @@ import portfolio33 from "@/assets/portfolio-33.webp";
 import portfolio34 from "@/assets/portfolio-34.webp"; 
 import portfolio35 from "@/assets/portfolio-35.webp"; 
 import portfolio36 from "@/assets/portfolio-36.webp"; 
+import portfolio36 from "@/assets/portfolio-37.webp";
+import portfolio36 from "@/assets/portfolio-38.webp";
+import portfolio36 from "@/assets/portfolio-39.webp";
+import portfolio36 from "@/assets/portfolio-40.webp";
+import portfolio36 from "@/assets/portfolio-41.webp";
+import portfolio36 from "@/assets/portfolio-42.webp";
+import portfolio36 from "@/assets/portfolio-43.webp";
+import portfolio36 from "@/assets/portfolio-44.webp";
+import portfolio36 from "@/assets/portfolio-45.webp";
+import portfolio36 from "@/assets/portfolio-46.webp";
+import portfolio36 from "@/assets/portfolio-47.webp";
+import portfolio36 from "@/assets/portfolio-48.webp";
+import portfolio36 from "@/assets/portfolio-49.webp";
+import portfolio36 from "@/assets/portfolio-50.webp";
 
 const Portfolio = () => {
   const { t } = useTranslation();
@@ -76,9 +90,13 @@ const Portfolio = () => {
     { id: 9, image: portfolio9, title: "Midnight Navy Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_vis"), altText: "High-end kitchen 3D visualization" },
     { id: 14, image: portfolio14, title: "Transitional Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_interior"), altText: "Technical kitchen design" },
     { id: 31, image: portfolio31, title: "Japandi Kitchen Concept", category: "interior", subCategory: "kitchen", label: t("cat_interior"), altText: "Minimalist Japandi kitchen" },
-    
+    { id: 39, image: portfolio39, title: "Modern Gray Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_interior"), altText: "Minimalist gray kitchen with island" },
+    { id: 40, image: portfolio40, title: "Marble & Wood Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_interior"), altText: "White marble kitchen with wood accents" },
+    { id: 44, image: portfolio44, title: "Contemporary Open Kitchen", category: "interior", subCategory: "kitchen", label: t("cat_interior"), altText: "Large kitchen with dark stone island" },
     { id: 12, image: portfolio12, title: "Minimalist Bathroom", category: "interior", subCategory: "bathroom", label: t("cat_interior"), altText: "Modern bathroom 3D visualization" },
     { id: 20, image: portfolio20, title: "Luxury Marble Bath", category: "interior", subCategory: "bathroom", label: t("cat_interior"), altText: "Luxury marble bathroom" },
+    { id: 42, image: portfolio42, title: "Mood Lighting Bathroom", category: "interior", subCategory: "bathroom", label: t("cat_interior"), altText: "Dark wood bathroom with round mirror" },
+    { id: 43, image: portfolio43, title: "Cream Stone Bathroom", category: "interior", subCategory: "bathroom", label: t("cat_interior"), altText: "Bright cream tiled luxury bathroom" },
     
     { id: 5, image: portfolio5, title: "Modern Living Room", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Luxury interior design living room" },
     { id: 10, image: portfolio10, title: "Contemporary Open Living", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Open plan living room interior" },
@@ -89,13 +107,22 @@ const Portfolio = () => {
     { id: 21, image: portfolio21, title: "Cozy Urban Lounge", category: "interior", subCategory: "living room", label: t("cat_interior"), altText: "Urban lounge interior design" },
     { id: 32, image: portfolio32, title: "Luxury Sectional Living", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "High-end living room design" },
     { id: 34, image: portfolio34, title: "Contemporary Media Lounge", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Modern media room 3D" },
+    { id: 41, image: portfolio41, title: "Slatted Wood Dining", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Dining area with vertical wood slats" },
+    { id: 47, image: portfolio47, title: "Artisan Wood Dining", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Modern dining room with dark wood table and designer lighting" },
+    { id: 48, image: portfolio48, title: "Luminous Urban Living", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Spacious white living room with QLED TV and corner fireplace" },
+    { id: 49, image: portfolio49, title: "Panoramic Lounge View", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Large open plan living area with floor to ceiling windows" },
+    { id: 50, image: portfolio50, title: "Modernist Timber Dining", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Luxury dining space with geometric wall art and timber paneling" },
     
     { id: 6, image: portfolio6, title: "Minimalist Bedroom", category: "interior", subCategory: "bedroom", label: t("cat_interior"), altText: "Minimalist bedroom interior" },
     { id: 11, image: portfolio11, title: "Oak & Ambient Suite", category: "interior", subCategory: "bedroom", label: t("cat_bedroom"), altText: "Master bedroom 3D render" },
     { id: 33, image: portfolio33, title: "Boho-Luxe Master Bedroom", category: "interior", subCategory: "bedroom", label: t("cat_bedroom"), altText: "Luxury Boho-style bedroom" },
+    { id: 38, image: portfolio38, title: "Emerald Accent Suite", category: "interior", subCategory: "bedroom", label: t("cat_bedroom"), altText: "Master bedroom with dark green wall" },
+    { id: 45, image: portfolio45, title: "Sage Green Master", category: "interior", subCategory: "bedroom", label: t("cat_bedroom"), altText: "Modern sage green bedroom" },
+    { id: 46, image: portfolio46, title: "Forest Green Detail", category: "interior", subCategory: "bedroom", label: t("cat_bedroom"), altText: "Close up of forest green paneled headboard" },
     
     { id: 18, image: portfolio18, title: "Minimalist Workspace", category: "interior", subCategory: "office", label: t("cat_interior"), altText: "Modern home office" },
     { id: 25, image: portfolio25, title: "Workspace Interior", category: "interior", subCategory: "office", label: t("cat_interior"), altText: "Professional office interior" },
+    { id: 37, image: portfolio37, title: "Executive Home Office", category: "interior", subCategory: "office", label: t("cat_interior"), altText: "Minimalist office" },
   ];
 
   const filteredProjects = projects.filter(p => {

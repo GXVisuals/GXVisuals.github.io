@@ -59,6 +59,10 @@ import portfolio47 from "@/assets/portfolio-47.webp";
 import portfolio48 from "@/assets/portfolio-48.webp";
 import portfolio49 from "@/assets/portfolio-49.webp";
 import portfolio50 from "@/assets/portfolio-50.webp";
+import portfolio51 from "@/assets/portfolio-51.webp";
+import portfolio52 from "@/assets/portfolio-52.webp";
+import portfolio53 from "@/assets/portfolio-53.webp";
+import portfolio54 from "@/assets/portfolio-54.webp";
 
 const Portfolio = () => {
   const { t } = useTranslation();
@@ -115,6 +119,9 @@ const Portfolio = () => {
     { id: 48, image: portfolio48, title: "Luminous Urban Living", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Spacious white living room" },
     { id: 49, image: portfolio49, title: "Panoramic Lounge View", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Large open plan living area" },
     { id: 50, image: portfolio50, title: "Modernist Timber Dining", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Luxury dining space with timber paneling" },
+    { id: 51, image: portfolio51, title: "Modernist Living Room", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Large Modern open plan living area" },
+    { id: 53, image: portfolio53, title: "Modernist Living Room", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Large Modern open plan living area" },
+    { id: 54, image: portfolio54, title: "Modernist Dining Room", category: "interior", subCategory: "living room", label: t("cat_res_int"), altText: "Large Modern open plan Dining area" },
     
     // INTERIOR - BEDROOM
     { id: 6, image: portfolio6, title: "Minimalist Bedroom", category: "interior", subCategory: "bedroom", label: t("cat_interior"), altText: "Minimalist bedroom interior" },
@@ -128,6 +135,7 @@ const Portfolio = () => {
     { id: 18, image: portfolio18, title: "Minimalist Workspace", category: "interior", subCategory: "office", label: t("cat_interior"), altText: "Modern home office" },
     { id: 25, image: portfolio25, title: "Workspace Interior", category: "interior", subCategory: "office", label: t("cat_interior"), altText: "Professional office interior" },
     { id: 37, image: portfolio37, title: "Executive Home Office", category: "interior", subCategory: "office", label: t("cat_interior"), altText: "Minimalist office" },
+    { id: 52, image: portfolio52, title: "Minimalist Worksapce", category: "interior", subCategory: "office", label: t("cat_interior"), altText: "Modern Home Office" },
   ];
 
   const filteredProjects = useMemo(() => {

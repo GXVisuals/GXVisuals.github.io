@@ -63,6 +63,13 @@ import portfolio51 from "@/assets/portfolio-51.webp";
 import portfolio52 from "@/assets/portfolio-52.webp";
 import portfolio53 from "@/assets/portfolio-53.webp";
 import portfolio54 from "@/assets/portfolio-54.webp";
+import portfolio55 from "@/assets/portfolio-55.webp";
+import portfolio56 from "@/assets/portfolio-56.webp";
+import portfolio57 from "@/assets/portfolio-57.webp";
+import portfolio58 from "@/assets/portfolio-58.webp";
+import portfolio59 from "@/assets/portfolio-59.webp";
+import portfolio60 from "@/assets/portfolio-60.webp";
+import portfolio61 from "@/assets/portfolio-61.webp";
 
 const Portfolio = () => {
   const { t } = useTranslation();

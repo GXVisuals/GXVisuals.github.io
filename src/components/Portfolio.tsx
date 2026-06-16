@@ -74,11 +74,17 @@ import portfolio61 from "@/assets/portfolio-61.webp";
 const Portfolio = () => {
   const { t } = useTranslation();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  
+  // Main Page Filter States
   const [activeTab, setActiveTab] = useState("all");
   const [activeSubTab, setActiveSubTab] = useState("all");
+
+  // Popup Modal Internal Folder Filter States
+  const [modalTab, setModalTab] = useState("all"); // "all", "exterior", "interior"
+  const [modalSubTab, setModalSubTab] = useState("all"); // "all", "kitchen", "bathroom", etc.
   const [selectedFolderImg, setSelectedFolderImg] = useState(0);
 
-  // --- STRUCTURALLY RE-MAPPED PROJECTS FROM IMAGE_FA9DCC.PNG ---
+  // --- GRANULAR IMAGE-LEVEL CATEGORIZED DATA ---
   const projects = [
     {
       id: 1,
@@ -89,10 +95,10 @@ const Portfolio = () => {
       subCategories: ["living room"],
       coverImage: portfolio1,
       gallery: [
-        { src: portfolio1, alt: "The Monagroulli Monolith - Exterior View", label: t("cat_res_ext") },
-        { src: portfolio6, alt: "The Monagroulli Monolith - Interior Space", label: t("cat_res_int") },
-        { src: portfolio10, alt: "The Monagroulli Monolith - Living Room", label: t("cat_res_int") },
-        { src: portfolio4, alt: "The Monagroulli Monolith - Contemporary Details", label: t("cat_interior") },
+        { src: portfolio1, alt: "The Monagroulli Monolith - Exterior View", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio6, alt: "The Monagroulli Monolith - Cozy Bedroom", label: t("cat_bedroom"), type: "interior", sub: "bedroom" },
+        { src: portfolio10, alt: "The Monagroulli Monolith - Living Room", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio4, alt: "The Monagroulli Monolith - Contemporary Details", label: t("cat_interior"), type: "interior", sub: "living room" },
       ],
     },
     {
@@ -104,9 +110,9 @@ const Portfolio = () => {
       subCategories: ["living room"],
       coverImage: portfolio2,
       gallery: [
-        { src: portfolio2, alt: "The Platres Retreat - Timber Cabin Exterior", label: t("cat_res_ext") },
-        { src: portfolio5, alt: "The Platres Retreat - Cozy Living Room Architecture", label: t("cat_res_int") },
-        { src: portfolio21, alt: "The Platres Retreat - Urban Lounge Concept", label: t("cat_interior") },
+        { src: portfolio2, alt: "The Platres Retreat - Timber Cabin Exterior", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio5, alt: "The Platres Retreat - Cozy Living Room Architecture", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio21, alt: "The Platres Retreat - Urban Lounge Concept", label: t("cat_interior"), type: "interior", sub: "living room" },
       ],
     },
     {
@@ -118,11 +124,11 @@ const Portfolio = () => {
       subCategories: ["kitchen", "living room", "bathroom"],
       coverImage: portfolio3,
       gallery: [
-        { src: portfolio3, alt: "The West Coast Frontier - Coastal Architecture View", label: t("cat_res_ext") },
-        { src: portfolio14, alt: "The West Coast Frontier - Kitchen Environment", label: t("cat_interior") },
-        { src: portfolio15, alt: "The West Coast Frontier - Panoramic Living Space", label: t("cat_res_int") },
-        { src: portfolio16, alt: "The West Coast Frontier - Bright Minimalist Interior", label: t("cat_res_int") },
-        { src: portfolio20, alt: "The West Coast Frontier - Luxury Marble Bathroom", label: t("cat_interior") },
+        { src: portfolio3, alt: "The West Coast Frontier - Coastal Architecture View", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio14, alt: "The West Coast Frontier - Kitchen Environment", label: t("cat_interior"), type: "interior", sub: "kitchen" },
+        { src: portfolio15, alt: "The West Coast Frontier - Panoramic Living Space", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio16, alt: "The West Coast Frontier - Bright Minimalist Interior", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio20, alt: "The West Coast Frontier - Luxury Marble Bathroom", label: t("cat_interior"), type: "interior", sub: "bathroom" },
       ],
     },
     {
@@ -134,11 +140,11 @@ const Portfolio = () => {
       subCategories: ["living room", "bedroom"],
       coverImage: portfolio7,
       gallery: [
-        { src: portfolio7, alt: "Modern Residential Complex - Urban Exterior Design", label: t("cat_res_ext") },
-        { src: portfolio51, alt: "Modern Residential Complex - Open Plan Layout", label: t("cat_res_int") },
-        { src: portfolio53, alt: "Modern Residential Complex - Modernist Lounge", label: t("cat_res_int") },
-        { src: portfolio54, alt: "Modern Residential Complex - Dining Architecture", label: t("cat_res_int") },
-        { src: portfolio11, alt: "Modern Residential Complex - Master Bedroom Suite", label: t("cat_bedroom") },
+        { src: portfolio7, alt: "Modern Residential Complex - Urban Exterior Design", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio51, alt: "Modern Residential Complex - Open Plan Layout", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio53, alt: "Modern Residential Complex - Modernist Lounge", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio54, alt: "Modern Residential Complex - Dining Architecture", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio11, alt: "Modern Residential Complex - Master Bedroom Suite", label: t("cat_bedroom"), type: "interior", sub: "bedroom" },
       ],
     },
     {
@@ -150,10 +156,10 @@ const Portfolio = () => {
       subCategories: ["living room", "office", "kitchen"],
       coverImage: portfolio8,
       gallery: [
-        { src: portfolio8, alt: "The Omodos Stone Villa - Rustic Masonry Facade", label: t("cat_res_ext") },
-        { src: portfolio13, alt: "The Omodos Stone Villa - Timber-Accented Dining Space", label: t("cat_res_int") },
-        { src: portfolio18, alt: "The Omodos Stone Villa - Minimalist Workspace", label: t("cat_interior") },
-        { src: portfolio31, alt: "The Omodos Stone Villa - Japandi Kitchen Space", label: t("cat_interior") },
+        { src: portfolio8, alt: "The Omodos Stone Villa - Rustic Masonry Facade", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio13, alt: "The Omodos Stone Villa - Timber-Accented Dining Space", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio18, alt: "The Omodos Stone Villa - Minimalist Workspace", label: t("cat_interior"), type: "interior", sub: "office" },
+        { src: portfolio31, alt: "The Omodos Stone Villa - Japandi Kitchen Space", label: t("cat_interior"), type: "interior", sub: "kitchen" },
       ],
     },
     {
@@ -165,10 +171,10 @@ const Portfolio = () => {
       subCategories: ["living room", "office"],
       coverImage: portfolio19,
       gallery: [
-        { src: portfolio19, alt: "The Kifisia Horizon House - Modern Pavilion Facade", label: t("cat_res_ext") },
-        { src: portfolio48, alt: "The Kifisia Horizon House - Spacious White Living Room", label: t("cat_res_int") },
-        { src: portfolio49, alt: "The Kifisia Horizon House - Panoramic Living Lounge", label: t("cat_res_int") },
-        { src: portfolio59, alt: "The Kifisia Horizon House - Architectural Office Study", label: t("cat_interior") },
+        { src: portfolio19, alt: "The Kifisia Horizon House - Modern Pavilion Facade", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio48, alt: "The Kifisia Horizon House - Spacious White Living Room", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio49, alt: "The Kifisia Horizon House - Panoramic Living Lounge", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio59, alt: "The Kifisia Horizon House - Architectural Office Study", label: t("cat_interior"), type: "interior", sub: "office" },
       ],
     },
     {
@@ -180,10 +186,10 @@ const Portfolio = () => {
       subCategories: ["living room", "bedroom"],
       coverImage: portfolio22,
       gallery: [
-        { src: portfolio22, alt: "The Ekali Arched Villa - Geometric Brutalist Exterior", label: t("cat_res_ext") },
-        { src: portfolio17, alt: "The Ekali Arched Villa - Luxury Interior Lounge", label: t("cat_res_int") },
-        { src: portfolio38, alt: "The Ekali Arched Villa - Dark Green Accent Bedroom", label: t("cat_bedroom") },
-        { src: portfolio46, alt: "The Ekali Arched Villa - Forest Green Headboard Detail", label: t("cat_bedroom") },
+        { src: portfolio22, alt: "The Ekali Arched Villa - Geometric Brutalist Exterior", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio17, alt: "The Ekali Arched Villa - Luxury Interior Lounge", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio38, alt: "The Ekali Arched Villa - Dark Green Accent Bedroom", label: t("cat_bedroom"), type: "interior", sub: "bedroom" },
+        { src: portfolio46, alt: "The Ekali Arched Villa - Forest Green Headboard Detail", label: t("cat_bedroom"), type: "interior", sub: "bedroom" },
       ],
     },
     {
@@ -195,11 +201,11 @@ const Portfolio = () => {
       subCategories: ["living room", "kitchen"],
       coverImage: portfolio23,
       gallery: [
-        { src: portfolio23, alt: "The Palodeia Smart Residence - 3D Isometric View", label: t("cat_res_ext") },
-        { src: portfolio26, alt: "The Palodeia Smart Residence - Isometric Plan Details", label: t("cat_res_ext") },
-        { src: portfolio27, alt: "The Palodeia Smart Residence - 3D Floor Plan Layout", label: t("cat_res_ext") },
-        { src: portfolio32, alt: "The Palodeia Smart Residence - High-End Modular Sectional", label: t("cat_res_int") },
-        { src: portfolio39, alt: "The Palodeia Smart Residence - Gray Kitchen Island", label: t("cat_interior") },
+        { src: portfolio23, alt: "The Palodeia Smart Residence - 3D Isometric View", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio26, alt: "The Palodeia Smart Residence - Isometric Plan Details", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio27, alt: "The Palodeia Smart Residence - 3D Floor Plan Layout", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio32, alt: "The Palodeia Smart Residence - High-End Modular Sectional", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio39, alt: "The Palodeia Smart Residence - Gray Kitchen Island", label: t("cat_interior"), type: "interior", sub: "kitchen" },
       ],
     },
     {
@@ -211,11 +217,11 @@ const Portfolio = () => {
       subCategories: ["kitchen", "living room", "office"],
       coverImage: portfolio24,
       gallery: [
-        { src: portfolio24, alt: "The Pelion Woodland Manor - Forest Architecture Concept", label: t("cat_res_ext") },
-        { src: portfolio9, alt: "The Pelion Woodland Manor - Premium Kitchen Visuals", label: t("cat_interior") },
-        { src: portfolio47, alt: "The Pelion Woodland Manor - Dark Wood Dining Setup", label: t("cat_res_int") },
-        { src: portfolio50, alt: "The Pelion Woodland Manor - Timber Paneled Spaces", label: t("cat_res_int") },
-        { src: portfolio25, alt: "The Pelion Woodland Manor - Professional Office Suite", label: t("cat_interior") },
+        { src: portfolio24, alt: "The Pelion Woodland Manor - Forest Architecture Concept", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio9, alt: "The Pelion Woodland Manor - Premium Kitchen Visuals", label: t("cat_interior"), type: "interior", sub: "kitchen" },
+        { src: portfolio47, alt: "The Pelion Woodland Manor - Dark Wood Dining Setup", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio50, alt: "The Pelion Woodland Manor - Timber Paneled Spaces", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio25, alt: "The Pelion Woodland Manor - Professional Office Suite", label: t("cat_interior"), type: "interior", sub: "office" },
       ],
     },
     {
@@ -227,14 +233,14 @@ const Portfolio = () => {
       subCategories: ["kitchen", "bathroom", "bedroom", "office"],
       coverImage: portfolio28,
       gallery: [
-        { src: portfolio28, alt: "The Protaras Palm Dunes - Resort Luxury Facade", label: t("cat_res_ext") },
-        { src: portfolio29, alt: "The Protaras Palm Dunes - Aerial View Perspective", label: t("cat_res_ext") },
-        { src: portfolio30, alt: "The Protaras Palm Dunes - Master Plan 3D Render", label: t("cat_res_ext") },
-        { src: portfolio41, alt: "The Protaras Palm Dunes - Vertical Slat Dining", label: t("cat_res_int") },
-        { src: portfolio42, alt: "The Protaras Palm Dunes - Wood-Toned Modern Bathroom", label: t("cat_interior") },
-        { src: portfolio44, alt: "The Protaras Palm Dunes - Dark Stone Kitchen Layout", label: t("cat_interior") },
-        { src: portfolio45, alt: "The Protaras Palm Dunes - Sage Green Master Bedroom", label: t("cat_bedroom") },
-        { src: portfolio52, alt: "The Protaras Palm Dunes - Minimalist Home Office Stud", label: t("cat_interior") },
+        { src: portfolio28, alt: "The Protaras Palm Dunes - Resort Luxury Facade", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio29, alt: "The Protaras Palm Dunes - Aerial View Perspective", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio30, alt: "The Protaras Palm Dunes - Master Plan 3D Render", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio41, alt: "The Protaras Palm Dunes - Vertical Slat Dining", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio42, alt: "The Protaras Palm Dunes - Wood-Toned Modern Bathroom", label: t("cat_interior"), type: "interior", sub: "bathroom" },
+        { src: portfolio44, alt: "The Protaras Palm Dunes - Dark Stone Kitchen Layout", label: t("cat_interior"), type: "interior", sub: "kitchen" },
+        { src: portfolio45, alt: "The Protaras Palm Dunes - Sage Green Master Bedroom", label: t("cat_bedroom"), type: "interior", sub: "bedroom" },
+        { src: portfolio52, alt: "The Protaras Palm Dunes - Minimalist Home Office Study", label: t("cat_interior"), type: "interior", sub: "office" },
       ],
     },
     {
@@ -244,12 +250,12 @@ const Portfolio = () => {
       hasExterior: true,
       hasInterior: true,
       subCategories: ["bathroom", "kitchen"],
-      coverImage: portfolio35,
+      coverImage: portfolio12,
       gallery: [
-        { src: portfolio35, alt: "The Ellinikon Plaza Towers - Skyscraper Architecture", label: t("cat_res_ext") },
-        { src: portfolio12, alt: "The Ellinikon Plaza Towers - Luxury Bathroom Visual", label: t("cat_interior") },
-        { src: portfolio37, alt: "The Ellinikon Plaza Towers - Executive Environment", label: t("cat_interior") },
-        { src: portfolio40, alt: "The Ellinikon Plaza Towers - Marble and Timber Kitchen", label: t("cat_interior") },
+        { src: portfolio12, alt: "The Ellinikon Plaza Towers - Luxury Bathroom Visual", label: t("cat_interior"), type: "interior", sub: "bathroom" },
+        { src: portfolio35, alt: "The Ellinikon Plaza Towers - Skyscraper Architecture", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio37, alt: "The Ellinikon Plaza Towers - Executive Environment", label: t("cat_interior"), type: "interior", sub: "office" },
+        { src: portfolio40, alt: "The Ellinikon Plaza Towers - Marble and Timber Kitchen", label: t("cat_interior"), type: "interior", sub: "kitchen" },
       ],
     },
     {
@@ -259,34 +265,34 @@ const Portfolio = () => {
       hasExterior: true,
       hasInterior: true,
       subCategories: ["bedroom", "living room", "kitchen"],
-      coverImage: portfolio36,
+      coverImage: portfolio33,
       gallery: [
-        { src: portfolio36, alt: "The Strovolos Design Pavilion - Mixed-Use Raw Facade", label: t("cat_res_ext") },
-        { src: portfolio33, alt: "The Strovolos Design Pavilion - Boho Master Bedroom", label: t("cat_bedroom") },
-        { src: portfolio34, alt: "The Strovolos Design Pavilion - Modern Media Lounge", label: t("cat_res_int") },
-        { src: portfolio43, alt: "The Strovolos Design Pavilion - Bright Luxury Bathroom", label: t("cat_interior") },
-        { src: portfolio60, alt: "The Strovolos Design Pavilion - High-End Premium Kitchen", label: t("cat_interior") },
+        { src: portfolio33, alt: "The Strovolos Design Pavilion - Boho Master Bedroom", label: t("cat_bedroom"), type: "interior", sub: "bedroom" },
+        { src: portfolio34, alt: "The Strovolos Design Pavilion - Modern Media Lounge", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio36, alt: "The Strovolos Design Pavilion - Mixed-Use Raw Facade", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio43, alt: "The Strovolos Design Pavilion - Bright Luxury Bathroom", label: t("cat_interior"), type: "interior", sub: "bathroom" },
+        { src: portfolio60, alt: "The Strovolos Design Pavilion - High-End Premium Kitchen", label: t("cat_interior"), type: "interior", sub: "kitchen" },
       ],
     },
     {
       id: 13,
-      title: "Aspithea, Akrounta, Limassol",
+      title: "Aspithea, Akrouunta, Limassol",
       description: "An exclusive cluster of contemporary eco-villas blending crisp architectural geometries with the rugged, pine-dappled mountainous landscapes.",
       hasExterior: true,
       hasInterior: true,
       subCategories: ["living room", "kitchen", "bedroom"],
       coverImage: portfolio55,
       gallery: [
-        { src: portfolio61, alt: "Aspithea - Primary Geometric Front Facade", label: t("cat_res_ext") },
-        { src: portfolio55, alt: "Aspithea - Alpine Aerial Eco-Villa Perspective", label: t("cat_res_ext") },
-        { src: portfolio56, alt: "Aspithea - Integrated Mountain Living Room", label: t("cat_res_int") },
-        { src: portfolio57, alt: "Aspithea - High-End Eco Kitchen Geometry", label: t("cat_interior") },
-        { src: portfolio58, alt: "Aspithea - Minimalist Mountain View Bedroom", label: t("cat_bedroom") },        
+        { src: portfolio55, alt: "Aspithea - Alpine Aerial Eco-Villa Perspective", label: t("cat_res_ext"), type: "exterior", sub: "" },
+        { src: portfolio56, alt: "Aspithea - Integrated Mountain Living Room", label: t("cat_res_int"), type: "interior", sub: "living room" },
+        { src: portfolio57, alt: "Aspithea - High-End Eco Kitchen Geometry", label: t("cat_interior"), type: "interior", sub: "kitchen" },
+        { src: portfolio58, alt: "Aspithea - Minimalist Mountain View Bedroom", label: t("cat_bedroom"), type: "interior", sub: "bedroom" },
+        { src: portfolio61, alt: "Aspithea - Primary Geometric Front Facade", label: t("cat_res_ext"), type: "exterior", sub: "" },
       ],
     }
   ];
 
-  // --- COMPREHENSIVE SUBTAB SMART FILTER ---
+  // --- OUTSIDE MAIN GRID FILTERING ---
   const filteredProjects = useMemo(() => {
     return projects.filter((p) => {
       const matchesMain = activeTab === "all" || 
@@ -317,6 +323,24 @@ const Portfolio = () => {
     { id: "office", label: t("OFFICE") },
   ];
 
+  // Helper inside loop to filter localized elements inside the popup folder
+  const getFilteredGallery = (gallery: any[]) => {
+    return gallery.filter((img) => {
+      if (modalTab === "all") return true;
+      if (img.type !== modalTab) return false;
+      if (modalTab === "interior" && modalSubTab !== "all") {
+        return img.sub === modalSubTab;
+      }
+      return true;
+    });
+  };
+
+  const resetModalFilters = () => {
+    setModalTab("all");
+    setModalSubTab("all");
+    setSelectedFolderImg(0);
+  };
+
   return (
     <section id="portfolio" className="py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -329,7 +353,7 @@ const Portfolio = () => {
           </h2>
         </div>
 
-        {/* Categories Tab Bar */}
+        {/* Global Categories Tab Bar */}
         <div className="flex flex-wrap justify-center gap-3 mb-8">
           {tabs.map((tab) => (
             <button
@@ -349,7 +373,7 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Interior Rooms Filtering */}
+        {/* Global Interior Rooms Filters */}
         <AnimatePresence>
           {activeTab === "interior" && (
             <motion.div
@@ -375,113 +399,170 @@ const Portfolio = () => {
           )}
         </AnimatePresence>
 
-        {/* Project Feed Layout */}
+        {/* Main Display Grid */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-              >
-                <Dialog onOpenChange={(open) => !open && setSelectedFolderImg(0)}>
-                  <DialogTrigger asChild>
-                    <div
-                      className="group relative aspect-[4/3] overflow-hidden rounded-xl cursor-pointer shadow-card bg-muted"
-                      onMouseEnter={() => setHoveredId(project.id)}
-                      onMouseLeave={() => setHoveredId(null)}
-                    >
-                      <img
-                        src={project.coverImage}
-                        alt={project.title}
-                        loading="lazy"
-                        className={`w-full h-full object-cover transition-transform duration-1000 ease-out ${
-                          hoveredId === project.id ? "scale-110" : "scale-100"
-                        }`}
-                      />
-                      <div className={`absolute inset-0 bg-black/60 transition-opacity duration-500 ${
-                        hoveredId === project.id ? "opacity-100" : "opacity-0"
-                      }`} />
-                      <div className={`absolute bottom-0 left-0 right-0 p-8 transition-all duration-500 ${
-                        hoveredId === project.id ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-                      }`}>
-                        <span className="text-primary text-[10px] font-body tracking-[0.2em] uppercase mb-2 block">
-                          {project.hasExterior && project.hasInterior ? t("Full Project Portfolio") : project.hasExterior ? t("Exterior Spaces") : t("Interior Design")}
-                        </span>
-                        <h3 className="font-display text-xl text-white font-light italic line-clamp-2">{project.title}</h3>
+            {filteredProjects.map((project) => {
+              const currentFolderGallery = getFilteredGallery(project.gallery);
+
+              return (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <Dialog onOpenChange={(open) => !open && resetModalFilters()}>
+                    <DialogTrigger asChild>
+                      <div
+                        className="group relative aspect-[4/3] overflow-hidden rounded-xl cursor-pointer shadow-card bg-muted"
+                        onMouseEnter={() => setHoveredId(project.id)}
+                        onMouseLeave={() => setHoveredId(null)}
+                      >
+                        <img
+                          src={project.coverImage}
+                          alt={project.title}
+                          loading="lazy"
+                          className={`w-full h-full object-cover transition-transform duration-1000 ease-out ${
+                            hoveredId === project.id ? "scale-110" : "scale-100"
+                          }`}
+                        />
+                        <div className={`absolute inset-0 bg-black/60 transition-opacity duration-500 ${
+                          hoveredId === project.id ? "opacity-100" : "opacity-0"
+                        }`} />
+                        <div className={`absolute bottom-0 left-0 right-0 p-8 transition-all duration-500 ${
+                          hoveredId === project.id ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+                        }`}>
+                          <span className="text-primary text-[10px] font-body tracking-[0.2em] uppercase mb-2 block">
+                            {project.hasExterior && project.hasInterior ? t("Full Project Portfolio") : project.hasExterior ? t("Exterior Spaces") : t("Interior Design")}
+                          </span>
+                          <h3 className="font-display text-xl text-white font-light italic line-clamp-2">{project.title}</h3>
+                        </div>
                       </div>
-                    </div>
-                  </DialogTrigger>
+                    </DialogTrigger>
 
-                  {/* ENLARGED FULL-SCALE VIEWPORT FOLDER MODAL */}
-                  <DialogContent className="max-w-[95vw] w-full md:max-w-6xl h-[92vh] p-6 border-none bg-black/95 flex flex-col justify-between overflow-hidden backdrop-blur-xl">
-                    
-                    {/* Header Details */}
-                    <div className="w-full flex items-start justify-between border-b border-white/10 pb-4">
-                      <div className="max-w-[90%]">
-                        <h4 className="text-white font-display text-xl font-medium tracking-wide leading-snug">{project.title}</h4>
-                        <p className="text-xs text-muted-foreground font-body mt-2 font-light leading-relaxed max-w-3xl hidden md:block">
-                          {project.description}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Central High-Impact Large Visualization Frame */}
-                    <div className="flex-1 w-full flex items-center justify-center p-2 my-2 relative overflow-hidden">
-                      <img
-                        src={project.gallery[selectedFolderImg]?.src}
-                        alt={project.gallery[selectedFolderImg]?.alt}
-                        className="max-w-full max-h-[50vh] md:max-h-[56vh] w-auto h-auto object-contain rounded-md shadow-2xl"
-                      />
-                    </div>
-
-                    {/* Interactive Folder Asset Bar Strip */}
-                    <div className="w-full bg-white/[0.02] p-4 rounded-xl border border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+                    {/* ENLARGED FULL-SCALE VIEWPORT MODAL */}
+                    <DialogContent className="max-w-[95vw] w-full md:max-w-6xl h-[94vh] p-6 border-none bg-black/95 flex flex-col justify-between overflow-hidden backdrop-blur-xl">
                       
-                      {/* Active File Metadata */}
-                      <div className="text-center md:text-left min-w-[240px] max-w-xs">
-                        <span className="text-primary text-[10px] font-body tracking-[0.2em] uppercase block mb-0.5">
-                          {project.gallery[selectedFolderImg]?.label}
-                        </span>
-                        <p className="text-white font-display italic text-sm font-light truncate">
-                          {project.gallery[selectedFolderImg]?.alt}
-                        </p>
+                      {/* Top Header Section with Folder Controls */}
+                      <div className="w-full flex flex-col gap-4 border-b border-white/10 pb-4">
+                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                          <h4 className="text-white font-display text-lg font-medium tracking-wide max-w-xl truncate">{project.title}</h4>
+                          
+                          {/* Inside Folder Layer 1 Filters */}
+                          <div className="flex items-center gap-1.5 self-start">
+                            {tabs.map((tab) => (
+                              <button
+                                key={tab.id}
+                                onClick={() => {
+                                  setModalTab(tab.id);
+                                  setModalSubTab("all");
+                                  setSelectedFolderImg(0);
+                                }}
+                                className={`px-4 py-1 rounded-full text-[10px] font-body tracking-wider uppercase transition-all ${
+                                  modalTab === tab.id
+                                    ? "bg-primary text-white"
+                                    : "bg-white/5 text-muted-foreground hover:bg-white/10"
+                                }`}
+                              >
+                                {tab.label}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Inside Folder Layer 2 Room Filters (Shows up only if Interior is selected) */}
+                        <AnimatePresence>
+                          {modalTab === "interior" && (
+                            <motion.div
+                              initial={{ opacity: 0, y: -5 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -5 }}
+                              className="flex flex-wrap gap-1.5 bg-white/[0.02] p-2 rounded-lg border border-white/5"
+                            >
+                              {subTabs.map((sub) => (
+                                <button
+                                  key={sub.id}
+                                  onClick={() => {
+                                    setModalSubTab(sub.id);
+                                    setSelectedFolderImg(0);
+                                  }}
+                                  className={`px-3 py-1 rounded-md text-[9px] font-body tracking-wider uppercase transition-all ${
+                                    modalSubTab === sub.id
+                                      ? "bg-primary/20 text-primary border border-primary/30"
+                                      : "bg-transparent text-muted-foreground hover:text-white"
+                                  }`}
+                                >
+                                  {sub.label}
+                                </button>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
 
-                      {/* Folder Content Selection Stream */}
-                      <div className="flex items-center gap-2 overflow-x-auto max-w-full py-1 px-2 custom-scrollbar">
-                        {project.gallery.map((img, index) => (
-                          <button
-                            key={index}
-                            onClick={() => setSelectedFolderImg(index)}
-                            className={`relative w-20 md:w-24 aspect-[4/3] rounded-md overflow-hidden bg-muted flex-shrink-0 transition-all duration-300 border-2 ${
-                              selectedFolderImg === index 
-                                ? "border-primary scale-95 shadow-[0_0_12px_rgba(0,186,211,0.6)] opacity-100" 
-                                : "border-transparent opacity-40 hover:opacity-90"
-                            }`}
-                          >
-                            <img 
-                              src={img.src} 
-                              alt={img.alt} 
-                              className="w-full h-full object-cover" 
-                            />
-                          </button>
-                        ))}
+                      {/* Canvas Area: Large High-Impact Image Viewport */}
+                      <div className="flex-1 w-full flex items-center justify-center p-2 my-2 relative overflow-hidden">
+                        {currentFolderGallery.length > 0 ? (
+                          <img
+                            src={currentFolderGallery[selectedFolderImg]?.src}
+                            alt={currentFolderGallery[selectedFolderImg]?.alt}
+                            className="max-w-full max-h-[46vh] md:max-h-[52vh] w-auto h-auto object-contain rounded-md shadow-2xl"
+                          />
+                        ) : (
+                          <div className="text-muted-foreground text-xs uppercase tracking-widest font-body">
+                            {t("No photos found in this section")}
+                          </div>
+                        )}
                       </div>
 
-                    </div>
+                      {/* Interactive Bottom Control Bar */}
+                      <div className="w-full bg-white/[0.02] p-4 rounded-xl border border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+                        
+                        {/* Currently Highlighted Asset Metadata */}
+                        <div className="text-center md:text-left min-w-[240px] max-w-xs">
+                          <span className="text-primary text-[10px] font-body tracking-[0.2em] uppercase block mb-0.5">
+                            {currentFolderGallery[selectedFolderImg]?.label || t("Portfolio Asset")}
+                          </span>
+                          <p className="text-white font-display italic text-sm font-light truncate">
+                            {currentFolderGallery[selectedFolderImg]?.alt || ""}
+                          </p>
+                        </div>
 
-                  </DialogContent>
-                </Dialog>
-              </motion.div>
-            ))}
+                        {/* Interactive Folder Selectable Items Stream */}
+                        <div className="flex items-center gap-2 overflow-x-auto max-w-full py-1 px-2 custom-scrollbar">
+                          {currentFolderGallery.map((img, index) => (
+                            <button
+                              key={index}
+                              onClick={() => setSelectedFolderImg(index)}
+                              className={`relative w-20 md:w-24 aspect-[4/3] rounded-md overflow-hidden bg-muted flex-shrink-0 transition-all duration-300 border-2 ${
+                                selectedFolderImg === index 
+                                  ? "border-primary scale-95 shadow-[0_0_12px_rgba(0,186,211,0.6)] opacity-100" 
+                                  : "border-transparent opacity-40 hover:opacity-90"
+                              }`}
+                            >
+                              <img 
+                                src={img.src} 
+                                alt={img.alt} 
+                                className="w-full h-full object-cover" 
+                              />
+                            </button>
+                          ))}
+                        </div>
+
+                      </div>
+
+                    </DialogContent>
+                  </Dialog>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </motion.div>
 
-        {/* Contact Anchor Trigger */}
+        {/* Contact Strip */}
         <div className="mt-20 text-center">
           <button
             onClick={() => {

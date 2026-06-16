@@ -25,7 +25,7 @@ import portfolio13 from "@/assets/portfolio-13.webp";
 import portfolio14 from "@/assets/portfolio-14.webp";
 import portfolio15 from "@/assets/portfolio-15.webp";
 import portfolio16 from "@/assets/portfolio-16.webp";
-import portfolio17 Haus from "@/assets/portfolio-17.webp";
+import portfolio17 from "@/assets/portfolio-17.webp"; // Fixed typo here
 import portfolio18 from "@/assets/portfolio-18.webp";
 import portfolio19 from "@/assets/portfolio-19.webp";
 import portfolio20 from "@/assets/portfolio-20.webp";
@@ -76,8 +76,8 @@ const Portfolio = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   
   // Filtering states for the main gallery grid
-  const [activeTab, setActiveTab] = useState("all"); // "all" | "exterior" | "interior"
-  const [activeSubTab, setActiveSubTab] = useState("all"); // "all" | "kitchen" | "bathroom" | "living room" | "bedroom" | "office"
+  const [activeTab, setActiveTab] = useState("all"); 
+  const [activeSubTab, setActiveSubTab] = useState("all"); 
 
   // Lightbox view portfolio states
   const [selectedProject, setSelectedProject] = useState<any>(null);
@@ -254,7 +254,6 @@ const Portfolio = () => {
 
   // --- COMPUTE FEED ITEM LEVEL DYNAMICS ---
   const currentFeedItems = useMemo(() => {
-    // CONDITIONAL CASE 1: When browsing "ALL", show grouped parent objects
     if (activeTab === "all") {
       return projectsData.map((project) => ({
         isGroupedFolder: true,
@@ -269,7 +268,6 @@ const Portfolio = () => {
       }));
     }
 
-    // CONDITIONAL CASE 2: When "EXTERIOR" or "INTERIOR" subcategories are clicked, flatten directly to items
     let itemsList: any[] = [];
     projectsData.forEach((project) => {
       project.gallery.forEach((photo) => {

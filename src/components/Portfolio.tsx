@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // --- IMAGE IMPORTS ---
@@ -76,223 +76,181 @@ const Portfolio = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState("all");
   const [activeSubTab, setActiveSubTab] = useState("all");
-  const [currentSliderIndex, setCurrentSliderIndex] = useState(0);
+  
+  // Tracks selection index inside open project folder
+  const [selectedFolderImg, setSelectedFolderImg] = useState(0);
 
-  // --- MAPPED GROUPED PROJECTS ---
+  // --- RESTRUCTURED PROJECTS DATA (GROUPED BY PROJECTS WITH EXTERIOR & INTERIOR INSIDE) ---
   const projects = [
     {
       id: 1,
-      title: "The Monagroulli Monolith, Monagroulli, Limassol, Cyprus",
-      description: "Striking contemporary architecture framed by dramatic rock faces, offering total privacy and panoramic views just minutes outside Limassol.",
+      title: "Modern Villa on Akrounta, Limassol",
+      category: "all",
       hasExterior: true,
       hasInterior: true,
-      subCategories: ["kitchen", "living room"],
-      coverImage: portfolio1,
+      subCategories: ["living room", "kitchen", "bedroom", "exterior"],
+      coverImage: portfolio61, // Shown on main page grid
       gallery: [
-        { src: portfolio1, alt: "Exterior View", label: t("cat_res_ext") },
-        { src: portfolio6, alt: "Minimalist Bedroom", label: t("cat_interior") },
-        { src: portfolio10, alt: "Contemporary Open Living", label: t("cat_res_int") },
-        { src: portfolio4, alt: "Contemporary Modern Kitchen", label: t("cat_interior") }
-      ]
+        { src: portfolio61, alt: "Exterior View 1", label: t("cat_res_ext") },
+        { src: portfolio55, alt: "Aerial Exterior Perspective", label: t("cat_res_ext") },
+        { src: portfolio56, alt: "Living Room Space", label: t("cat_res_int") },
+        { src: portfolio57, alt: "Modern Kitchen Layout", label: t("cat_interior") },
+        { src: portfolio58, alt: "Minimalist Master Bedroom", label: t("cat_bedroom") },
+      ],
     },
     {
       id: 2,
-      title: "The Platres Retreat, Pano Platres, Troodos, Cyprus",
-      description: "A modern timber cabin tucked into the dense Troodos pine forests, offering a serene, high-altitude alpine escape from the coastal heat.",
+      title: "Modern Villa",
+      category: "exterior",
       hasExterior: true,
-      hasInterior: true,
-      subCategories: ["living room", "living room"],
-      coverImage: portfolio2,
+      hasInterior: false,
+      subCategories: [],
+      coverImage: portfolio1,
       gallery: [
-        { src: portfolio2, alt: "Sleek Country Home", label: t("cat_facade") },
-        { src: portfolio5, alt: "Modern Living Room", label: t("cat_res_int") },
-        { src: portfolio21, alt: "Cozy Urban Lounge", label: t("cat_interior") }
-      ]
+        { src: portfolio1, alt: "Photorealistic 3D exterior render", label: t("cat_res_ext") },
+        { src: portfolio2, alt: "Modern country house facade", label: t("cat_facade") },
+        { src: portfolio3, alt: "Eco-friendly luxury villa", label: t("cat_styling") },
+        { src: portfolio28, alt: "Luxury villa facade design", label: t("cat_res_ext") },
+      ],
     },
     {
       id: 3,
-      title: "The West Coast Frontier, Neo Chorio, Paphos, Cyprus",
-      description: "An elevated contemporary residence framing Cyprus’s most rugged, untouched western peninsula with sweeping sea views.",
+      title: "Skyline Terrace Apartments",
+      category: "exterior",
       hasExterior: true,
-      hasInterior: true,
-      subCategories: ["kitchen", "living room"],
-      coverImage: portfolio3,
+      hasInterior: false,
+      subCategories: [],
+      coverImage: portfolio7,
       gallery: [
-        { src: portfolio3, alt: "Luxury Eco-Villa", label: t("cat_styling") },
-        { src: portfolio14, alt: "Transitional Kitchen", label: t("cat_interior") },
-        { src: portfolio15, alt: "Minimalist Dining & Living", label: t("cat_res_int") },
-        { src: portfolio16, alt: "Minimalist Living Room", label: t("cat_res_int") },
-        { src: portfolio20, alt: "Luxury Marble Bath", label: t("cat_interior") }
-      ]
+        { src: portfolio7, alt: "Urban apartment building 3D", label: t("cat_urban") },
+        { src: portfolio35, alt: "Architectural visualization of skyscrapers", label: t("cat_urban") },
+        { src: portfolio36, alt: "Modern Mixed-Use Complex exterior", label: t("cat_res_ext") },
+      ],
     },
     {
       id: 4,
-      title: "Modern Residential Complex, Latsia, Nicosia, Cyprus",
-      description: "A contemporary multi-family residential development featuring sleek glass balconies and warm brick accents, perfectly integrated into the expanding hillsides of Nicosia.",
-      hasExterior: true,
+      title: "Contemporary Modern Kitchen Collection",
+      category: "interior",
+      hasExterior: false,
       hasInterior: true,
-      subCategories: ["living room", "bedroom"],
-      coverImage: portfolio7,
+      subCategories: ["kitchen"],
+      coverImage: portfolio4,
       gallery: [
-        { src: portfolio7, alt: "Skyline Terrace Apartments", label: t("cat_urban") },
-        { src: portfolio51, alt: "Modernist Living Room", label: t("cat_res_int") },
-        { src: portfolio53, alt: "Modernist Living Room", label: t("cat_res_int") },
-        { src: portfolio54, alt: "Modernist Dining Room", label: t("cat_res_int") },
-        { src: portfolio11, alt: "Oak & Ambient Suite", label: t("cat_bedroom") }
-      ]
+        { src: portfolio4, alt: "Modern kitchen design", label: t("cat_interior") },
+        { src: portfolio9, alt: "High-end kitchen 3D visualization", label: t("cat_vis") },
+        { src: portfolio14, alt: "Technical kitchen design layout", label: t("cat_interior") },
+        { src: portfolio31, alt: "Minimalist Japandi kitchen", label: t("cat_interior") },
+        { src: portfolio39, alt: "Minimalist gray kitchen with island", label: t("cat_interior") },
+        { src: portfolio40, alt: "White marble kitchen with wood accents", label: t("cat_interior") },
+        { src: portfolio44, alt: "Large kitchen with dark stone island", label: t("cat_interior") },
+        { src: portfolio60, alt: "Luxury Modern Kitchen", label: t("cat_interior") },
+      ],
     },
     {
       id: 5,
-      title: "The Omodos Stone Villa, Omodos, Limassol, Cyprus",
-      description: "A beautiful traditional fieldstone residence combining classic Cypriot masonry with modern elevated terraces, overlooking the rolling vineyard valleys of Limassol.",
-      hasExterior: true,
+      title: "Luxury Residential Living Rooms",
+      category: "interior",
+      hasExterior: false,
       hasInterior: true,
-      subCategories: ["kitchen", "living room", "office"],
-      coverImage: portfolio8,
+      subCategories: ["living room"],
+      coverImage: portfolio5,
       gallery: [
-        { src: portfolio8, alt: "Rustic Stone Villa", label: t("cat_luxury") },
-        { src: portfolio13, alt: "Modern Dining Room", label: t("cat_res_int") },
-        { src: portfolio18, alt: "Minimalist Workspace", label: t("cat_interior") },
-        { src: portfolio31, alt: "Japandi Kitchen Concept", label: t("cat_interior") }
-      ]
+        { src: portfolio5, alt: "Luxury interior design living room", label: t("cat_res_int") },
+        { src: portfolio10, alt: "Open plan living room interior", label: t("cat_res_int") },
+        { src: portfolio13, alt: "Luxury dining room interior", label: t("cat_res_int") },
+        { src: portfolio15, alt: "Minimalist apartment interior architecture", label: t("cat_res_int") },
+        { src: portfolio16, alt: "Bright minimalist living room structure", label: t("cat_res_int") },
+        { src: portfolio17, alt: "High-end hotel suite interior design", label: t("cat_res_int") },
+        { src: portfolio21, alt: "Urban lounge interior design setup", label: t("cat_interior") },
+        { src: portfolio32, alt: "High-end living room modular sectional", label: t("cat_res_int") },
+        { src: portfolio34, alt: "Modern media lounge room 3D", label: t("cat_res_int") },
+        { src: portfolio41, alt: "Dining area with vertical wood slats", label: t("cat_res_int") },
+        { src: portfolio47, alt: "Modern dining room with dark wood table", label: t("cat_res_int") },
+        { src: portfolio48, alt: "Spacious layout white living room", label: t("cat_res_int") },
+        { src: portfolio49, alt: "Large panoramic open plan living area", label: t("cat_res_int") },
+        { src: portfolio50, alt: "Luxury dining space with timber paneling", label: t("cat_res_int") },
+        { src: portfolio51, alt: "Large Modernist open plan living area", label: t("cat_res_int") },
+        { src: portfolio53, alt: "Modernist Living Room layout", label: t("cat_res_int") },
+        { src: portfolio54, alt: "Large Modernist open plan Dining area", label: t("cat_res_int") },
+      ],
     },
     {
       id: 6,
-      title: "The Kifisia Horizon House, Kifisia, Athens, Greece",
-      description: "A low-profile modern pavilion tucked away into the mature, leafy green landscapes of northern Athens, pairing minimalist architecture with total privacy.",
-      hasExterior: true,
+      title: "Luxury Bathroom Suites",
+      category: "interior",
+      hasExterior: false,
       hasInterior: true,
-      subCategories: ["living room"],
-      coverImage: portfolio19,
+      subCategories: ["bathroom"],
+      coverImage: portfolio12,
       gallery: [
-        { src: portfolio19, alt: "Contemporary Exterior", label: t("cat_res_ext") },
-        { src: portfolio48, alt: "Luminous Urban Living", label: t("cat_res_int") },
-        { src: portfolio49, alt: "Panoramic Lounge View", label: t("cat_res_int") },
-        { src: portfolio59, alt: "Workspace Interior", label: t("cat_interior") }
-      ]
+        { src: portfolio12, alt: "Modern bathroom 3D visualization", label: t("cat_interior") },
+        { src: portfolio20, alt: "Luxury marble bathroom suite", label: t("cat_interior") },
+        { src: portfolio42, alt: "Dark wood bathroom with round mirror", label: t("cat_interior") },
+        { src: portfolio43, alt: "Bright cream tiled luxury bathroom", label: t("cat_interior") },
+      ],
     },
     {
       id: 7,
-      title: "The Ekali Arched Villa, Ekali, Athens, Greece",
-      description: "Striking brutalist architecture nestled within the elite, densely wooded northern suburbs of Athens, blending geometric concrete forms with soaring glass facades.",
-      hasExterior: true,
+      title: "Premium Master Bedrooms",
+      category: "interior",
+      hasExterior: false,
       hasInterior: true,
-      subCategories: ["living room", "bedroom"],
-      coverImage: portfolio22,
+      subCategories: ["bedroom"],
+      coverImage: portfolio6,
       gallery: [
-        { src: portfolio22, alt: "The Arch House", label: t("cat_res_ext") },
-        { src: portfolio17, alt: "Modern Living Suite", label: t("cat_res_int") },
-        { src: portfolio38, alt: "Emerald Accent Suite", label: t("cat_bedroom") },
-        { src: portfolio46, alt: "Forest Green Detail", label: t("cat_bedroom") }
-      ]
+        { src: portfolio6, alt: "Minimalist bedroom interior render", label: t("cat_interior") },
+        { src: portfolio11, alt: "Master bedroom 3D render with ambient lights", label: t("cat_bedroom") },
+        { src: portfolio33, alt: "Luxury Boho-style master bedroom layout", label: t("cat_bedroom") },
+        { src: portfolio38, alt: "Master bedroom with dark green accent wall", label: t("cat_bedroom") },
+        { src: portfolio45, alt: "Modern sage green master suite", label: t("cat_bedroom") },
+        { src: portfolio46, alt: "Forest green paneled headboard detail", label: t("cat_bedroom") },
+      ],
     },
     {
       id: 8,
-      title: "The Palodeia Smart Residence, Palodeia, Limassol, Cyprus",
-      description: "A masterfully planned smart home showcasing an L-shaped architectural footprint, private interior courtyards, and clean minimalist zoning tailored for modern Mediterranean lifestyles.",
-      hasExterior: true,
+      title: "Corporate & Home Workspaces",
+      category: "interior",
+      hasExterior: false,
       hasInterior: true,
-      subCategories: ["kitchen", "living room"],
-      coverImage: portfolio23,
+      subCategories: ["office"],
+      coverImage: portfolio18,
       gallery: [
-        { src: portfolio23, alt: "Isometric View with Section", label: t("cat_res_ext") },
-        { src: portfolio26, alt: "Isometric View", label: t("cat_res_ext") },
-        { src: portfolio27, alt: "3D Floor Plan", label: t("cat_res_ext") },
-        { src: portfolio32, alt: "Luxury Sectional Living", label: t("cat_res_int") },
-        { src: portfolio39, alt: "Modern Gray Kitchen", label: t("cat_interior") }
-      ]
+        { src: portfolio18, alt: "Modern minimalist home office setup", label: t("cat_interior") },
+        { src: portfolio25, alt: "Professional commercial office interior", label: t("cat_interior") },
+        { src: portfolio37, alt: "Executive workspace environment", label: t("cat_interior") },
+        { src: portfolio52, alt: "Minimalist Modern Home Office design", label: t("cat_interior") },
+        { src: portfolio59, alt: "Architectural Workspace Interior project", label: t("cat_interior") },
+      ],
     },
     {
       id: 9,
-      title: "The Pelion Woodland Manor, Tsagarada, Mount Pelion, Greece",
-      description: "A sophisticated sanctuary merging minimalist architecture with the dense, world-famous forest landscapes of the Pelion peninsula.",
+      title: "Architectural 3D Plans & Concepts",
+      category: "exterior",
       hasExterior: true,
-      hasInterior: true,
-      subCategories: ["living room", "office"],
-      coverImage: portfolio24,
+      hasInterior: false,
+      subCategories: [],
+      coverImage: portfolio27,
       gallery: [
-        { src: portfolio24, alt: "Minimalist Villa", label: t("cat_res_ext") },
-        { src: portfolio9, alt: "Midnight Navy Kitchen", label: t("cat_vis") },
-        { src: portfolio47, alt: "Artisan Wood Dining", label: t("cat_res_int") },
-        { src: portfolio50, alt: "Modernist Timber Dining", label: t("cat_res_int") },
-        { src: portfolio25, alt: "Workspace Interior", label: t("cat_interior") }
-      ]
-    },
-    {
-      id: 10,
-      title: "The Protaras Palm Dunes, Protaras Coast, Famagusta, Cyprus",
-      description: "A massive, master-planned holiday development showcasing uniform minimalist design, private plunge pools, and lush tropical landscaping tailored for elite Mediterranean resort living.",
-      hasExterior: true,
-      hasInterior: true,
-      subCategories: ["kitchen", "bathroom", "bedroom", "office"],
-      coverImage: portfolio28,
-      gallery: [
-        { src: portfolio28, alt: "Modern Facade Villa", label: t("cat_res_ext") },
-        { src: portfolio29, alt: "Aerial Perspective", label: t("cat_res_ext") },
-        { src: portfolio30, alt: "3D Plan View", label: t("cat_res_ext") },
-        { src: portfolio41, alt: "Slatted Wood Dining", label: t("cat_res_int") },
-        { src: portfolio42, alt: "Mood Lighting Bathroom", label: t("cat_interior") },
-        { src: portfolio44, alt: "Contemporary Open Kitchen", label: t("cat_interior") },
-        { src: portfolio45, alt: "Sage Green Master", label: t("cat_bedroom") },
-        { src: portfolio52, alt: "Minimalist Workspace", label: t("cat_interior") }
-      ]
-    },
-    {
-      id: 11,
-      title: "The Ellinikon Plaza Towers, The Ellinikon, Athens, Greece",
-      description: "An iconic metropolitan high-rise complex anchoring the premier urban coastal development area, showcasing sleek glass grids, grand plazas, and mixed-use luxury commercial spaces.",
-      hasExterior: true,
-      hasInterior: true,
-      subCategories: ["kitchen", "bathroom", "office"],
-      coverImage: portfolio35,
-      gallery: [
-        { src: portfolio35, alt: "Urban Skyscraper Plaza", label: t("cat_urban") },
-        { src: portfolio12, alt: "Minimalist Bathroom", label: t("cat_interior") },
-        { src: portfolio37, alt: "Executive Home Office", label: t("cat_interior") },
-        { src: portfolio40, alt: "Marble & Wood Kitchen", label: t("cat_interior") }
-      ]
-    },
-    {
-      id: 12,
-      title: "The Strovolos Design Pavilion, Strovolos, Nicosia, Cyprus",
-      description: "A striking commercial showroom featuring a raw concrete facade and bold timber framing, designed as an ultra-premium flagship office or high-end retail headquarters.",
-      hasExterior: true,
-      hasInterior: true,
-      subCategories: ["kitchen", "bathroom", "bedroom", "living room"],
-      coverImage: portfolio36,
-      gallery: [
-        { src: portfolio36, alt: "Modern Mixed-Use Complex", label: t("cat_res_ext") },
-        { src: portfolio33, alt: "Boho-Luxe Master Bedroom", label: t("cat_bedroom") },
-        { src: portfolio34, alt: "Contemporary Media Lounge", label: t("cat_res_int") },
-        { src: portfolio43, alt: "Cream Stone Bathroom", label: t("cat_interior") },
-        { src: portfolio60, alt: "Modern Kitchen", label: t("cat_interior") }
-      ]
-    },
-    {
-      id: 13,
-      title: "Aspithea, Akrounta, Limassol",
-      description: "An exclusive cluster of contemporary eco-villas blending crisp architectural geometries with the rugged, pine-dappled mountainous landscapes.",
-      hasExterior: true,
-      hasInterior: true,
-      subCategories: ["kitchen", "bedroom", "living room"],
-      coverImage: portfolio55,
-      gallery: [
-        { src: portfolio55, alt: "Modern Villa - Aerial View", label: t("cat_res_ext") },
-        { src: portfolio61, alt: "Modern Villa - Ground View", label: t("cat_res_ext") },
-        { src: portfolio56, alt: "Modernist Living Room", label: t("cat_res_int") },
-        { src: portfolio57, alt: "Kitchen Layout", label: t("cat_interior") },
-        { src: portfolio58, alt: "Minimalist Bedroom", label: t("cat_bedroom") }
-      ]
+        { src: portfolio23, alt: "3D isometric section view detail", label: t("cat_res_ext") },
+        { src: portfolio24, alt: "Minimalist architecture luxury villa", label: t("cat_res_ext") },
+        { src: portfolio26, alt: "3D isometric house plan view", label: t("cat_res_ext") },
+        { src: portfolio27, alt: "Detailed 3D floor plan layout", label: t("cat_res_ext") },
+        { src: portfolio29, alt: "Aerial 3D architectural perspective", label: t("cat_res_ext") },
+        { src: portfolio30, alt: "Master architectural plan 3D visualization", label: t("cat_res_ext") },
+        { src: portfolio8, alt: "Traditional stone rustic villa architecture", label: t("cat_luxury") },
+        { src: portfolio19, alt: "Contemporary residential exterior visualization", label: t("cat_res_ext") },
+        { src: portfolio22, alt: "Modern arch-style structural house design", label: t("cat_res_ext") },
+      ],
     }
   ];
 
-  // --- FILTER NAVIGATION CONTROLS ---
+  // --- RE-ENGINEERED SMART FILTERING ---
   const filteredProjects = useMemo(() => {
     return projects.filter((p) => {
-      if (activeTab === "all") return true;
-      if (activeTab === "exterior") return p.hasExterior;
-      if (activeTab === "interior") {
-        if (activeSubTab === "all") return p.hasInterior;
+      const matchesMain = activeTab === "all" || p.category === activeTab || (activeTab === "exterior" && p.hasExterior) || (activeTab === "interior" && p.hasInterior);
+      if (!matchesMain) return false;
+      
+      if (activeTab === "interior" && activeSubTab !== "all") {
         return p.subCategories.includes(activeSubTab);
       }
       return true;
@@ -326,7 +284,7 @@ const Portfolio = () => {
           </h2>
         </div>
 
-        {/* Main Tabs */}
+        {/* Main Category Tabs */}
         <div className="flex flex-wrap justify-center gap-3 mb-8">
           {tabs.map((tab) => (
             <button
@@ -346,7 +304,7 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Sub Tabs (Only for Interior) */}
+        {/* Interior Spaces Sub Tabs */}
         <AnimatePresence>
           {activeTab === "interior" && (
             <motion.div
@@ -372,7 +330,7 @@ const Portfolio = () => {
           )}
         </AnimatePresence>
 
-        {/* Project Grid */}
+        {/* Main Grid View */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
@@ -384,7 +342,7 @@ const Portfolio = () => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
               >
-                <Dialog onOpenChange={(open) => !open && setCurrentSliderIndex(0)}>
+                <Dialog onOpenChange={(open) => !open && setSelectedFolderImg(0)}>
                   <DialogTrigger asChild>
                     <div
                       className="group relative aspect-[4/3] overflow-hidden rounded-xl cursor-pointer shadow-card bg-muted"
@@ -406,60 +364,64 @@ const Portfolio = () => {
                         hoveredId === project.id ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
                       }`}>
                         <span className="text-primary text-[10px] font-body tracking-[0.2em] uppercase mb-2 block">
-                          {project.hasExterior && project.hasInterior ? t("Full Project") : project.hasExterior ? t("Exterior") : t("Interior")}
+                          {project.hasExterior && project.hasInterior ? t("Full Project") : project.hasExterior ? t("Exterior Collection") : t("Interior Collection")}
                         </span>
-                        <h3 className="font-display text-lg text-white font-light italic leading-tight">{project.title}</h3>
+                        <h3 className="font-display text-xl text-white font-light italic">{project.title}</h3>
                       </div>
                     </div>
                   </DialogTrigger>
 
-                  <DialogContent className="max-w-[95vw] w-full md:max-w-4xl max-h-[95vh] p-0 border-none bg-black/95 flex flex-col items-center justify-center overflow-hidden backdrop-blur-xl">
-                    <div className="relative w-full flex items-center justify-center p-4 select-none">
+                  {/* FOLDER VIEW LIGHTBOX ACCESSED VIA CONTEXT SELECTION */}
+                  <DialogContent className="max-w-[95vw] w-full md:max-w-5xl max-h-[92vh] p-6 border-none bg-black/95 flex flex-col md:flex-row gap-6 overflow-y-auto backdrop-blur-xl">
+                    
+                    {/* Active Preview Frame */}
+                    <div className="flex-1 flex flex-col items-center justify-center bg-black/40 rounded-lg p-2 min-h-[35vh] md:min-h-[55vh]">
                       <img
-                        src={project.gallery[currentSliderIndex]?.src}
-                        alt={project.gallery[currentSliderIndex]?.alt}
-                        className="max-h-[65vh] md:max-h-[75vh] w-auto object-contain rounded shadow-2xl"
+                        src={project.gallery[selectedFolderImg]?.src}
+                        alt={project.gallery[selectedFolderImg]?.alt}
+                        className="max-h-[48vh] md:max-h-[60vh] w-auto object-contain rounded-md shadow-lg"
                       />
-
-                      {project.gallery.length > 1 && (
-                        <>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setCurrentSliderIndex((prev) => (prev === 0 ? project.gallery.length - 1 : prev - 1));
-                            }}
-                            className="absolute left-4 p-2 rounded-full bg-black/50 text-white hover:bg-primary transition-colors duration-200 z-50"
-                          >
-                            <ChevronLeft size={24} />
-                          </button>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setCurrentSliderIndex((prev) => (prev === project.gallery.length - 1 ? 0 : prev + 1));
-                            }}
-                            className="absolute right-4 p-2 rounded-full bg-black/50 text-white hover:bg-primary transition-colors duration-200 z-50"
-                          >
-                            <ChevronRight size={24} />
-                          </button>
-                        </>
-                      )}
+                      <div className="mt-4 text-center">
+                        <span className="text-primary text-[10px] font-body tracking-[0.2em] uppercase block mb-1">
+                          {project.gallery[selectedFolderImg]?.label}
+                        </span>
+                        <p className="text-white font-display italic text-sm">
+                          {project.gallery[selectedFolderImg]?.alt}
+                        </p>
+                      </div>
                     </div>
 
-                    {/* Meta details footer inside layout modal */}
-                    <div className="w-full bg-black/40 py-4 px-6 border-t border-white/10 flex flex-col items-center text-center">
-                      <span className="text-primary text-[10px] font-body tracking-[0.2em] uppercase mb-1">
-                        {project.gallery[currentSliderIndex]?.label}
-                      </span>
-                      <h4 className="text-white font-display italic text-sm mb-1 px-4">
-                        {project.title}
-                      </h4>
-                      <p className="text-muted-foreground text-xs max-w-2xl line-clamp-2 px-4 hidden md:block">
-                        {project.description}
-                      </p>
-                      <span className="text-white/40 text-[10px] font-body mt-2">
-                        {currentSliderIndex + 1} / {project.gallery.length}
-                      </span>
+                    {/* Album / Directory Structure Selector */}
+                    <div className="w-full md:w-80 flex flex-col">
+                      <div className="mb-4">
+                        <h4 className="text-white font-display text-lg font-medium">{project.title}</h4>
+                        <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">
+                          {project.gallery.length} Renders Available in Folder
+                        </p>
+                      </div>
+                      
+                      {/* Interactive Selection Assets Grid */}
+                      <div className="grid grid-cols-4 md:grid-cols-2 gap-2.5 max-h-[30vh] md:max-h-[50vh] overflow-y-auto pr-1 custom-scrollbar">
+                        {project.gallery.map((img, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setSelectedFolderImg(index)}
+                            className={`relative aspect-[4/3] rounded-md overflow-hidden bg-muted transition-all duration-300 border-2 ${
+                              selectedFolderImg === index 
+                                ? "border-primary scale-[0.96] shadow-[0_0_15px_rgba(0,186,211,0.5)]" 
+                                : "border-transparent opacity-50 hover:opacity-100"
+                            }`}
+                          >
+                            <img 
+                              src={img.src} 
+                              alt={img.alt} 
+                              className="w-full h-full object-cover" 
+                            />
+                          </button>
+                        ))}
+                      </div>
                     </div>
+
                   </DialogContent>
                 </Dialog>
               </motion.div>
@@ -467,7 +429,7 @@ const Portfolio = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* --- CONTACT US BUTTON --- */}
+        {/* Contact CTA Trigger */}
         <div className="mt-20 text-center">
           <button
             onClick={() => {

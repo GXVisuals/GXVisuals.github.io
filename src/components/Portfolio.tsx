@@ -25,7 +25,7 @@ import portfolio13 from "@/assets/portfolio-13.webp";
 import portfolio14 from "@/assets/portfolio-14.webp";
 import portfolio15 from "@/assets/portfolio-15.webp";
 import portfolio16 from "@/assets/portfolio-16.webp";
-import portfolio17 from "@/assets/portfolio-17.webp";
+import portfolio17 Haus from "@/assets/portfolio-17.webp";
 import portfolio18 from "@/assets/portfolio-18.webp";
 import portfolio19 from "@/assets/portfolio-19.webp";
 import portfolio20 from "@/assets/portfolio-20.webp";
@@ -79,30 +79,32 @@ const Portfolio = () => {
   const [activeTab, setActiveTab] = useState("all"); // "all" | "exterior" | "interior"
   const [activeSubTab, setActiveSubTab] = useState("all"); // "all" | "kitchen" | "bathroom" | "living room" | "bedroom" | "office"
 
-  // Lightbox dynamic presentation states
+  // Lightbox view portfolio states
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [selectedImgIndex, setSelectedImgIndex] = useState(0);
 
-  // --- RAW DATABASE MATRIX MAPPED BY PHOTO DESTINATION ---
+  // --- SOURCE PROJECTS DIRECTORY MATRIX ---
   const projectsData = [
     {
       id: 1,
       title: "The Monagroulli Monolith, Monagroulli, Limassol, Cyprus",
       description: "Striking contemporary architecture framed by dramatic rock faces, offering total privacy and panoramic views just minutes outside Limassol.",
+      coverImage: portfolio1,
       gallery: [
-        { src: portfolio1, alt: "The Monagroulli Monolith - Dramatic Exterior", type: "exterior", room: "" },
-        { src: portfolio6, alt: "The Monagroulli Monolith - Contemporary Pavilion Living", type: "interior", room: "living room" },
-        { src: portfolio10, alt: "The Monagroulli Monolith - Panoramic Lounge", type: "interior", room: "living room" },
-        { src: portfolio4, alt: "The Monagroulli Monolith - Minimalist Living Architecture", type: "interior", room: "living room" },
+        { src: portfolio1, alt: "The Monagroulli Monolith - Exterior View", type: "exterior", room: "" },
+        { src: portfolio6, alt: "The Monagroulli Monolith - Contemporary Bedroom", type: "interior", room: "bedroom" },
+        { src: portfolio10, alt: "The Monagroulli Monolith - Living Room Space", type: "interior", room: "living room" },
+        { src: portfolio4, alt: "The Monagroulli Monolith - Modern Minimal Lounge", type: "interior", room: "living room" },
       ],
     },
     {
       id: 2,
       title: "The Platres Retreat, Pano Platres, Troodos, Cyprus",
       description: "A modern timber cabin tucked into the dense Troodos pine forests, offering a serene, high-altitude alpine escape from the coastal heat.",
+      coverImage: portfolio2,
       gallery: [
         { src: portfolio2, alt: "The Platres Retreat - Timber Cabin Exterior", type: "exterior", room: "" },
-        { src: portfolio5, alt: "The Platres Retreat - Serene Alpine Living Room", type: "interior", room: "living room" },
+        { src: portfolio5, alt: "The Platres Retreat - Cozy Interior Living Architecture", type: "interior", room: "living room" },
         { src: portfolio21, alt: "The Platres Retreat - High-Altitude Lounge Space", type: "interior", room: "living room" },
       ],
     },
@@ -110,23 +112,25 @@ const Portfolio = () => {
       id: 3,
       title: "The West Coast Frontier, Neo Chorio, Paphos, Cyprus",
       description: "An elevated contemporary residence framing Cyprus’s most rugged, untouched western peninsula with sweeping sea views.",
+      coverImage: portfolio3,
       gallery: [
-        { src: portfolio3, alt: "The West Coast Frontier - Peninsula Sea Views", type: "exterior", room: "" },
-        { src: portfolio14, alt: "The West Coast Frontier - Premium Integrated Kitchen", type: "interior", room: "kitchen" },
-        { src: portfolio15, alt: "The West Coast Frontier - Open Plan Living Environment", type: "interior", room: "living room" },
-        { src: portfolio16, alt: "The West Coast Frontier - Coastal Facing Lounge", type: "interior", room: "living room" },
-        { src: portfolio20, alt: "The West Coast Frontier - Luxury Monolithic Bathroom", type: "interior", room: "bathroom" },
+        { src: portfolio3, alt: "The West Coast Frontier - Coastal Frontage View", type: "exterior", room: "" },
+        { src: portfolio14, alt: "The West Coast Frontier - Integrated Kitchen Concept", type: "interior", room: "kitchen" },
+        { src: portfolio15, alt: "The West Coast Frontier - Panoramic Living Environment", type: "interior", room: "living room" },
+        { src: portfolio16, alt: "The West Coast Frontier - Minimalist Light Lounge", type: "interior", room: "living room" },
+        { src: portfolio20, alt: "The West Coast Frontier - Luxury Marble Bathroom", type: "interior", room: "bathroom" },
       ],
     },
     {
       id: 4,
       title: "Modern Residential Complex, Latsia, Nicosia, Cyprus",
       description: "A contemporary multi-family residential development featuring sleek glass balconies and warm brick accents, perfectly integrated into the expanding hillsides of Nicosia.",
+      coverImage: portfolio7,
       gallery: [
-        { src: portfolio7, alt: "Modern Residential Complex - Urban Exterior", type: "exterior", room: "" },
-        { src: portfolio51, alt: "Modern Residential Complex - Sleek Living Spaces", type: "interior", room: "living room" },
-        { src: portfolio53, alt: "Modern Residential Complex - Modernist Lounge", type: "interior", room: "living room" },
-        { src: portfolio54, alt: "Modern Residential Complex - Geometric Dining Area", type: "interior", room: "living room" },
+        { src: portfolio7, alt: "Modern Residential Complex - Multi-Family Exterior", type: "exterior", room: "" },
+        { src: portfolio51, alt: "Modern Residential Complex - Open Floor Layout", type: "interior", room: "living room" },
+        { src: portfolio53, alt: "Modern Residential Complex - Modernist Lounge Architecture", type: "interior", room: "living room" },
+        { src: portfolio54, alt: "Modern Residential Complex - Premium Dining Area", type: "interior", room: "living room" },
         { src: portfolio11, alt: "Modern Residential Complex - Master Bedroom Suite", type: "interior", room: "bedroom" },
       ],
     },
@@ -134,145 +138,163 @@ const Portfolio = () => {
       id: 5,
       title: "The Omodos Stone Villa, Omodos, Limassol, Cyprus",
       description: "A beautiful traditional fieldstone residence combining classic Cypriot masonry with modern elevated terraces, overlooking the rolling vineyard valleys of Limassol.",
+      coverImage: portfolio8,
       gallery: [
-        { src: portfolio8, alt: "The Omodos Stone Villa - Classic Fieldstone Architecture", type: "exterior", room: "" },
-        { src: portfolio13, alt: "The Omodos Stone Villa - Traditional Textures Living Room", type: "interior", room: "living room" },
-        { src: portfolio18, alt: "The Omodos Stone Villa - Creative Focus Home Office", type: "interior", room: "office" },
-        { src: portfolio31, alt: "The Omodos Stone Villa - Japandi Vineyard Kitchen", type: "interior", room: "kitchen" },
+        { src: portfolio8, alt: "The Omodos Stone Villa - Rustic Fieldstone Facade", type: "exterior", room: "" },
+        { src: portfolio13, alt: "The Omodos Stone Villa - Timber Accent Living Space", type: "interior", room: "living room" },
+        { src: portfolio18, alt: "The Omodos Stone Villa - Focused Work Environment", type: "interior", room: "office" },
+        { src: portfolio31, alt: "The Omodos Stone Villa - Minimalist Japandi Kitchen", type: "interior", room: "kitchen" },
       ],
     },
     {
       id: 6,
       title: "The Kifisia Horizon House, Kifisia, Athens, Greece",
       description: "A low-profile modern pavilion tucked away into the mature, leafy green landscapes of northern Athens, pairing minimalist architecture with total privacy.",
+      coverImage: portfolio19,
       gallery: [
-        { src: portfolio19, alt: "The Kifisia Horizon House - Modern Pavilion Facade", type: "exterior", room: "" },
-        { src: portfolio48, alt: "The Kifisia Horizon House - Minimalist White Living Room", type: "interior", room: "living room" },
-        { src: portfolio49, alt: "The Kifisia Horizon House - Light-Filled Lounge", type: "interior", room: "living room" },
-        { src: portfolio59, alt: "The Kifisia Horizon House - Architectural Office Study", type: "interior", room: "office" },
+        { src: portfolio19, alt: "The Kifisia Horizon House - Minimal Pavilion Architecture", type: "exterior", room: "" },
+        { src: portfolio48, alt: "The Kifisia Horizon House - Bright Open Plan Living Room", type: "interior", room: "living room" },
+        { src: portfolio49, alt: "The Kifisia Horizon House - Structural Framed Lounge", type: "interior", room: "living room" },
+        { src: portfolio59, alt: "The Kifisia Horizon House - Creative Studio Space", type: "interior", room: "office" },
       ],
     },
     {
       id: 7,
       title: "The Ekali Arched Villa, Ekali, Athens, Greece",
       description: "Striking brutalist architecture nestled within the elite, densely wooded northern suburbs of Athens, blending geometric concrete forms with soaring glass facades.",
+      coverImage: portfolio22,
       gallery: [
-        { src: portfolio22, alt: "The Ekali Arched Villa - Geometric Brutalist Concrete", type: "exterior", room: "" },
-        { src: portfolio17, alt: "The Ekali Arched Villa - High-End Luxury Interior Lounge", type: "interior", room: "living room" },
-        { src: portfolio38, alt: "The Ekali Arched Villa - Deep Forest Accent Bedroom", type: "interior", room: "bedroom" },
-        { src: portfolio46, alt: "The Ekali Arched Villa - Minimalist Bedding Architecture", type: "interior", room: "bedroom" },
+        { src: portfolio22, alt: "The Ekali Arched Villa - Geometric Concrete Footprint", type: "exterior", room: "" },
+        { src: portfolio17, alt: "The Ekali Arched Villa - Premium Architectural Lounge", type: "interior", room: "living room" },
+        { src: portfolio38, alt: "The Ekali Arched Villa - Forest Green Highlight Bedroom", type: "interior", room: "bedroom" },
+        { src: portfolio46, alt: "The Ekali Arched Villa - Linear Bedding Architecture", type: "interior", room: "bedroom" },
       ],
     },
     {
       id: 8,
       title: "The Palodeia Smart Residence, Palodeia, Limassol, Cyprus",
       description: "A masterfully planned smart home showcasing an L-shaped architectural footprint, private interior courtyards, and clean minimalist zoning tailored for modern Mediterranean lifestyles.",
+      coverImage: portfolio23,
       gallery: [
-        { src: portfolio23, alt: "The Palodeia Smart Residence - Architectural Footprint Overview", type: "exterior", room: "" },
-        { src: portfolio26, alt: "The Palodeia Smart Residence - Courtyard Axis View", type: "exterior", room: "" },
-        { src: portfolio27, alt: "The Palodeia Smart Residence - Clean Structural Render", type: "exterior", room: "" },
-        { src: portfolio32, alt: "The Palodeia Smart Residence - Minimalist Living Zone", type: "interior", room: "living room" },
-        { src: portfolio39, alt: "The Palodeia Smart Residence - Modular Kitchen Concept", type: "interior", room: "kitchen" },
+        { src: portfolio23, alt: "The Palodeia Smart Residence - L-Shaped Footprint View", type: "exterior", room: "" },
+        { src: portfolio26, alt: "The Palodeia Smart Residence - Courtyard Architecture Plan", type: "exterior", room: "" },
+        { src: portfolio27, alt: "The Palodeia Smart Residence - Modern Layout Render", type: "exterior", room: "" },
+        { src: portfolio32, alt: "The Palodeia Smart Residence - Monolithic Living Zone", type: "interior", room: "living room" },
+        { src: portfolio39, alt: "The Palodeia Smart Residence - Sleek Gray Kitchen Island", type: "interior", room: "kitchen" },
       ],
     },
     {
       id: 9,
       title: "The Pelion Woodland Manor, Tsagarada, Mount Pelion, Greece",
       description: "A sophisticated sanctuary merging minimalist architecture with the dense, world-famous forest landscapes of the Pelion peninsula.",
+      coverImage: portfolio24,
       gallery: [
-        { src: portfolio24, alt: "The Pelion Woodland Manor - Woodland Integration Facade", type: "exterior", room: "" },
+        { src: portfolio24, alt: "The Pelion Woodland Manor - Forest Facing Elevation", type: "exterior", room: "" },
         { src: portfolio9, alt: "The Pelion Woodland Manor - Premium Slate Kitchen Layout", type: "interior", room: "kitchen" },
-        { src: portfolio47, alt: "The Pelion Woodland Manor - Dark Wood Dining Hall", type: "interior", room: "living room" },
-        { src: portfolio50, alt: "The Pelion Woodland Manor - Timber Paneled Lounge", type: "interior", room: "living room" },
-        { src: portfolio25, alt: "The Pelion Woodland Manor - Executive Forest View Office", type: "interior", room: "office" },
+        { src: portfolio47, alt: "The Pelion Woodland Manor - Dark Wood Architectural Dining", type: "interior", room: "living room" },
+        { src: portfolio50, alt: "The Pelion Woodland Manor - Integrated Timber Lounge", type: "interior", room: "living room" },
+        { src: portfolio25, alt: "The Pelion Woodland Manor - Executive Woodland Office Study", type: "interior", room: "office" },
       ],
     },
     {
       id: 10,
       title: "The Protaras Palm Dunes, Protaras Coast, Famagusta, Cyprus",
       description: "A massive, master-planned holiday development showcasing uniform minimalist design, private plunge pools, and lush tropical landscaping tailored for elite Mediterranean resort living.",
+      coverImage: portfolio28,
       gallery: [
-        { src: portfolio28, alt: "The Protaras Palm Dunes - Resort Minimalist Frontage", type: "exterior", room: "" },
-        { src: portfolio29, alt: "The Protaras Palm Dunes - Tropical Master Plan Aerial View", type: "exterior", room: "" },
-        { src: portfolio30, alt: "The Protaras Palm Dunes - Pool Deck Elevation", type: "exterior", room: "" },
-        { src: portfolio41, alt: "The Protaras Palm Dunes - Slatted Timber Dining Space", type: "interior", room: "living room" },
-        { src: portfolio42, alt: "The Protaras Palm Dunes - Contemporary Warm Tone Bathroom", type: "interior", room: "bathroom" },
-        { src: portfolio44, alt: "The Protaras Palm Dunes - Luxury Stone Chef Kitchen", type: "interior", room: "kitchen" },
-        { src: portfolio45, alt: "The Protaras Palm Dunes - Sage Green Vacation Suite", type: "interior", room: "bedroom" },
-        { src: portfolio52, alt: "The Protaras Palm Dunes - High-End Private Work Suite", type: "interior", room: "office" },
+        { src: portfolio28, alt: "The Protaras Palm Dunes - Mediterranean Resort Facade", type: "exterior", room: "" },
+        { src: portfolio29, alt: "The Protaras Palm Dunes - Aerial Layout View", type: "exterior", room: "" },
+        { src: portfolio30, alt: "The Protaras Palm Dunes - Minimalist Pool Deck Render", type: "exterior", room: "" },
+        { src: portfolio41, alt: "The Protaras Palm Dunes - Slatted Wood Lounge Space", type: "interior", room: "living room" },
+        { src: portfolio42, alt: "The Protaras Palm Dunes - Warm Contemporary Bathroom", type: "interior", room: "bathroom" },
+        { src: portfolio44, alt: "The Protaras Palm Dunes - Matte Charcoal Chef Kitchen", type: "interior", room: "kitchen" },
+        { src: portfolio45, alt: "The Protaras Palm Dunes - Minimalist Master Bed Suite", type: "interior", room: "bedroom" },
+        { src: portfolio52, alt: "The Protaras Palm Dunes - Premium Quiet Working Office", type: "interior", room: "office" },
       ],
     },
     {
       id: 11,
       title: "The Ellinikon Plaza Towers, The Ellinikon, Athens, Greece",
       description: "An iconic metropolitan high-rise complex anchoring the premier urban coastal development area, showcasing sleek glass grids, grand plazas, and mixed-use luxury commercial spaces.",
+      coverImage: portfolio35,
       gallery: [
-        { src: portfolio12, alt: "The Ellinikon Plaza Towers - Polished Marble Master Bath", type: "interior", room: "bathroom" },
-        { src: portfolio35, alt: "The Ellinikon Plaza Towers - Structural Glass Grid Elevation", type: "exterior", room: "" },
-        { src: portfolio37, alt: "The Ellinikon Plaza Towers - Corporate Penthouse Office Suite", type: "interior", room: "office" },
-        { src: portfolio40, alt: "The Ellinikon Plaza Towers - Architectural Linear Kitchen", type: "interior", room: "kitchen" },
+        { src: portfolio12, alt: "The Ellinikon Plaza Towers - Luxury Calacatta Marble Bath", type: "interior", room: "bathroom" },
+        { src: portfolio35, alt: "The Ellinikon Plaza Towers - Glass Grid Highrise Facade", type: "exterior", room: "" },
+        { src: portfolio37, alt: "The Ellinikon Plaza Towers - Sky Lounge Office Lounge", type: "interior", room: "office" },
+        { src: portfolio40, alt: "The Ellinikon Plaza Towers - Streamlined Minimal Kitchen", type: "interior", room: "kitchen" },
       ],
     },
     {
       id: 12,
       title: "The Strovolos Design Pavilion, Strovolos, Nicosia, Cyprus",
       description: "A striking commercial showroom featuring a raw concrete facade and bold timber framing, designed as an ultra-premium flagship office or high-end retail headquarters.",
+      coverImage: portfolio36,
       gallery: [
-        { src: portfolio33, alt: "The Strovolos Design Pavilion - Organic Texture Bedroom", type: "interior", room: "bedroom" },
-        { src: portfolio34, alt: "The Strovolos Design Pavilion - Integrated Media Living Room", type: "interior", room: "living room" },
-        { src: portfolio36, alt: "The Strovolos Design Pavilion - Raw Concrete Flagship Facade", type: "exterior", room: "" },
-        { src: portfolio43, alt: "The Strovolos Design Pavilion - Sculptural Concrete Bathroom", type: "interior", room: "bathroom" },
-        { src: portfolio60, alt: "The Strovolos Design Pavilion - Premium Matte Kitchen Concept", type: "interior", room: "kitchen" },
+        { src: portfolio33, alt: "The Strovolos Design Pavilion - Textural Bedroom Scheme", type: "interior", room: "bedroom" },
+        { src: portfolio34, alt: "The Strovolos Design Pavilion - Integrated Media Living Space", type: "interior", room: "living room" },
+        { src: portfolio36, alt: "The Strovolos Design Pavilion - Raw Concrete Modern Facade", type: "exterior", room: "" },
+        { src: portfolio43, alt: "The Strovolos Design Pavilion - Contemporary Organic Bathroom", type: "interior", room: "bathroom" },
+        { src: portfolio60, alt: "The Strovolos Design Pavilion - High-End Premium Kitchen Visual", type: "interior", room: "kitchen" },
       ],
     },
     {
       id: 13,
       title: "Aspithea, Akrounta, Limassol",
       description: "An exclusive cluster of contemporary eco-villas blending crisp architectural geometries with the rugged, pine-dappled mountainous landscapes.",
+      coverImage: portfolio55,
       gallery: [
-        { src: portfolio55, alt: "Aspithea - Mountain Cluster Aerial Perspective", type: "exterior", room: "" },
+        { src: portfolio55, alt: "Aspithea - Alpine Mountain Drone Overview", type: "exterior", room: "" },
         { src: portfolio56, alt: "Aspithea - Sunken Mountain View Living Room", type: "interior", room: "living room" },
-        { src: portfolio57, alt: "Aspithea - Integrated Minimal Eco-Kitchen", type: "interior", room: "kitchen" },
-        { src: portfolio58, alt: "Aspithea - Panoramic Timber Master Bedroom", type: "interior", room: "bedroom" },
-        { src: portfolio61, alt: "Aspithea - Clean Geometric Geometry Entrance", type: "exterior", room: "" },
+        { src: portfolio57, alt: "Aspithea - Integrated Minimalist Eco-Kitchen", type: "interior", room: "kitchen" },
+        { src: portfolio58, alt: "Aspithea - Structural Wood Framing Master Bed", type: "interior", room: "bedroom" },
+        { src: portfolio61, alt: "Aspithea - Primary Geometric Entrance Real Estate", type: "exterior", room: "" },
       ],
     }
   ];
 
-  // --- FLATTEN DATAMODEL TO PHOTO LEVEL FOR DIRECT FILTERING ---
-  const allPhotos = useMemo(() => {
-    let flattened: any[] = [];
+  // --- COMPUTE FEED ITEM LEVEL DYNAMICS ---
+  const currentFeedItems = useMemo(() => {
+    // CONDITIONAL CASE 1: When browsing "ALL", show grouped parent objects
+    if (activeTab === "all") {
+      return projectsData.map((project) => ({
+        isGroupedFolder: true,
+        id: project.id,
+        title: project.title,
+        description: project.description,
+        displayImage: project.coverImage,
+        initialIndexInGallery: 0,
+        associatedProject: project,
+        tagLabel: t("Full Project Portfolio"),
+        hoverSubtitle: project.title,
+      }));
+    }
+
+    // CONDITIONAL CASE 2: When "EXTERIOR" or "INTERIOR" subcategories are clicked, flatten directly to items
+    let itemsList: any[] = [];
     projectsData.forEach((project) => {
       project.gallery.forEach((photo) => {
-        flattened.push({
-          ...photo,
-          projectParent: {
-            id: project.id,
+        const matchesCategory = photo.type === activeTab;
+        const matchesSubRoom = activeTab === "interior" && (activeSubTab === "all" || photo.room === activeSubTab);
+
+        if (matchesCategory && (activeTab !== "interior" || matchesSubRoom)) {
+          const matchingIndex = project.gallery.findIndex((g) => g.src === photo.src);
+          
+          itemsList.push({
+            isGroupedFolder: false,
+            id: `${project.id}-${photo.src}`,
             title: project.title,
             description: project.description,
-            gallery: project.gallery
-          }
-        });
+            displayImage: photo.src,
+            initialIndexInGallery: matchingIndex >= 0 ? matchingIndex : 0,
+            associatedProject: project,
+            tagLabel: photo.type === "exterior" ? t("EXTERIOR") : photo.room,
+            hoverSubtitle: photo.alt,
+          });
+        }
       });
     });
-    return flattened;
-  }, []);
-
-  // --- FILTER SYSTEM APPLIED TO INDIVIDUAL PHOTOS ---
-  const filteredPhotos = useMemo(() => {
-    return allPhotos.filter((photo) => {
-      // Step 1: Base Tier Filter (All vs Exterior vs Interior)
-      const matchesMainTab = activeTab === "all" || photo.type === activeTab;
-      if (!matchesMainTab) return false;
-
-      // Step 2: Interior Room Tag Filtering (Kitchen, Bathroom, etc.)
-      if (activeTab === "interior" && activeSubTab !== "all") {
-        return photo.room === activeSubTab;
-      }
-
-      return true;
-    });
-  }, [allPhotos, activeTab, activeSubTab]);
+    return itemsList;
+  }, [activeTab, activeSubTab]);
 
   const tabs = [
     { id: "all", label: t("ALL") },
@@ -289,20 +311,18 @@ const Portfolio = () => {
     { id: "office", label: t("OFFICE") },
   ];
 
-  const handleOpenLightbox = (photoItem: any) => {
-    setSelectedProject(photoItem.projectParent);
-    // Find index of clicked photo inside its own project array
-    const lookUpIndex = photoItem.projectParent.gallery.findIndex((g: any) => g.src === photoItem.src);
-    setSelectedImgIndex(lookUpIndex >= 0 ? lookUpIndex : 0);
+  const handleOpenFolder = (feedItem: any) => {
+    setSelectedProject(feedItem.associatedProject);
+    setSelectedImgIndex(feedItem.initialIndexInGallery);
   };
 
   return (
     <section id="portfolio" className="py-24 bg-[#121212] min-h-screen text-white">
       <div className="container mx-auto px-6">
         
-        {/* Title Block */}
+        {/* Section Heading Titles */}
         <div className="text-center mb-12">
-          <span className="text-primary font-body text-sm tracking-[0.3em] uppercase block text-[#00bad3]">
+          <span className="text-[#00bad3] font-body text-sm tracking-[0.3em] uppercase block">
             {t("portfolio_eyebrow", "OUR PORTFOLIO")}
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-medium text-white mt-4 italic">
@@ -310,7 +330,7 @@ const Portfolio = () => {
           </h2>
         </div>
 
-        {/* Level 1: Category Filter Strip */}
+        {/* Global Level 1 Nav Controls */}
         <div className="flex flex-wrap justify-center gap-3 mb-6">
           {tabs.map((tab) => (
             <button
@@ -330,7 +350,7 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Level 2: Interior Room Types Row */}
+        {/* Global Level 2 Sub-Nav Controls */}
         <div className="h-14 mb-10 overflow-hidden">
           <AnimatePresence mode="wait">
             {activeTab === "interior" && (
@@ -358,12 +378,12 @@ const Portfolio = () => {
           </AnimatePresence>
         </div>
 
-        {/* Granular Photo Feed Display Grid */}
+        {/* Layout Grid Feed */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
-            {filteredPhotos.map((photoItem, index) => (
+            {currentFeedItems.map((item, index) => (
               <motion.div
-                key={`${photoItem.src}-${index}`}
+                key={item.id}
                 layout
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -376,39 +396,39 @@ const Portfolio = () => {
                       className="group relative aspect-[4/3] overflow-hidden rounded-xl cursor-pointer bg-neutral-900 shadow-xl"
                       onMouseEnter={() => setHoveredIndex(index)}
                       onMouseLeave={() => setHoveredIndex(null)}
-                      onClick={() => handleOpenLightbox(photoItem)}
+                      onClick={() => handleOpenFolder(item)}
                     >
                       <img
-                        src={photoItem.src}
-                        alt={photoItem.alt}
+                        src={item.displayImage}
+                        alt={item.title}
                         loading="lazy"
                         className={`w-full h-full object-cover transition-transform duration-750 ease-out ${
                           hoveredIndex === index ? "scale-105" : "scale-100"
                         }`}
                       />
                       
-                      {/* Hover Interaction Overlay Mask */}
+                      {/* Interactive Hover Info Panel */}
                       <div className={`absolute inset-0 bg-black/70 transition-opacity duration-300 flex flex-col justify-end p-6 ${
                         hoveredIndex === index ? "opacity-100" : "opacity-0"
                       }`}>
                         <span className="text-[#00bad3] text-[9px] font-body tracking-[0.25em] uppercase mb-1 block">
-                          {photoItem.type === "exterior" ? t("EXTERIOR") : photoItem.room}
+                          {item.tagLabel}
                         </span>
                         <h3 className="font-display text-base text-white font-light italic line-clamp-1">
-                          {photoItem.projectParent.title}
+                          {item.title}
                         </h3>
                         <p className="text-gray-400 text-[11px] line-clamp-1 mt-1 font-body font-light">
-                          {photoItem.alt}
+                          {item.hoverSubtitle}
                         </p>
                       </div>
                     </div>
                   </DialogTrigger>
 
-                  {/* HIGH-IMPACT COMPREHENSIVE FOLDER VIEWPORT OVERLAY */}
+                  {/* MASTER PORTFOLIO MODAL BOX */}
                   {selectedProject && (
                     <DialogContent className="max-w-[95vw] w-full md:max-w-5xl h-[88vh] p-6 border-none bg-black/95 flex flex-col justify-between overflow-hidden backdrop-blur-2xl text-white">
                       
-                      {/* Context Metadata Track */}
+                      {/* Parent Structural Description Details */}
                       <div className="w-full border-b border-white/10 pb-4">
                         <h4 className="text-white font-display text-lg font-medium tracking-wide leading-snug">
                           {selectedProject.title}
@@ -418,7 +438,7 @@ const Portfolio = () => {
                         </p>
                       </div>
 
-                      {/* Display Viewport Showcase */}
+                      {/* Main Showcase Canvas Frame */}
                       <div className="flex-1 w-full flex items-center justify-center p-2 my-2 relative overflow-hidden">
                         <img
                           src={selectedProject.gallery[selectedImgIndex]?.src}
@@ -427,10 +447,10 @@ const Portfolio = () => {
                         />
                       </div>
 
-                      {/* Media Strip Folder Control Bar */}
+                      {/* Folder Content Navigation Ribbon */}
                       <div className="w-full bg-white/[0.02] p-4 rounded-xl border border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
                         
-                        {/* Currently Highlighted Item Title */}
+                        {/* Selected Photo Information details */}
                         <div className="text-center md:text-left min-w-[200px] max-w-xs">
                           <span className="text-[#00bad3] text-[9px] font-body tracking-[0.2em] uppercase block mb-0.5">
                             {selectedProject.gallery[selectedImgIndex]?.type === "exterior" 
@@ -442,7 +462,7 @@ const Portfolio = () => {
                           </p>
                         </div>
 
-                        {/* Interactive Horizontal Media Scroller */}
+                        {/* Slide Deck Thumbnails Strip */}
                         <div className="flex items-center gap-2 overflow-x-auto max-w-full py-1 px-2 custom-scrollbar">
                           {selectedProject.gallery.map((img: any, idx: number) => (
                             <button
@@ -473,7 +493,7 @@ const Portfolio = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Bottom Call to Action */}
+        {/* Footer Contact Redirection Banner */}
         <div className="mt-16 text-center">
           <button
             onClick={() => {

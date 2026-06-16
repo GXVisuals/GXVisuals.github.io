@@ -76,11 +76,9 @@ const Portfolio = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState("all");
   const [activeSubTab, setActiveSubTab] = useState("all");
-  
-  // Tracks selection index inside open project folder
   const [selectedFolderImg, setSelectedFolderImg] = useState(0);
 
-  // --- RESTRUCTURED PROJECTS DATA (GROUPED BY PROJECTS WITH EXTERIOR & INTERIOR INSIDE) ---
+  // --- PROJECTS DATA ---
   const projects = [
     {
       id: 1,
@@ -89,7 +87,7 @@ const Portfolio = () => {
       hasExterior: true,
       hasInterior: true,
       subCategories: ["living room", "kitchen", "bedroom", "exterior"],
-      coverImage: portfolio61, // Shown on main page grid
+      coverImage: portfolio61,
       gallery: [
         { src: portfolio61, alt: "Exterior View 1", label: t("cat_res_ext") },
         { src: portfolio55, alt: "Aerial Exterior Perspective", label: t("cat_res_ext") },
@@ -244,7 +242,7 @@ const Portfolio = () => {
     }
   ];
 
-  // --- RE-ENGINEERED SMART FILTERING ---
+  // --- FILTERING LOGIC ---
   const filteredProjects = useMemo(() => {
     return projects.filter((p) => {
       const matchesMain = activeTab === "all" || p.category === activeTab || (activeTab === "exterior" && p.hasExterior) || (activeTab === "interior" && p.hasInterior);
@@ -330,7 +328,7 @@ const Portfolio = () => {
           )}
         </AnimatePresence>
 
-        {/* Main Grid View */}
+        {/* Portfolio Cards Grid */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
@@ -371,45 +369,51 @@ const Portfolio = () => {
                     </div>
                   </DialogTrigger>
 
-                  {/* FOLDER VIEW LIGHTBOX ACCESSED VIA CONTEXT SELECTION */}
-                  <DialogContent className="max-w-[95vw] w-full md:max-w-5xl max-h-[92vh] p-6 border-none bg-black/95 flex flex-col md:flex-row gap-6 overflow-y-auto backdrop-blur-xl">
+                  {/* ENLARGED FULL-WIDTH FOLDER VIEW MODAL */}
+                  <DialogContent className="max-w-[95vw] w-full md:max-w-6xl h-[92vh] p-6 border-none bg-black/95 flex flex-col justify-between overflow-hidden backdrop-blur-xl">
                     
-                    {/* Active Preview Frame */}
-                    <div className="flex-1 flex flex-col items-center justify-center bg-black/40 rounded-lg p-2 min-h-[35vh] md:min-h-[55vh]">
-                      <img
-                        src={project.gallery[selectedFolderImg]?.src}
-                        alt={project.gallery[selectedFolderImg]?.alt}
-                        className="max-h-[48vh] md:max-h-[60vh] w-auto object-contain rounded-md shadow-lg"
-                      />
-                      <div className="mt-4 text-center">
-                        <span className="text-primary text-[10px] font-body tracking-[0.2em] uppercase block mb-1">
-                          {project.gallery[selectedFolderImg]?.label}
-                        </span>
-                        <p className="text-white font-display italic text-sm">
-                          {project.gallery[selectedFolderImg]?.alt}
+                    {/* Top Header Section */}
+                    <div className="w-full flex items-center justify-between border-b border-white/10 pb-3">
+                      <div>
+                        <h4 className="text-white font-display text-xl font-medium">{project.title}</h4>
+                        <p className="text-[11px] text-muted-foreground uppercase tracking-wider mt-0.5">
+                          {project.gallery.length} {t("Renders Available")}
                         </p>
                       </div>
                     </div>
 
-                    {/* Album / Directory Structure Selector */}
-                    <div className="w-full md:w-80 flex flex-col">
-                      <div className="mb-4">
-                        <h4 className="text-white font-display text-lg font-medium">{project.title}</h4>
-                        <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">
-                          {project.gallery.length} Renders Available in Folder
+                    {/* Central Area: High-Impact Large Render Frame */}
+                    <div className="flex-1 w-full flex items-center justify-center p-2 my-4 relative overflow-hidden">
+                      <img
+                        src={project.gallery[selectedFolderImg]?.src}
+                        alt={project.gallery[selectedFolderImg]?.alt}
+                        className="max-w-full max-h-[52vh] md:max-h-[58vh] w-auto h-auto object-contain rounded-md shadow-2xl transition-all duration-300"
+                      />
+                    </div>
+
+                    {/* Info & Navigation Bottom Footer Strip */}
+                    <div className="w-full bg-black/30 p-4 rounded-xl border border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+                      
+                      {/* Selected Image Title/Tags */}
+                      <div className="text-center md:text-left min-w-[200px]">
+                        <span className="text-primary text-[10px] font-body tracking-[0.2em] uppercase block mb-0.5">
+                          {project.gallery[selectedFolderImg]?.label}
+                        </span>
+                        <p className="text-white font-display italic text-sm font-light">
+                          {project.gallery[selectedFolderImg]?.alt}
                         </p>
                       </div>
-                      
-                      {/* Interactive Selection Assets Grid */}
-                      <div className="grid grid-cols-4 md:grid-cols-2 gap-2.5 max-h-[30vh] md:max-h-[50vh] overflow-y-auto pr-1 custom-scrollbar">
+
+                      {/* Folder Thumbnails Row Selector */}
+                      <div className="flex items-center gap-2 overflow-x-auto max-w-full py-1 px-2 custom-scrollbar">
                         {project.gallery.map((img, index) => (
                           <button
                             key={index}
                             onClick={() => setSelectedFolderImg(index)}
-                            className={`relative aspect-[4/3] rounded-md overflow-hidden bg-muted transition-all duration-300 border-2 ${
+                            className={`relative w-20 md:w-24 aspect-[4/3] rounded-md overflow-hidden bg-muted flex-shrink-0 transition-all duration-300 border-2 ${
                               selectedFolderImg === index 
-                                ? "border-primary scale-[0.96] shadow-[0_0_15px_rgba(0,186,211,0.5)]" 
-                                : "border-transparent opacity-50 hover:opacity-100"
+                                ? "border-primary scale-95 shadow-[0_0_12px_rgba(0,186,211,0.6)] opacity-100" 
+                                : "border-transparent opacity-40 hover:opacity-90"
                             }`}
                           >
                             <img 
@@ -420,6 +424,7 @@ const Portfolio = () => {
                           </button>
                         ))}
                       </div>
+
                     </div>
 
                   </DialogContent>
@@ -429,7 +434,7 @@ const Portfolio = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Contact CTA Trigger */}
+        {/* Contact CTA */}
         <div className="mt-20 text-center">
           <button
             onClick={() => {

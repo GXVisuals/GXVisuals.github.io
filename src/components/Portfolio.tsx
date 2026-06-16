@@ -244,10 +244,10 @@ const Portfolio = () => {
       hasExterior: true,
       hasInterior: true,
       subCategories: ["bathroom", "kitchen"],
-      coverImage: portfolio12,
+      coverImage: portfolio35,
       gallery: [
-        { src: portfolio12, alt: "The Ellinikon Plaza Towers - Luxury Bathroom Visual", label: t("cat_interior") },
         { src: portfolio35, alt: "The Ellinikon Plaza Towers - Skyscraper Architecture", label: t("cat_res_ext") },
+        { src: portfolio12, alt: "The Ellinikon Plaza Towers - Luxury Bathroom Visual", label: t("cat_interior") },
         { src: portfolio37, alt: "The Ellinikon Plaza Towers - Executive Environment", label: t("cat_interior") },
         { src: portfolio40, alt: "The Ellinikon Plaza Towers - Marble and Timber Kitchen", label: t("cat_interior") },
       ],
@@ -259,11 +259,11 @@ const Portfolio = () => {
       hasExterior: true,
       hasInterior: true,
       subCategories: ["bedroom", "living room", "kitchen"],
-      coverImage: portfolio33,
+      coverImage: portfolio36,
       gallery: [
+        { src: portfolio36, alt: "The Strovolos Design Pavilion - Mixed-Use Raw Facade", label: t("cat_res_ext") },
         { src: portfolio33, alt: "The Strovolos Design Pavilion - Boho Master Bedroom", label: t("cat_bedroom") },
         { src: portfolio34, alt: "The Strovolos Design Pavilion - Modern Media Lounge", label: t("cat_res_int") },
-        { src: portfolio36, alt: "The Strovolos Design Pavilion - Mixed-Use Raw Facade", label: t("cat_res_ext") },
         { src: portfolio43, alt: "The Strovolos Design Pavilion - Bright Luxury Bathroom", label: t("cat_interior") },
         { src: portfolio60, alt: "The Strovolos Design Pavilion - High-End Premium Kitchen", label: t("cat_interior") },
       ],
@@ -277,11 +277,11 @@ const Portfolio = () => {
       subCategories: ["living room", "kitchen", "bedroom"],
       coverImage: portfolio55,
       gallery: [
+        { src: portfolio61, alt: "Aspithea - Primary Geometric Front Facade", label: t("cat_res_ext") },
         { src: portfolio55, alt: "Aspithea - Alpine Aerial Eco-Villa Perspective", label: t("cat_res_ext") },
         { src: portfolio56, alt: "Aspithea - Integrated Mountain Living Room", label: t("cat_res_int") },
         { src: portfolio57, alt: "Aspithea - High-End Eco Kitchen Geometry", label: t("cat_interior") },
-        { src: portfolio58, alt: "Aspithea - Minimalist Mountain View Bedroom", label: t("cat_bedroom") },
-        { src: portfolio61, alt: "Aspithea - Primary Geometric Front Facade", label: t("cat_res_ext") },
+        { src: portfolio58, alt: "Aspithea - Minimalist Mountain View Bedroom", label: t("cat_bedroom") },        
       ],
     }
   ];

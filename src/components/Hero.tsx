@@ -1,13 +1,30 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
-import heroImage from "@/assets/portfolio-8.webp"; 
 import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import hero1 from "@/assets/portfolio-8.webp"; 
+import hero2 from "@/assets/portfolio-29.webp"; 
+import hero3 from "@/assets/portfolio-24.webp"; 
+import hero4 from "@/assets/portfolio-7.webp"; 
+import hero5 from "@/assets/portfolio-36.webp"; 
+
+const heroImages = [hero1, hero2, hero3, hero4, hero5];
 
 const Hero = () => {
   const { t } = useTranslation();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  // 2. This hook handles switching the image automatically every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIsLoaded(false); // Reset fade animation for the next image
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 3000); 
+    return () => clearInterval(timer);
+  }, []);
 
   const scrollToContent = () => {
     document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
@@ -15,17 +32,20 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#121212]">
+      {/* Background Images */}
       <div className="absolute inset-0 z-0">
         <img
-          src={heroImage}
-          alt="GXVISUALS"
+          src={heroImages[currentImageIndex]}
+          alt="GXVISUALS portfolio render"
           className={`w-full h-full object-cover transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           loading="eager"
           onLoad={() => setIsLoaded(true)}
         />
+        {/* Dark overlay to keep text readable */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
       </div>
 
+      {/* Content */}
       <div className="container relative z-10 px-6 py-32 text-center">
         <span className="inline-block text-primary font-body text-sm tracking-[0.3em] uppercase mb-6 animate-fade-in">
           {t('hero_eyebrow', '3D Visualization Studio')}

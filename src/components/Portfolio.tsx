@@ -295,13 +295,13 @@ const Portfolio = () => {
       description: "An innovative, custom-built children's library and interactive lounge featuring bespoke house-shaped reading pods, integrated chalkboard graphics, and playful tree-themed shelving to foster collaborative learning and creativity.",
       coverImage: portfolio62,
       gallery: [
-        { src: portfolio62, alt: "Kids Library - Exterior Entrance Pods", type: "exterior", room: "" },
-        { src: portfolio63, alt: "Kids Library - Interactive Lounge Environment", type: "interior", room: "living room" },
-        { src: portfolio64, alt: "Kids Library - Custom Study & Reading Desks", type: "interior", room: "office" },
-        { src: portfolio65, alt: "Kids Library - Tree-Themed Shelving Framework", type: "interior", room: "living room" },
-        { src: portfolio66, alt: "Kids Library - Creative Activity Room", type: "interior", room: "office" },
-        { src: portfolio67, alt: "Kids Library - Modular Group Seating Layout", type: "interior", room: "living room" },
-        { src: portfolio68, alt: "Kids Library - Built-In Chalkboard Concept", type: "interior", room: "living room" },
+        { src: portfolio62, alt: "Kids Library - Interactive House Reading Nook", type: "interior", room: "reading room" },
+        { src: portfolio63, alt: "Kids Library - Collaborative Learning Zone with Modular Seating", type: "interior", room: "collaborative area" },
+        { src: portfolio64, alt: "Kids Library - Modular Lounge & Multi-Use Zone", type: "interior", room: "lounge" },
+        { src: portfolio65, alt: "Kids Library - House-Shaped Reading Nook Detail", type: "interior", room: "reading room" },
+        { src: portfolio66, alt: "Kids Library - Integrated Tree-Themed Feature Shelving", type: "interior", room: "feature wall" },
+        { src: portfolio67, alt: "Kids Library - Playful Modular Study & Activity Pods", type: "interior", room: "study area" },
+        { src: portfolio68, alt: "Kids Library - Tree-Shelving and Creative Graphic Wall", type: "interior", room: "activity area" },
       ],
     },
     {
@@ -310,17 +310,17 @@ const Portfolio = () => {
       description: "A masterful modern residence commanding unobstructed sea panoramas, showcasing an infinity pool, local stone masonry, and ultra-premium open-plan interiors that seamlessly flow onto sprawling sun terraces.",
       coverImage: portfolio69,
       gallery: [
-        { src: portfolio69, alt: "Hills Panorama Villa 1 - Infinity Pool Deck", type: "exterior", room: "" },
-        { src: portfolio70, alt: "Hills Panorama Villa 1 - Elevated Coastal Facade", type: "exterior", room: "" },
-        { src: portfolio71, alt: "Hills Panorama Villa 1 - Luxury Panoramic Salon", type: "interior", room: "living room" },
-        { src: portfolio72, alt: "Hills Panorama Villa 1 - Premium Chef Kitchen Layout", type: "interior", room: "kitchen" },
-        { src: portfolio73, alt: "Hills Panorama Villa 1 - Sea View Master Suite", type: "interior", room: "bedroom" },
-        { src: portfolio74, alt: "Hills Panorama Villa 1 - High-End Marble Bath", type: "interior", room: "bathroom" },
-        { src: portfolio75, alt: "Hills Panorama Villa 1 - Open Floor Sitting Lounge", type: "interior", room: "living room" },
-        { src: portfolio76, alt: "Hills Panorama Villa 1 - Guest Bedroom Space", type: "interior", room: "bedroom" },
-        { src: portfolio77, alt: "Hills Panorama Villa 1 - Secondary Cooking Area", type: "interior", room: "kitchen" },
-        { src: portfolio78, alt: "Hills Panorama Villa 1 - En-Suite Spa Restroom", type: "interior", room: "bathroom" },
-        { src: portfolio79, alt: "Hills Panorama Villa 1 - Sunset Outdoor Terrace", type: "exterior", room: "" },
+        { src: portfolio69, alt: "Hills Panorama Villa 1 - Infinity Pool at Dusk", type: "exterior", room: "pool deck" },
+        { src: portfolio70, alt: "Hills Panorama Villa 1 - Modern Hillside Architecture", type: "exterior", room: "facade" },
+        { src: portfolio71, alt: "Hills Panorama Villa 1 - Luxury Panoramic Salon and Dining Area", type: "interior", room: "living room" },
+        { src: portfolio72, alt: "Hills Panorama Villa 1 - Ultra-Premium Chef's Kitchen", type: "interior", room: "kitchen" },
+        { src: portfolio73, alt: "Hills Panorama Villa 1 - Sea-Facing Master Suite", type: "interior", room: "bedroom" },
+        { src: portfolio74, alt: "Hills Panorama Villa 1 - High-End Marble Master Bath", type: "interior", room: "bathroom" },
+        { src: portfolio75, alt: "Hills Panorama Villa 1 - Grand Double-Height Lounge and Staircase", type: "interior", room: "living room" },
+        { src: portfolio76, alt: "Hills Panorama Villa 1 - Elegant Guest Bedroom with Garden Views", type: "interior", room: "bedroom" },
+        { src: portfolio77, alt: "Hills Panorama Villa 1 - Secondary Preparation Kitchen and Scullery", type: "interior", room: "kitchen" },
+        { src: portfolio78, alt: "Hills Panorama Villa 1 - Modern Guest Shower Room", type: "interior", room: "bathroom" },
+        { src: portfolio79, alt: "Hills Panorama Villa 1 - Sunset Outdoor Living & Pool Terrace", type: "exterior", room: "patio" },
       ],
     },
     {
@@ -329,15 +329,15 @@ const Portfolio = () => {
       description: "An architectural masterpiece defining upscale Mediterranean living, featuring premium walnut-paneled kitchens, minimalist floor-to-ceiling glass, and majestic outdoor entertainment areas.",
       coverImage: portfolio80,
       gallery: [
-        { src: portfolio80, alt: "Hills Panorama Villa 2 - Minimalist Geometric Exterior", type: "exterior", room: "" },
-        { src: portfolio81, alt: "Hills Panorama Villa 2 - Premium Walnut Kitchen Scheme", type: "interior", room: "kitchen" },
-        { src: portfolio82, alt: "Hills Panorama Villa 2 - Floor-To-Ceiling Glass Salon", type: "interior", room: "living room" },
-        { src: portfolio83, alt: "Hills Panorama Villa 2 - Immersive Seafacing Bedroom", type: "interior", room: "bedroom" },
-        { src: portfolio84, alt: "Hills Panorama Villa 2 - Modernist Floating Vanity Bath", type: "interior", room: "bathroom" },
-        { src: portfolio85, alt: "Hills Panorama Villa 2 - Secondary Living Area", type: "interior", room: "living room" },
-        { src: portfolio86, alt: "Hills Panorama Villa 2 - Integrated Breakfast Bar", type: "interior", room: "kitchen" },
-        { src: portfolio87, alt: "Hills Panorama Villa 2 - Contemporary Wardrobe Bedroom", type: "interior", room: "bedroom" },
-        { src: portfolio88, alt: "Hills Panorama Villa 2 - Majestic Outdoor Entertainment Deck", type: "exterior", room: "" },
+        { src: portfolio80, alt: "Hills Panorama Villa 2 - Modern Two-Story Facade and Pool Deck", type: "exterior", room: "pool deck" },
+        { src: portfolio81, alt: "Hills Panorama Villa 2 - Elevated Infinity Pool and Panoramic Sea Views", type: "exterior", room: "pool deck" },
+        { src: portfolio82, alt: "Hills Panorama Villa 2 - Luxury Local Stone Entrance and Carport", type: "exterior", room: "entrance" },
+        { src: portfolio83, alt: "Hills Panorama Villa 2 - Sophisticated Open-Plan Salon and Lounge Room", type: "interior", room: "living room" },
+        { src: portfolio84, alt: "Hills Panorama Villa 2 - Bright Multi-Zone Dining Area and Kitchen Island", type: "interior", room: "dining room" },
+        { src: portfolio85, alt: "Hills Panorama Villa 2 - Modern Dining Space with Feature Walnut Staircase", type: "interior", room: "dining room" },
+        { src: portfolio86, alt: "Hills Panorama Villa 2 - Premium Kitchen with Integrated Breakfast Bar and Patio Access", type: "interior", room: "kitchen" },
+        { src: portfolio87, alt: "Hills Panorama Villa 2 - Seamless Indoor-Outdoor Flow from Kitchen Island to Terrace", type: "interior", room: "kitchen" },
+        { src: portfolio88, alt: "Hills Panorama Villa 2 - Elegant Dining Room and Open Kitchen Layout", type: "interior", room: "dining room" },
       ],
     },
     {
@@ -346,18 +346,16 @@ const Portfolio = () => {
       description: "A multi-level hillside sanctuary blending crisp white geometric facades with traditional textured stone walls, complete with custom interior dining galleries facing the coastline.",
       coverImage: portfolio89,
       gallery: [
-        { src: portfolio89, alt: "Hills Panorama Villa 3 - Multi-Level Facade View", type: "exterior", room: "" },
-        { src: portfolio90, alt: "Hills Panorama Villa 3 - Custom Interior Dining Gallery", type: "interior", room: "living room" },
-        { src: portfolio91, alt: "Hills Panorama Villa 3 - Architectural Monolithic Kitchen", type: "interior", room: "kitchen" },
-        { src: portfolio92, alt: "Hills Panorama Villa 3 - Deep Comfort Master Bed", type: "interior", room: "bedroom" },
-        { src: portfolio93, alt: "Hills Panorama Villa 3 - Textural Concrete Walk-In Shower", type: "interior", room: "bathroom" },
-        { src: portfolio94, alt: "Hills Panorama Villa 3 - Coastline Facing Home Office", type: "interior", room: "office" },
-        { src: portfolio95, alt: "Hills Panorama Villa 3 - Recessed Light Living Room", type: "interior", room: "living room" },
-        { src: portfolio96, alt: "Hills Panorama Villa 3 - High-Gloss Minimalist Kitchen", type: "interior", room: "kitchen" },
-        { src: portfolio97, alt: "Hills Panorama Villa 3 - Linear Framing Guest Room", type: "interior", room: "bedroom" },
-        { src: portfolio98, alt: "Hills Panorama Villa 3 - Concealed Fixtures Restroom", type: "interior", room: "bathroom" },
-        { src: portfolio99, alt: "Hills Panorama Villa 3 - Traditional Stone Accent Wall", type: "exterior", room: "" },
-        { src: portfolio100, alt: "Hills Panorama Villa 3 - Hillside Horizon View", type: "exterior", room: "" },
+        { src: portfolio89, alt: "Hills Panorama Villa 3 - Multi-Level Facade View", type: "exterior", room: "" }, // portfolio-89.jpg
+        { src: portfolio90, alt: "Hills Panorama Villa 3 - Multi-Level Facade and Deck View", type: "exterior", room: "pool deck" }, // portfolio-90.jpg
+        { src: portfolio91, alt: "Hills Panorama Villa 3 - Entrance Facade and Stone Wall Accent", type: "exterior", room: "entrance" }, // portfolio-91.jpg
+        { src: portfolio92, alt: "Hills Panorama Villa 3 - Closed Facade and Landscaped Driveway", type: "exterior", room: "entrance" }, // portfolio-92.jpg
+        { src: portfolio93, alt: "Hills Panorama Villa 3 - Infinity Pool and Elevated Side Profile", type: "exterior", room: "pool deck" }, // portfolio-93.jpg
+        { src: portfolio94, alt: "Hills Panorama Villa 3 - Panoramic View of the L-Shaped Villa and Pool", type: "exterior", room: "pool deck" }, // portfolio-94.jpg
+        { src: portfolio95, alt: "Hills Panorama Villa 3 - Side Elevation and Pool Terrace View", type: "exterior", room: "pool deck" }, // portfolio-95.jpg
+        { src: portfolio96, alt: "Hills Panorama Villa 3 - Architectural Monolithic Kitchen and Open Dining Area", type: "interior", room: "kitchen" }, // portfolio-96.webp
+        { src: portfolio97, alt: "Hills Panorama Villa 3 - Custom Interior Dining Gallery and Sofa Lounge", type: "interior", room: "living room" }, // portfolio-97.webp
+        { src: portfolio98, alt: "Hills Panorama Villa 3 - Recessed Light Living Room and Open Layout Lounge", type: "interior", room: "living room" }, // portfolio-98.jpg
       ],
     }
   ];

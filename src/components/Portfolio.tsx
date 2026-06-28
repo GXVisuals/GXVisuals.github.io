@@ -25,7 +25,7 @@ import portfolio13 from "@/assets/portfolio-13.webp";
 import portfolio14 from "@/assets/portfolio-14.webp";
 import portfolio15 from "@/assets/portfolio-15.webp";
 import portfolio16 from "@/assets/portfolio-16.webp";
-import portfolio17 from "@/assets/portfolio-17.webp"; 
+import portfolio17 from "@/assets/portfolio-17.webp";
 import portfolio18 from "@/assets/portfolio-18.webp";
 import portfolio19 from "@/assets/portfolio-19.webp";
 import portfolio20 from "@/assets/portfolio-20.webp";
@@ -39,12 +39,12 @@ import portfolio27 from "@/assets/portfolio-27.webp";
 import portfolio28 from "@/assets/portfolio-28.webp";
 import portfolio29 from "@/assets/portfolio-29.webp";
 import portfolio30 from "@/assets/portfolio-30.webp";
-import portfolio31 from "@/assets/portfolio-31.webp"; 
-import portfolio32 from "@/assets/portfolio-32.webp"; 
-import portfolio33 from "@/assets/portfolio-33.webp"; 
-import portfolio34 from "@/assets/portfolio-34.webp"; 
-import portfolio35 from "@/assets/portfolio-35.webp"; 
-import portfolio36 from "@/assets/portfolio-36.webp"; 
+import portfolio31 from "@/assets/portfolio-31.webp";
+import portfolio32 from "@/assets/portfolio-32.webp";
+import portfolio33 from "@/assets/portfolio-33.webp";
+import portfolio34 from "@/assets/portfolio-34.webp";
+import portfolio35 from "@/assets/portfolio-35.webp";
+import portfolio36 from "@/assets/portfolio-36.webp";
 import portfolio37 from "@/assets/portfolio-37.webp";
 import portfolio38 from "@/assets/portfolio-38.webp";
 import portfolio39 from "@/assets/portfolio-39.webp";
@@ -128,16 +128,13 @@ import portfolio114 from "@/assets/portfolio-114.webp";
 const Portfolio = () => {
   const { t } = useTranslation();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  
-  // Filtering states for the main gallery grid
-  const [activeTab, setActiveTab] = useState("all"); 
-  const [activeSubTab, setActiveSubTab] = useState("all"); 
 
-  // Lightbox view portfolio states
+  const [activeTab, setActiveTab] = useState("all");
+  const [activeSubTab, setActiveSubTab] = useState("all");
+
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [selectedImgIndex, setSelectedImgIndex] = useState(0);
 
-  // --- SOURCE PROJECTS DIRECTORY MATRIX ---
   const projectsData = [
     {
       id: 1,
@@ -165,7 +162,7 @@ const Portfolio = () => {
     {
       id: 3,
       title: "The West Coast Frontier, Neo Chorio, Paphos, Cyprus",
-      description: "An elevated contemporary residence framing Cyprus’s most rugged, untouched western peninsula with sweeping sea views.",
+      description: "An elevated contemporary residence framing Cyprus's most rugged, untouched western peninsula with sweeping sea views.",
       coverImage: portfolio3,
       gallery: [
         { src: portfolio3, alt: "The West Coast Frontier - Coastal Frontage View", type: "exterior", room: "" },
@@ -372,7 +369,7 @@ const Portfolio = () => {
         { src: portfolio97, alt: "Hills Panorama Villa 3 - Custom Interior Dining Gallery and Sofa Lounge", type: "interior", room: "living room" },
         { src: portfolio98, alt: "Hills Panorama Villa 3 - Recessed Light Living Room and Open Layout Lounge", type: "interior", room: "living room" },
       ],
-    }
+    },
     {
       id: 18,
       title: "Hills Panorama, Villa 4, Pegeia, Pafos",
@@ -402,10 +399,9 @@ const Portfolio = () => {
         { src: portfolio113, alt: "Hills Panorama Villa 5 - Elegant Dining Room and Open Kitchen Layout", type: "interior", room: "dining room" },
         { src: portfolio114, alt: "Hills Panorama Villa 5 - Architectural Monolithic Kitchen and Open Dining Area", type: "interior", room: "kitchen" },
       ],
-    }
+    },
   ];
 
-  // --- COMPUTE FEED ITEM LEVEL DYNAMICS ---
   const currentFeedItems = useMemo(() => {
     if (activeTab === "all") {
       return projectsData.map((project) => ({
@@ -429,7 +425,7 @@ const Portfolio = () => {
 
         if (matchesCategory && (activeTab !== "interior" || matchesSubRoom)) {
           const matchingIndex = project.gallery.findIndex((g) => g.src === photo.src);
-          
+
           itemsList.push({
             isGroupedFolder: false,
             id: `${project.id}-${photo.src}`,
@@ -470,8 +466,7 @@ const Portfolio = () => {
   return (
     <section id="portfolio" className="py-24 bg-[#121212] min-h-screen text-white">
       <div className="container mx-auto px-6">
-        
-        {/* Section Heading Titles */}
+
         <div className="text-center mb-12">
           <span className="text-[#00bad3] font-body text-sm tracking-[0.3em] uppercase block">
             {t("portfolio_eyebrow", "OUR PORTFOLIO")}
@@ -481,7 +476,6 @@ const Portfolio = () => {
           </h2>
         </div>
 
-        {/* Global Level 1 Nav Controls */}
         <div className="flex flex-wrap justify-center gap-3 mb-6">
           {tabs.map((tab) => (
             <button
@@ -501,7 +495,6 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Global Level 2 Sub-Nav Controls */}
         <div className="h-14 mb-10 overflow-hidden">
           <AnimatePresence mode="wait">
             {activeTab === "interior" && (
@@ -529,7 +522,6 @@ const Portfolio = () => {
           </AnimatePresence>
         </div>
 
-        {/* Layout Grid Feed */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
             {currentFeedItems.map((item, index) => (
@@ -557,8 +549,7 @@ const Portfolio = () => {
                           hoveredIndex === index ? "scale-105" : "scale-100"
                         }`}
                       />
-                      
-                      {/* Interactive Hover Info Panel */}
+
                       <div className={`absolute inset-0 bg-black/70 transition-opacity duration-300 flex flex-col justify-end p-6 ${
                         hoveredIndex === index ? "opacity-100" : "opacity-0"
                       }`}>
@@ -575,11 +566,9 @@ const Portfolio = () => {
                     </div>
                   </DialogTrigger>
 
-                  {/* MASTER PORTFOLIO MODAL BOX */}
                   {selectedProject && (
                     <DialogContent className="max-w-[95vw] w-full md:max-w-5xl h-[88vh] p-6 border-none bg-black/95 flex flex-col justify-between overflow-hidden backdrop-blur-2xl text-white">
-                      
-                      {/* Parent Structural Description Details */}
+
                       <div className="w-full border-b border-white/10 pb-4">
                         <h4 className="text-white font-display text-lg font-medium tracking-wide leading-snug">
                           {selectedProject.title}
@@ -589,7 +578,6 @@ const Portfolio = () => {
                         </p>
                       </div>
 
-                      {/* Main Showcase Canvas Frame */}
                       <div className="flex-1 w-full flex items-center justify-center p-2 my-2 relative overflow-hidden">
                         <img
                           src={selectedProject.gallery[selectedImgIndex]?.src}
@@ -598,14 +586,12 @@ const Portfolio = () => {
                         />
                       </div>
 
-                      {/* Folder Content Navigation Ribbon */}
                       <div className="w-full bg-white/[0.02] p-4 rounded-xl border border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-                        
-                        {/* Selected Photo Information details */}
+
                         <div className="text-center md:text-left min-w-[200px] max-w-xs">
                           <span className="text-[#00bad3] text-[9px] font-body tracking-[0.2em] uppercase block mb-0.5">
-                            {selectedProject.gallery[selectedImgIndex]?.type === "exterior" 
-                              ? t("EXTERIOR ARCHITECTURE") 
+                            {selectedProject.gallery[selectedImgIndex]?.type === "exterior"
+                              ? t("EXTERIOR ARCHITECTURE")
                               : `${t("INTERIOR")} - ${selectedProject.gallery[selectedImgIndex]?.room}`}
                           </span>
                           <p className="text-white font-display italic text-xs font-light truncate">
@@ -613,22 +599,21 @@ const Portfolio = () => {
                           </p>
                         </div>
 
-                        {/* Slide Deck Thumbnails Strip */}
                         <div className="flex items-center gap-2 overflow-x-auto max-w-full py-1 px-2 custom-scrollbar">
                           {selectedProject.gallery.map((img: any, idx: number) => (
                             <button
                               key={idx}
                               onClick={() => setSelectedImgIndex(idx)}
                               className={`relative w-16 md:w-20 aspect-[4/3] rounded-md overflow-hidden bg-neutral-900 flex-shrink-0 transition-all duration-200 border-2 ${
-                                selectedImgIndex === idx 
-                                  ? "border-[#00bad3] scale-95 shadow-[0_0_12px_rgba(0,186,211,0.5)] opacity-100" 
+                                selectedImgIndex === idx
+                                  ? "border-[#00bad3] scale-95 shadow-[0_0_12px_rgba(0,186,211,0.5)] opacity-100"
                                   : "border-transparent opacity-40 hover:opacity-90"
                               }`}
                             >
-                              <img 
-                                src={img.src} 
-                                alt={img.alt} 
-                                className="w-full h-full object-cover" 
+                              <img
+                                src={img.src}
+                                alt={img.alt}
+                                className="w-full h-full object-cover"
                               />
                             </button>
                           ))}
@@ -644,7 +629,6 @@ const Portfolio = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Footer Contact Redirection Banner */}
         <div className="mt-16 text-center">
           <button
             onClick={() => {

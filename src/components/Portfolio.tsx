@@ -361,16 +361,46 @@ const Portfolio = () => {
       description: "A multi-level hillside sanctuary blending crisp white geometric facades with traditional textured stone walls, complete with custom interior dining galleries facing the coastline.",
       coverImage: portfolio89,
       gallery: [
-        { src: portfolio89, alt: "Hills Panorama Villa 3 - Multi-Level Facade View", type: "exterior", room: "" }, // portfolio-89.jpg
-        { src: portfolio90, alt: "Hills Panorama Villa 3 - Multi-Level Facade and Deck View", type: "exterior", room: "pool deck" }, // portfolio-90.jpg
-        { src: portfolio91, alt: "Hills Panorama Villa 3 - Entrance Facade and Stone Wall Accent", type: "exterior", room: "entrance" }, // portfolio-91.jpg
-        { src: portfolio92, alt: "Hills Panorama Villa 3 - Closed Facade and Landscaped Driveway", type: "exterior", room: "entrance" }, // portfolio-92.jpg
-        { src: portfolio93, alt: "Hills Panorama Villa 3 - Infinity Pool and Elevated Side Profile", type: "exterior", room: "pool deck" }, // portfolio-93.jpg
-        { src: portfolio94, alt: "Hills Panorama Villa 3 - Panoramic View of the L-Shaped Villa and Pool", type: "exterior", room: "pool deck" }, // portfolio-94.jpg
-        { src: portfolio95, alt: "Hills Panorama Villa 3 - Side Elevation and Pool Terrace View", type: "exterior", room: "pool deck" }, // portfolio-95.jpg
-        { src: portfolio96, alt: "Hills Panorama Villa 3 - Architectural Monolithic Kitchen and Open Dining Area", type: "interior", room: "kitchen" }, // portfolio-96.webp
-        { src: portfolio97, alt: "Hills Panorama Villa 3 - Custom Interior Dining Gallery and Sofa Lounge", type: "interior", room: "living room" }, // portfolio-97.webp
-        { src: portfolio98, alt: "Hills Panorama Villa 3 - Recessed Light Living Room and Open Layout Lounge", type: "interior", room: "living room" }, // portfolio-98.jpg
+        { src: portfolio89, alt: "Hills Panorama Villa 3 - Multi-Level Facade View", type: "exterior", room: "" },
+        { src: portfolio90, alt: "Hills Panorama Villa 3 - Multi-Level Facade and Deck View", type: "exterior", room: "pool deck" },
+        { src: portfolio91, alt: "Hills Panorama Villa 3 - Entrance Facade and Stone Wall Accent", type: "exterior", room: "entrance" },
+        { src: portfolio92, alt: "Hills Panorama Villa 3 - Closed Facade and Landscaped Driveway", type: "exterior", room: "entrance" },
+        { src: portfolio93, alt: "Hills Panorama Villa 3 - Infinity Pool and Elevated Side Profile", type: "exterior", room: "pool deck" },
+        { src: portfolio94, alt: "Hills Panorama Villa 3 - Panoramic View of the L-Shaped Villa and Pool", type: "exterior", room: "pool deck" },
+        { src: portfolio95, alt: "Hills Panorama Villa 3 - Side Elevation and Pool Terrace View", type: "exterior", room: "pool deck" },
+        { src: portfolio96, alt: "Hills Panorama Villa 3 - Architectural Monolithic Kitchen and Open Dining Area", type: "interior", room: "kitchen" },
+        { src: portfolio97, alt: "Hills Panorama Villa 3 - Custom Interior Dining Gallery and Sofa Lounge", type: "interior", room: "living room" },
+        { src: portfolio98, alt: "Hills Panorama Villa 3 - Recessed Light Living Room and Open Layout Lounge", type: "interior", room: "living room" },
+      ],
+    }
+    {
+      id: 18,
+      title: "Hills Panorama, Villa 4, Pegeia, Pafos",
+      description: "An architectural masterpiece defining upscale Mediterranean living, featuring premium walnut-paneled kitchens, minimalist floor-to-ceiling glass, and majestic outdoor entertainment areas.",
+      coverImage: portfolio101,
+      gallery: [
+        { src: portfolio101, alt: "Hills Panorama Villa 4 - Modern Two-Story Facade and Pool Deck", type: "exterior", room: "pool deck" },
+        { src: portfolio102, alt: "Hills Panorama Villa 4 - Elevated Infinity Pool and Panoramic Sea Views", type: "exterior", room: "pool deck" },
+        { src: portfolio103, alt: "Hills Panorama Villa 4 - Luxury Local Stone Entrance and Carport", type: "exterior", room: "entrance" },
+        { src: portfolio104, alt: "Hills Panorama Villa 4 - Sophisticated Open-Plan Salon and Lounge Room", type: "interior", room: "living room" },
+        { src: portfolio105, alt: "Hills Panorama Villa 4 - Architectural Monolithic Kitchen and Open Dining Area", type: "interior", room: "kitchen" },
+      ],
+    },
+    {
+      id: 19,
+      title: "Hills Panorama, Villa 5, Pegeia, Pafos",
+      description: "A multi-level hillside sanctuary blending crisp white geometric facades with traditional textured stone walls, complete with custom interior dining galleries facing the coastline.",
+      coverImage: portfolio106,
+      gallery: [
+        { src: portfolio106, alt: "Hills Panorama Villa 5 - Multi-Level Facade View", type: "exterior", room: "" },
+        { src: portfolio107, alt: "Hills Panorama Villa 5 - Multi-Level Facade and Deck View", type: "exterior", room: "pool deck" },
+        { src: portfolio108, alt: "Hills Panorama Villa 5 - Entrance Facade and Stone Wall Accent", type: "exterior", room: "entrance" },
+        { src: portfolio109, alt: "Hills Panorama Villa 5 - Closed Facade and Landscaped Driveway", type: "exterior", room: "entrance" },
+        { src: portfolio110, alt: "Hills Panorama Villa 5 - Infinity Pool and Elevated Side Profile", type: "exterior", room: "pool deck" },
+        { src: portfolio111, alt: "Hills Panorama Villa 5 - Sophisticated Open-Plan Salon and Lounge Room", type: "interior", room: "living room" },
+        { src: portfolio112, alt: "Hills Panorama Villa 5 - Luxury Panoramic Salon and Dining Area", type: "interior", room: "living room" },
+        { src: portfolio113, alt: "Hills Panorama Villa 5 - Elegant Dining Room and Open Kitchen Layout", type: "interior", room: "dining room" },
+        { src: portfolio114, alt: "Hills Panorama Villa 5 - Architectural Monolithic Kitchen and Open Dining Area", type: "interior", room: "kitchen" },
       ],
     }
   ];

@@ -25,7 +25,7 @@ import portfolio13 from "@/assets/portfolio-13.webp";
 import portfolio14 from "@/assets/portfolio-14.webp";
 import portfolio15 from "@/assets/portfolio-15.webp";
 import portfolio16 from "@/assets/portfolio-16.webp";
-import portfolio17 from "@/assets/portfolio-17.webp"; // Fixed typo here
+import portfolio17 from "@/assets/portfolio-17.webp"; 
 import portfolio18 from "@/assets/portfolio-18.webp";
 import portfolio19 from "@/assets/portfolio-19.webp";
 import portfolio20 from "@/assets/portfolio-20.webp";
@@ -54,7 +54,7 @@ import portfolio42 from "@/assets/portfolio-42.webp";
 import portfolio43 from "@/assets/portfolio-43.webp";
 import portfolio44 from "@/assets/portfolio-44.webp";
 import portfolio45 from "@/assets/portfolio-45.webp";
-import portfolio46 from "@/assets/portfolio-46.webp";
+import portfolio46 Holiday from "@/assets/portfolio-46.webp";
 import portfolio47 from "@/assets/portfolio-47.webp";
 import portfolio48 from "@/assets/portfolio-48.webp";
 import portfolio49 from "@/assets/portfolio-49.webp";
@@ -287,6 +287,77 @@ const Portfolio = () => {
         { src: portfolio57, alt: "Aspithea - Integrated Minimalist Eco-Kitchen", type: "interior", room: "kitchen" },
         { src: portfolio58, alt: "Aspithea - Structural Wood Framing Master Bed", type: "interior", room: "bedroom" },
         { src: portfolio61, alt: "Aspithea - Primary Geometric Entrance Real Estate", type: "exterior", room: "" },
+      ],
+    },
+    {
+      id: 14,
+      title: "Kids Library, Kyperounta, Limassol",
+      description: "An innovative, custom-built children's library and interactive lounge featuring bespoke house-shaped reading pods, integrated chalkboard graphics, and playful tree-themed shelving to foster collaborative learning and creativity.",
+      coverImage: portfolio62,
+      gallery: [
+        { src: portfolio62, alt: "Kids Library - Exterior Entrance Pods", type: "exterior", room: "" },
+        { src: portfolio63, alt: "Kids Library - Interactive Lounge Environment", type: "interior", room: "living room" },
+        { src: portfolio64, alt: "Kids Library - Custom Study & Reading Desks", type: "interior", room: "office" },
+        { src: portfolio65, alt: "Kids Library - Tree-Themed Shelving Framework", type: "interior", room: "living room" },
+        { src: portfolio66, alt: "Kids Library - Creative Activity Room", type: "interior", room: "office" },
+        { src: portfolio67, alt: "Kids Library - Modular Group Seating Layout", type: "interior", room: "living room" },
+        { src: portfolio68, alt: "Kids Library - Built-In Chalkboard Concept", type: "interior", room: "living room" },
+      ],
+    },
+    {
+      id: 15,
+      title: "Hills Panorama, Villa 1, Pegeia, Pafos",
+      description: "A masterful modern residence commanding unobstructed sea panoramas, showcasing an infinity pool, local stone masonry, and ultra-premium open-plan interiors that seamlessly flow onto sprawling sun terraces.",
+      coverImage: portfolio69,
+      gallery: [
+        { src: portfolio69, alt: "Hills Panorama Villa 1 - Infinity Pool Deck", type: "exterior", room: "" },
+        { src: portfolio70, alt: "Hills Panorama Villa 1 - Elevated Coastal Facade", type: "exterior", room: "" },
+        { src: portfolio71, alt: "Hills Panorama Villa 1 - Luxury Panoramic Salon", type: "interior", room: "living room" },
+        { src: portfolio72, alt: "Hills Panorama Villa 1 - Premium Chef Kitchen Layout", type: "interior", room: "kitchen" },
+        { src: portfolio73, alt: "Hills Panorama Villa 1 - Sea View Master Suite", type: "interior", room: "bedroom" },
+        { src: portfolio74, alt: "Hills Panorama Villa 1 - High-End Marble Bath", type: "interior", room: "bathroom" },
+        { src: portfolio75, alt: "Hills Panorama Villa 1 - Open Floor Sitting Lounge", type: "interior", room: "living room" },
+        { src: portfolio76, alt: "Hills Panorama Villa 1 - Guest Bedroom Space", type: "interior", room: "bedroom" },
+        { src: portfolio77, alt: "Hills Panorama Villa 1 - Secondary Cooking Area", type: "interior", room: "kitchen" },
+        { src: portfolio78, alt: "Hills Panorama Villa 1 - En-Suite Spa Restroom", type: "interior", room: "bathroom" },
+        { src: portfolio79, alt: "Hills Panorama Villa 1 - Sunset Outdoor Terrace", type: "exterior", room: "" },
+      ],
+    },
+    {
+      id: 16,
+      title: "Hills Panorama, Villa 2, Pegeia, Pafos",
+      description: "An architectural masterpiece defining upscale Mediterranean living, featuring premium walnut-paneled kitchens, minimalist floor-to-ceiling glass, and majestic outdoor entertainment areas.",
+      coverImage: portfolio80,
+      gallery: [
+        { src: portfolio80, alt: "Hills Panorama Villa 2 - Minimalist Geometric Exterior", type: "exterior", room: "" },
+        { src: portfolio81, alt: "Hills Panorama Villa 2 - Premium Walnut Kitchen Scheme", type: "interior", room: "kitchen" },
+        { src: portfolio82, alt: "Hills Panorama Villa 2 - Floor-To-Ceiling Glass Salon", type: "interior", room: "living room" },
+        { src: portfolio83, alt: "Hills Panorama Villa 2 - Immersive Seafacing Bedroom", type: "interior", room: "bedroom" },
+        { src: portfolio84, alt: "Hills Panorama Villa 2 - Modernist Floating Vanity Bath", type: "interior", room: "bathroom" },
+        { src: portfolio85, alt: "Hills Panorama Villa 2 - Secondary Living Area", type: "interior", room: "living room" },
+        { src: portfolio86, alt: "Hills Panorama Villa 2 - Integrated Breakfast Bar", type: "interior", room: "kitchen" },
+        { src: portfolio87, alt: "Hills Panorama Villa 2 - Contemporary Wardrobe Bedroom", type: "interior", room: "bedroom" },
+        { src: portfolio88, alt: "Hills Panorama Villa 2 - Majestic Outdoor Entertainment Deck", type: "exterior", room: "" },
+      ],
+    },
+    {
+      id: 17,
+      title: "Hills Panorama, Villa 3, Pegeia, Pafos",
+      description: "A multi-level hillside sanctuary blending crisp white geometric facades with traditional textured stone walls, complete with custom interior dining galleries facing the coastline.",
+      coverImage: portfolio89,
+      gallery: [
+        { src: portfolio89, alt: "Hills Panorama Villa 3 - Multi-Level Facade View", type: "exterior", room: "" },
+        { src: portfolio90, alt: "Hills Panorama Villa 3 - Custom Interior Dining Gallery", type: "interior", room: "living room" },
+        { src: portfolio91, alt: "Hills Panorama Villa 3 - Architectural Monolithic Kitchen", type: "interior", room: "kitchen" },
+        { src: portfolio92, alt: "Hills Panorama Villa 3 - Deep Comfort Master Bed", type: "interior", room: "bedroom" },
+        { src: portfolio93, alt: "Hills Panorama Villa 3 - Textural Concrete Walk-In Shower", type: "interior", room: "bathroom" },
+        { src: portfolio94, alt: "Hills Panorama Villa 3 - Coastline Facing Home Office", type: "interior", room: "office" },
+        { src: portfolio95, alt: "Hills Panorama Villa 3 - Recessed Light Living Room", type: "interior", room: "living room" },
+        { src: portfolio96, alt: "Hills Panorama Villa 3 - High-Gloss Minimalist Kitchen", type: "interior", room: "kitchen" },
+        { src: portfolio97, alt: "Hills Panorama Villa 3 - Linear Framing Guest Room", type: "interior", room: "bedroom" },
+        { src: portfolio98, alt: "Hills Panorama Villa 3 - Concealed Fixtures Restroom", type: "interior", room: "bathroom" },
+        { src: portfolio99, alt: "Hills Panorama Villa 3 - Traditional Stone Accent Wall", type: "exterior", room: "" },
+        { src: portfolio100, alt: "Hills Panorama Villa 3 - Hillside Horizon View", type: "exterior", room: "" },
       ],
     }
   ];

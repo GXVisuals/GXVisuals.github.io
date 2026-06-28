@@ -109,6 +109,21 @@ import portfolio97 from "@/assets/portfolio-97.webp";
 import portfolio98 from "@/assets/portfolio-98.webp";
 import portfolio99 from "@/assets/portfolio-99.webp";
 import portfolio100 from "@/assets/portfolio-100.webp";
+import portfolio101 from "@/assets/portfolio-101.webp";
+import portfolio102 from "@/assets/portfolio-102.webp";
+import portfolio103 from "@/assets/portfolio-103.webp";
+import portfolio104 from "@/assets/portfolio-104.webp";
+import portfolio105 from "@/assets/portfolio-105.webp";
+import portfolio106 from "@/assets/portfolio-106.webp";
+import portfolio107 from "@/assets/portfolio-107.webp";
+import portfolio108 from "@/assets/portfolio-108.webp";
+import portfolio109 from "@/assets/portfolio-109.webp";
+import portfolio110 from "@/assets/portfolio-110.webp";
+import portfolio111 from "@/assets/portfolio-111.webp";
+import portfolio112 from "@/assets/portfolio-112.webp";
+import portfolio113 from "@/assets/portfolio-113.webp";
+import portfolio114 from "@/assets/portfolio-114.webp";
+
 
 const Portfolio = () => {
   const { t } = useTranslation();

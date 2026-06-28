@@ -54,7 +54,7 @@ import portfolio42 from "@/assets/portfolio-42.webp";
 import portfolio43 from "@/assets/portfolio-43.webp";
 import portfolio44 from "@/assets/portfolio-44.webp";
 import portfolio45 from "@/assets/portfolio-45.webp";
-import portfolio46 Holiday from "@/assets/portfolio-46.webp";
+import portfolio46 from "@/assets/portfolio-46.webp";
 import portfolio47 from "@/assets/portfolio-47.webp";
 import portfolio48 from "@/assets/portfolio-48.webp";
 import portfolio49 from "@/assets/portfolio-49.webp";

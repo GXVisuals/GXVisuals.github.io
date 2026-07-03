@@ -39,6 +39,8 @@ const Hero = () => {
           alt="GXVISUALS portfolio render"
           className={`w-full h-full object-cover transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           loading="eager"
+          fetchPriority="high"
+          decoding="async"
           onLoad={() => setIsLoaded(true)}
         />
         {/* Dark overlay to keep text readable */}

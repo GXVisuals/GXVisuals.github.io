@@ -97,8 +97,6 @@ const Index = () => {
 
           <About />
           <Testimonials />
-          <Stats />
-
           <section id="services">
             <Services />
           </section>

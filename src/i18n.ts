@@ -10,18 +10,20 @@ i18n
       en: {
         translation: {
           "nav_portfolio": "Portfolio",
+          "nav_about": "About Us",
           "nav_services": "Our Services",
           "nav_contact": "Contact us",
-          "nav_quote": "Get a Quote",
-          
+          "nav_quote": "Get a Free Quote Today",
+
           // Hero Section
-          "hero_eyebrow": "3D Visualization Studio",
+          "hero_eyebrow": "3D Visualization Studio · Cyprus & Greece",
           "hero_seo_keywords": "GXVISUALS: Photorealistic 3D Rendering and Kitchen Design",
-          "hero_title_part1": "Bring Your Vision",
-          "hero_title_part2": "To Life",
-          "hero_description": "Fast, photorealistic 3D rendering and technical kitchen sketches with exact dimensions. Transforming architectural concepts into stunning visuals.",
-          "hero_btn_portfolio": "View Portfolio",
-          "hero_btn_start": "Get a free Quote",
+          "hero_title_part1": "See Your Home",
+          "hero_title_part2": "Before It's Built",
+          "hero_description": "Photorealistic 3D renders that help you make the right decisions — before construction begins.",
+          "hero_trust": "✦ 19 Projects Completed · Cyprus & Greece · Fast Delivery",
+          "hero_btn_portfolio": "View Our Work",
+          "hero_btn_start": "Get a Free Quote Today",
 
           "services_eyebrow": "What We Offer",
           "services_header": "Our Services",
@@ -34,7 +36,7 @@ i18n
           "s_int_desc": "Detailed interior renders showcasing materials, lighting, and furniture layouts.",
           "s_kit_title": "Kitchen Design & Technical Sketches",
           "s_kit_desc": "Precise kitchen layouts and detailed sketches with exact dimensions for accurate manufacturing and installation.",
-          
+
           "contact_eyebrow": "Get In Touch",
           "contact_header": "Start Your Project",
           "contact_sub": "Ready to transform your architectural vision? Send us a message for a custom quote.",
@@ -48,14 +50,14 @@ i18n
           "form_message": "Your Message",
           "form_submit": "Send Message",
           "sending": "Sending...",
-          
+
           "toast_captcha_title": "Captcha Required",
           "toast_captcha_desc": "Please complete the captcha challenge.",
           "toast_success_title": "Message sent!",
           "toast_success_desc": "We'll get back to you within 24 hours.",
           "toast_error_title": "Something went wrong",
           "toast_error_desc": "Please try again later.",
-          
+
           "portfolio_eyebrow": "Our Work",
           "portfolio_header": "Featured Projects",
           "cat_res_ext": "Residential Exterior",
@@ -87,18 +89,20 @@ i18n
       el: {
         translation: {
           "nav_portfolio": "Έργα",
+          "nav_about": "Σχετικά με εμάς",
           "nav_services": "Υπηρεσίες",
           "nav_contact": "Επικοινωνία",
-          "nav_quote": "Προσφορά",
-          
+          "nav_quote": "Δωρεάν Προσφορά Σήμερα",
+
           // Hero Section
           "hero_eyebrow": "3D ΑΡΧΙΤΕΚΤΟΝΙΚΟΣ ΦΩΤΟΡΕΑΛΙΣΜΟΣ",
           "hero_seo_keywords": "GXVISUALS: Φωτορεαλιστικά 3D Renders και Σχεδιασμός Κουζίνας.",
-          "hero_title_part1": "Δώστε Ζωή στο",
-          "hero_title_part2": "Όραμά σας",
-          "hero_description": "Γρήγορος, φωτορεαλιστικός τρισδιάστατος σχεδιασμός και τεχνικά σχέδια κουζίνας με ακριβείς διαστάσεις. Μετατρέπουμε αρχιτεκτονικές ιδέες σε εντυπωσιακά αποτελέσματα.",
-          "hero_btn_portfolio": "Δείτε το Portfolio",
-          "hero_btn_start": "Ξεκινήστε Έργο",
+          "hero_title_part1": "Δείτε το Σπίτι σας",
+          "hero_title_part2": "Πριν Χτιστεί",
+          "hero_description": "Φωτορεαλιστικά 3D renders που σας βοηθούν να παίρνετε τις σωστές αποφάσεις — πριν ξεκινήσει η κατασκευή.",
+          "hero_trust": "✦ 19+ Έργα · Κύπρος & Ελλάδα · Γρήγορη Παράδοση",
+          "hero_btn_portfolio": "Δείτε τα Έργα μας",
+          "hero_btn_start": "Δωρεάν Προσφορά Σήμερα",
 
           "services_eyebrow": "Τι Προσφέρουμε",
           "services_header": "Οι Υπηρεσίες μας",
@@ -111,7 +115,7 @@ i18n
           "s_int_desc": "Λεπτομερείς εσωτερικές απεικονίσεις που αναδεικνύουν υλικά, φωτισμό και διάταξη επίπλων.",
           "s_kit_title": "Σχεδιασμός Κουζίνας & Τεχνικά Σχέδια",
           "s_kit_desc": "Ακριβείς διατάξεις κουζίνας και λεπτομερή σχέδια με ακριβείς διαστάσεις για σωστή κατασκευή.",
-          
+
           "contact_eyebrow": "Επικοινωνία",
           "contact_header": "Ξεκινήστε το Έργο σας",
           "contact_sub": "Είστε έτοιμοι να μεταμορφώσετε το αρχιτεκτονικό σας όραμα; Στείλτε μας μήνυμα για μια προσφορά.",
@@ -132,7 +136,7 @@ i18n
           "toast_success_desc": "Θα επικοινωνήσουμε μαζί σας εντός 24 ωρών.",
           "toast_error_title": "Κάτι πήγε στραβά",
           "toast_error_desc": "Παρακαλώ δοκιμάστε ξανά αργότερα.",
-          
+
           "portfolio_eyebrow": "Δείγματα Δουλειάς",
           "portfolio_header": "Ολοκληρωμένα Έργα",
           "cat_res_ext": "Εξωτερικοί Χώροι Κατοικιών",

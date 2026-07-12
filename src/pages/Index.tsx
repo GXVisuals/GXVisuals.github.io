@@ -32,7 +32,7 @@ const Index = () => {
             <div className="container mx-auto px-6">
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16">
                 <div className="text-center">
-                  <p className="text-3xl font-display font-semibold text-primary">19+</p>
+                  <p className="text-3xl font-display font-semibold text-primary">35+</p>
                   <p className="text-xs text-muted-foreground font-body tracking-widest uppercase mt-1">Projects Completed</p>
                 </div>
                 <div className="hidden md:block w-px h-10 bg-white/10" />

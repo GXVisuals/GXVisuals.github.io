@@ -50,21 +50,21 @@ const Header = () => {
           >
             {t('nav_portfolio', 'Portfolio')}
           </NavLink>
-          
+          <a
             href="#about"
             onClick={(e) => handleNavClick(e, "about")}
             className="text-muted-foreground hover:text-foreground transition-colors font-body text-sm tracking-wide"
           >
             {t('nav_about', 'About Us')}
           </a>
-          
+          <a
             href="#services"
             onClick={(e) => handleNavClick(e, "services")}
             className="text-muted-foreground hover:text-foreground transition-colors font-body text-sm tracking-wide"
           >
             {t('nav_services', 'Our Services')}
           </a>
-          
+          <a
             href="#contact"
             onClick={(e) => handleNavClick(e, "contact")}
             className="text-muted-foreground hover:text-foreground transition-colors font-body text-sm tracking-wide"
@@ -74,7 +74,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-4">
-          
+          <a
             href="tel:+35795115014"
             className="hidden xl:flex items-center gap-2 text-foreground hover:text-primary transition-colors text-sm font-medium mr-2"
           >
@@ -95,7 +95,7 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            
+            <a
               href="https://instagram.com/gxvisuals.3drendering/"
               target="_blank"
               rel="noreferrer"
@@ -103,7 +103,7 @@ const Header = () => {
             >
               <Instagram size={18} />
             </a>
-            
+            <a
               href="https://wa.me/35795115014"
               target="_blank"
               rel="noreferrer"

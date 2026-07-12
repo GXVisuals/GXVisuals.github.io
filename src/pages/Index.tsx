@@ -11,7 +11,6 @@ import portfolio3 from "@/assets/portfolio-55.webp";
 
 const About = lazy(() => import("@/components/About"));
 const Testimonials = lazy(() => import("@/components/Testimonials"));
-const Stats = lazy(() => import("@/components/Stats"));
 const Services = lazy(() => import("@/components/Services"));
 const Process = lazy(() => import("@/components/Process"));
 const FAQ = lazy(() => import("@/components/FAQ"));

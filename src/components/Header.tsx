@@ -34,6 +34,7 @@ const Header = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/90 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+
         <Link to="/" className="flex items-center gap-2">
           <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
           <span className="font-display text-2xl font-semibold text-foreground tracking-tight hidden sm:inline-block">
@@ -97,6 +98,7 @@ const Header = () => {
             
               href="https://instagram.com/gxvisuals.3drendering/"
               target="_blank"
+              rel="noreferrer"
               className="text-muted-foreground hover:text-primary"
             >
               <Instagram size={18} />
@@ -104,10 +106,11 @@ const Header = () => {
             
               href="https://wa.me/35795115014"
               target="_blank"
+              rel="noreferrer"
               className="text-muted-foreground hover:text-primary"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-10.4 8.38 8.38 0 0 1 3.8.9L21 4.2Z"></path>
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-10.4 8.38 8.38 0 0 1 3.8.9L21 4.2Z" />
               </svg>
             </a>
           </div>
@@ -118,6 +121,7 @@ const Header = () => {
             </a>
           </Button>
         </div>
+
       </div>
     </header>
   );

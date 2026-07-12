@@ -1,6 +1,29 @@
 import { useTranslation } from "react-i18next";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+
+const trustPoints = [
+  {
+    title: "Photorealistic Quality",
+    desc: "Studio-grade renders using SketchUp & D5 Render — every image is crafted to impress buyers and clients instantly.",
+  },
+  {
+    title: "3 Rounds of Revisions",
+    desc: "We refine until the result matches your vision. You get up to 3 revision rounds included in every project.",
+  },
+  {
+    title: "Tailored Delivery Timeline",
+    desc: "Every project is different. We agree on a realistic deadline upfront and always deliver on time.",
+  },
+  {
+    title: "Direct Communication",
+    desc: "You work directly with the artist — no account managers, no delays. Fast responses and full transparency.",
+  },
+  {
+    title: "Cyprus & Greece Specialists",
+    desc: "We understand the local architecture, climate, and real estate market. That knowledge shows in every render.",
+  },
+];
 
 const About = () => {
   const { t } = useTranslation();
@@ -20,22 +43,46 @@ const About = () => {
         </div>
 
         {/* Main Two-Column Block */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
 
-          {/* Left — Placeholder Image */}
+          {/* Left — Why Choose Us */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-800 flex items-center justify-center"
+            className="flex flex-col gap-5"
           >
-            <span className="text-gray-600 font-body text-sm tracking-widest uppercase">
-              Studio Photo Coming Soon
+            <span className="text-[#00bad3] font-body text-xs tracking-[0.25em] uppercase block mb-1">
+              {t("about_why_eyebrow", "Why Choose Us")}
             </span>
-            {/* Decorative corner accent */}
-            <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#00bad3] rounded-tl-2xl" />
-            <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#00bad3] rounded-br-2xl" />
+            <h3 className="font-display text-2xl text-white italic font-light mb-4">
+              {t("about_why_title", "What makes GX Visuals different")}
+            </h3>
+
+            {trustPoints.map((point, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="flex items-start gap-4 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#00bad3]/30 transition-colors duration-300"
+              >
+                <CheckCircle2
+                  size={20}
+                  className="text-[#00bad3] mt-0.5 flex-shrink-0"
+                />
+                <div>
+                  <p className="text-white font-body text-sm font-semibold mb-1">
+                    {t(`about_point_${i}_title`, point.title)}
+                  </p>
+                  <p className="text-gray-400 font-body text-xs leading-relaxed">
+                    {t(`about_point_${i}_desc`, point.desc)}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
 
           {/* Right — Story + Mission */}
@@ -79,6 +126,19 @@ const About = () => {
                   "Our mission is to serve architects, homeowners, interior designers, real estate agents, and property developers across Cyprus and Greece with studio-quality 3D architectural renderings and CGI. We are committed to delivering every project with the highest level of detail, on time, and in close collaboration with our clients — so that every visual we produce not only informs, but truly inspires."
                 )}
               </p>
+            </div>
+
+            {/* Decorative Quote */}
+            <div className="border-l-2 border-[#00bad3] pl-5 mt-2">
+              <p className="text-white font-display italic text-lg font-light leading-relaxed">
+                {t(
+                  "about_quote",
+                  "\"We don't just create images — we help you make better decisions before construction begins.\""
+                )}
+              </p>
+              <span className="text-[#00bad3] font-body text-xs tracking-widest uppercase mt-3 block">
+                {t("about_quote_author", "— GX Visuals Studio")}
+              </span>
             </div>
           </motion.div>
         </div>

@@ -197,7 +197,7 @@ const Header = () => {
 
           <Button asChild variant="outline" size="sm" className="mt-2">
             <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>
-              {t('nav_quote', 'Get a Quote')}
+              {t('nav_quote', 'Get Your Free Quote Today')}
             </a>
           </Button>
         </div>

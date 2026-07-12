@@ -18,7 +18,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
   }, [location]);
@@ -43,7 +42,6 @@ const Header = () => {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/90 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
 
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
             <span className="font-display text-2xl font-semibold text-foreground tracking-tight hidden sm:inline-block">
@@ -51,7 +49,6 @@ const Header = () => {
             </span>
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             <NavLink
               to="/portfolio"
@@ -83,7 +80,6 @@ const Header = () => {
             </a>
           </nav>
 
-          {/* Right Side */}
           <div className="flex items-center gap-4">
             <a
               href="tel:+35795115014"
@@ -128,11 +124,10 @@ const Header = () => {
 
             <Button asChild variant="outline" size="sm" className="hidden lg:inline-flex">
               <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>
-                {t('nav_quote', 'Get Your Free Quote Today')}
+                {t('nav_quote', 'Get a Free Quote Today')}
               </a>
             </Button>
 
-            {/* Hamburger — mobile only */}
             <button
               className="md:hidden text-foreground hover:text-primary transition-colors p-1"
               onClick={() => setMobileOpen((prev) => !prev)}
@@ -197,7 +192,7 @@ const Header = () => {
 
           <Button asChild variant="outline" size="sm" className="mt-2">
             <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>
-              {t('nav_quote', 'Get Your Free Quote Today')}
+              {t('nav_quote', 'Get a Free Quote Today')}
             </a>
           </Button>
         </div>

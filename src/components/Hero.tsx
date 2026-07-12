@@ -64,7 +64,7 @@ const Hero = () => {
 
         {/* Trust line */}
         <p className="font-body text-sm text-primary/80 tracking-wide mb-10 animate-fade-up">
-          {t('hero_trust', '✦ 55 Projects Completed · Cyprus & Greece · Fast Delivery')}
+          {t('hero_trust', '✦ 35 Projects Completed · Cyprus & Greece · Fast Delivery')}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up">

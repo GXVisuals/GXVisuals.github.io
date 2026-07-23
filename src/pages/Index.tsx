@@ -57,7 +57,7 @@ const Index = () => {
             </div>
           </section>
 
-          {/* PORTFOLIO PREVIEW with thumbnails */}
+          {/* PORTFOLIO PREVIEW */}
           <section className="py-24 bg-muted/20 border-y border-border/50">
             <div className="container mx-auto px-6 text-center">
               <span className="text-primary font-body text-xs tracking-[0.3em] uppercase block mb-4">OUR PROJECTS</span>
@@ -65,7 +65,6 @@ const Index = () => {
               <p className="text-muted-foreground max-w-2xl mx-auto mb-10 font-body">
                 Explore our full gallery of 3D interior and exterior renders.
               </p>
-
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 max-w-4xl mx-auto">
                 {[portfolio1, portfolio2, portfolio3].map((img, i) => (
                   <Link
@@ -85,7 +84,6 @@ const Index = () => {
                   </Link>
                 ))}
               </div>
-
               <Link
                 to="/portfolio"
                 className="inline-flex items-center gap-3 bg-primary text-white px-10 py-4 rounded-full hover:shadow-glow transition-all transform hover:-translate-y-1 font-body text-sm tracking-widest uppercase"
@@ -97,7 +95,6 @@ const Index = () => {
 
           <About />
           <Testimonials />
-          <Stats />
 
           <section id="services">
             <Services />
@@ -112,7 +109,7 @@ const Index = () => {
         </Suspense>
       </main>
 
-      {/* WHATSAPP FLOATING BUTTON — moved up to avoid overlap with scroll buttons */}
+      {/* WHATSAPP FLOATING BUTTON */}
       <a
         href="https://wa.me/35795115014"
         target="_blank"

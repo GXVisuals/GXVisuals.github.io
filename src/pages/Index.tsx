@@ -11,6 +11,7 @@ import portfolio3 from "@/assets/portfolio-55.webp";
 
 const About = lazy(() => import("@/components/About"));
 const Testimonials = lazy(() => import("@/components/Testimonials"));
+const Stats = lazy(() => import("@/components/Stats"));
 const Services = lazy(() => import("@/components/Services"));
 const Process = lazy(() => import("@/components/Process"));
 const FAQ = lazy(() => import("@/components/FAQ"));
@@ -97,6 +98,8 @@ const Index = () => {
 
           <About />
           <Testimonials />
+          <Stats />
+
           <section id="services">
             <Services />
           </section>
@@ -110,12 +113,12 @@ const Index = () => {
         </Suspense>
       </main>
 
-      {/* WHATSAPP FLOATING BUTTON */}
+      {/* WHATSAPP FLOATING BUTTON — moved up to avoid overlap with scroll buttons */}
       <a
         href="https://wa.me/35795115014"
         target="_blank"
         rel="noreferrer"
-        className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:scale-110 transition-transform duration-300"
+        className="fixed bottom-24 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:scale-110 transition-transform duration-300"
         aria-label="Contact us on WhatsApp"
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
@@ -123,7 +126,7 @@ const Index = () => {
         </svg>
       </a>
 
-      {/* STICKY MOBILE CTA — visible only on mobile */}
+      {/* STICKY MOBILE CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden">
         <a
           href="#contact"

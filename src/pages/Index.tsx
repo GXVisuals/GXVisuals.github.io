@@ -5,7 +5,8 @@ import { ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 
-import portfolio1 from "@/assets/portfolio-69.webp";
+// Updated import to use valid existing images
+import portfolio1 from "@/assets/portfolio-1.webp";
 import portfolio2 from "@/assets/portfolio-23.webp";
 import portfolio3 from "@/assets/portfolio-55.webp";
 

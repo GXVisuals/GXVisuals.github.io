@@ -8,11 +8,11 @@ import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { z } from "zod";
 import { Link } from "react-router-dom";
 
-import hero1 from "@/assets/portfolio-69.webp";
-import hero2 from "@/assets/portfolio-23.webp";
-import hero3 from "@/assets/portfolio-55.webp";
-import hero4 from "@/assets/portfolio-8.webp";
-import hero5 from "@/assets/portfolio-36.webp";
+import hero1 from "@/assets/portfolio-1.webp";
+import hero2 from "@/assets/portfolio-2.webp";
+import hero3 from "@/assets/portfolio-3.webp";
+import hero4 from "@/assets/portfolio-7.webp";
+import hero5 from "@/assets/portfolio-8.webp";
 
 declare global {
   interface Window {
@@ -99,7 +99,7 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e0e] text-white">
 
-      {/* HEADER — minimal, no distractions */}
+      {/* HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0e0e0e]/95 backdrop-blur-md border-b border-white/5 py-4">
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link to="/" className="font-display text-xl font-semibold">
@@ -119,7 +119,7 @@ const LandingPage = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-            {/* Left — Headline + Form */}
+            {/* Left */}
             <div>
               <span className="text-[#00bad3] font-body text-xs tracking-[0.3em] uppercase block mb-4">
                 3D Renders Cyprus & Greece
@@ -133,7 +133,7 @@ const LandingPage = () => {
               </p>
 
               {/* Trust badges */}
-              <div className="flex flex-wrap gap-4 mb-8">
+              <div className="flex flex-wrap gap-3 mb-8">
                 {[
                   "35+ Projects Completed",
                   "Free Quote in 24h",
@@ -152,7 +152,6 @@ const LandingPage = () => {
                 <p className="text-gray-400 font-body text-sm">Projects start from €150. Your quote is free, personalised, and arrives within 24 hours — no commitment required.</p>
               </div>
 
-              {/* Arrow down on mobile */}
               <div className="flex items-center gap-2 text-gray-500 font-body text-xs lg:hidden">
                 <ArrowDown size={14} />
                 <span>Fill the form below to get your free quote</span>
@@ -261,7 +260,7 @@ const LandingPage = () => {
         </Link>
       </section>
 
-      {/* FOOTER — minimal */}
+      {/* FOOTER */}
       <footer className="py-6 border-t border-white/5 text-center">
         <p className="text-gray-600 font-body text-xs">© 2026 GXVisuals. All rights reserved.</p>
       </footer>

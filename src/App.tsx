@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const PortfolioPage = lazy(() => import("./pages/PortfolioPage"));
+const LandingPage = lazy(() => import("./pages/LandingPage"));
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/free-quote" element={<LandingPage />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

@@ -20,6 +20,24 @@ declare global {
   }
 }
 
+const pricing = [
+  {
+    service: "Exterior Renders",
+    price: "From €150",
+    desc: "Photorealistic exterior views of your home, villa, or building.",
+  },
+  {
+    service: "Interior Renders",
+    price: "From €150",
+    desc: "Stunning interior visuals showcasing materials, lighting, and layout.",
+  },
+  {
+    service: "3D Modeling",
+    price: "From €200",
+    desc: "Full 3D model of your project ready for renders and walkthroughs.",
+  },
+];
+
 const LandingPage = () => {
   const { toast } = useToast();
   const captchaRef = useRef<HCaptcha>(null);
@@ -117,7 +135,7 @@ const LandingPage = () => {
       {/* HERO */}
       <section className="pt-32 pb-16 px-6">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
 
             {/* Left */}
             <div>
@@ -146,10 +164,32 @@ const LandingPage = () => {
                 ))}
               </div>
 
-              {/* Pricing hint */}
-              <div className="bg-[#00bad3]/10 border border-[#00bad3]/20 rounded-xl px-5 py-4 mb-8">
-                <p className="text-[#00bad3] font-body text-sm font-semibold mb-1">💡 How much does it cost?</p>
-                <p className="text-gray-400 font-body text-sm">Projects start from €150. Your quote is free, personalised, and arrives within 24 hours — no commitment required.</p>
+              {/* Pricing table */}
+              <div className="border border-white/10 rounded-xl overflow-hidden mb-6">
+                <div className="bg-white/[0.03] px-5 py-3 border-b border-white/10">
+                  <p className="text-[#00bad3] font-body text-xs font-semibold tracking-widest uppercase">💡 Our Pricing</p>
+                </div>
+                {pricing.map((item, i) => (
+                  <div
+                    key={i}
+                    className={`flex items-center justify-between px-5 py-4 ${
+                      i !== pricing.length - 1 ? "border-b border-white/5" : ""
+                    }`}
+                  >
+                    <div>
+                      <p className="text-white font-body text-sm font-semibold">{item.service}</p>
+                      <p className="text-gray-500 font-body text-xs mt-0.5">{item.desc}</p>
+                    </div>
+                    <span className="text-[#00bad3] font-display text-base font-semibold ml-4 whitespace-nowrap">
+                      {item.price}
+                    </span>
+                  </div>
+                ))}
+                <div className="bg-white/[0.02] px-5 py-3 border-t border-white/10">
+                  <p className="text-gray-500 font-body text-xs">
+                    Your quote is free, personalised, and arrives within 24 hours — no commitment required.
+                  </p>
+                </div>
               </div>
 
               <div className="flex items-center gap-2 text-gray-500 font-body text-xs lg:hidden">

@@ -98,10 +98,25 @@ import portfolio131 from "@/assets/portfolio-131.webp";
 import portfolio132 from "@/assets/portfolio-132.webp";
 import portfolio133 from "@/assets/portfolio-133.webp";
 import portfolio134 from "@/assets/portfolio-134.webp";
-import portfolio134 from "@/assets/portfolio-135.webp";
-import portfolio134 from "@/assets/portfolio-136.webp";
-
-
+import portfolio135 from "@/assets/portfolio-135.webp";
+import portfolio136 from "@/assets/portfolio-136.webp";
+import portfolio137 from "@/assets/portfolio-137.webp";
+import portfolio138 from "@/assets/portfolio-138.webp";
+import portfolio139 from "@/assets/portfolio-139.webp";
+import portfolio140 from "@/assets/portfolio-140.webp";
+import portfolio141 from "@/assets/portfolio-141.webp";
+import portfolio142 from "@/assets/portfolio-142.webp";
+import portfolio143 from "@/assets/portfolio-143.webp";
+import portfolio144 from "@/assets/portfolio-144.webp";
+import portfolio145 from "@/assets/portfolio-145.webp";
+import portfolio146 from "@/assets/portfolio-146.webp";
+import portfolio147 from "@/assets/portfolio-147.webp";
+import portfolio148 from "@/assets/portfolio-148.webp";
+import portfolio149 from "@/assets/portfolio-149.webp";
+import portfolio150 from "@/assets/portfolio-150.webp";
+import portfolio151 from "@/assets/portfolio-151.webp";
+import portfolio152 from "@/assets/portfolio-152.webp";
+import portfolio153 from "@/assets/portfolio-153.webp";
 
 const Portfolio = () => {
   const { t } = useTranslation();
@@ -324,6 +339,31 @@ const Portfolio = () => {
         { src: portfolio136, alt: "House in Agios Tychonas - Modern Bathroom", type: "interior", room: "bathroom" },
       ],
     },
+    {
+      id: 16,
+      title: "Parekklisia Apartment Building, Parekklisia, Limassol, Cyprus",
+      description: "A terraced residential building with cascading planters and climbing greenery, set against dramatic rock faces and pine forest, with private roof terraces and sea views and a fully designed interior.",
+      coverImage: portfolio138,
+      gallery: [
+        { src: portfolio138, alt: "Parekklisia Apartment Building - Front Facade with Green Terraces", type: "exterior", room: "" },
+        { src: portfolio137, alt: "Parekklisia Apartment Building - Street Elevation", type: "exterior", room: "" },
+        { src: portfolio139, alt: "Parekklisia Apartment Building - Corner View with Parking Courts", type: "exterior", room: "" },
+        { src: portfolio140, alt: "Parekklisia Apartment Building - Ground Floor Entrance View", type: "exterior", room: "" },
+        { src: portfolio151, alt: "Parekklisia Apartment Building - Roof Terrace with Mountain Backdrop", type: "exterior", room: "" },
+        { src: portfolio152, alt: "Parekklisia Apartment Building - Roof Terrace with Sea View", type: "exterior", room: "" },
+        { src: portfolio144, alt: "Parekklisia Apartment Building - Living Room with Slatted Timber Wall", type: "interior", room: "living room" },
+        { src: portfolio145, alt: "Parekklisia Apartment Building - Dining and Living Space", type: "interior", room: "living room" },
+        { src: portfolio146, alt: "Parekklisia Apartment Building - Curved Sofa Lounge", type: "interior", room: "living room" },
+        { src: portfolio148, alt: "Parekklisia Apartment Building - Lounge with Bar Area", type: "interior", room: "living room" },
+        { src: portfolio143, alt: "Parekklisia Apartment Building - Kitchen Island with Pendant Lighting", type: "interior", room: "kitchen" },
+        { src: portfolio153, alt: "Parekklisia Apartment Building - Timber and Marble Kitchen", type: "interior", room: "kitchen" },
+        { src: portfolio142, alt: "Parekklisia Apartment Building - Master Bedroom", type: "interior", room: "bedroom" },
+        { src: portfolio141, alt: "Parekklisia Apartment Building - Stone Bathroom with Walk-in Shower", type: "interior", room: "bathroom" },
+        { src: portfolio147, alt: "Parekklisia Apartment Building - Residents' Gym", type: "interior", room: "gym" },
+        { src: portfolio149, alt: "Parekklisia Apartment Building - Marble Reception Desk", type: "interior", room: "office" },
+        { src: portfolio150, alt: "Parekklisia Apartment Building - Reception and Lounge Bar", type: "interior", room: "office" },
+      ],
+    },
   ];
 
   const currentFeedItems = useMemo(() => {
@@ -380,6 +420,7 @@ const Portfolio = () => {
     { id: "living room", label: t("LIVING ROOM") },
     { id: "bedroom", label: t("BEDROOM") },
     { id: "office", label: t("OFFICE") },
+    { id: "gym", label: t("GYM") },
   ];
 
   const handleOpenFolder = (feedItem: any) => {

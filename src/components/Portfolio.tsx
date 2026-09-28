@@ -78,6 +78,26 @@ import portfolio65 from "@/assets/portfolio-65.webp";
 import portfolio66 from "@/assets/portfolio-66.webp";
 import portfolio67 from "@/assets/portfolio-67.webp";
 import portfolio68 from "@/assets/portfolio-68.webp";
+import portfolio115 from "@/assets/portfolio-115.webp";
+import portfolio116 from "@/assets/portfolio-116.webp";
+import portfolio117 from "@/assets/portfolio-117.webp";
+import portfolio118 from "@/assets/portfolio-118.webp";
+import portfolio119 from "@/assets/portfolio-119.webp";
+import portfolio120 from "@/assets/portfolio-120.webp";
+import portfolio121 from "@/assets/portfolio-121.webp";
+import portfolio122 from "@/assets/portfolio-122.webp";
+import portfolio123 from "@/assets/portfolio-123.webp";
+import portfolio124 from "@/assets/portfolio-124.webp";
+import portfolio125 from "@/assets/portfolio-125.webp";
+import portfolio126 from "@/assets/portfolio-126.webp";
+import portfolio127 from "@/assets/portfolio-127.webp";
+import portfolio128 from "@/assets/portfolio-128.webp";
+import portfolio129 from "@/assets/portfolio-129.webp";
+import portfolio130 from "@/assets/portfolio-130.webp";
+import portfolio131 from "@/assets/portfolio-131.webp";
+import portfolio132 from "@/assets/portfolio-132.webp";
+import portfolio133 from "@/assets/portfolio-133.webp";
+import portfolio134 from "@/assets/portfolio-134.webp";
 
 
 const Portfolio = () => {
@@ -269,6 +289,34 @@ const Portfolio = () => {
         { src: portfolio66, alt: "Kids Library - Integrated Tree-Themed Feature Shelving", type: "interior", room: "feature wall" },
         { src: portfolio67, alt: "Kids Library - Playful Modular Study & Activity Pods", type: "interior", room: "study area" },
         { src: portfolio68, alt: "Kids Library - Tree-Shelving and Creative Graphic Wall", type: "interior", room: "activity area" },
+      ],
+    },
+    {
+      id: 15,
+      title: "House in Agios Tychonas, Limassol, Cyprus",
+      description: "A contemporary two-storey villa with clean white volumes, floor-to-ceiling glazing and a private pool deck, surrounded by palms and soft native grasses on the Limassol coast.",
+      coverImage: portfolio115,
+      gallery: [
+        { src: portfolio115, alt: "House in Agios Tychonas - Front Elevation with Pool Deck", type: "exterior", room: "" },
+        { src: portfolio116, alt: "House in Agios Tychonas - Pool and Terrace View", type: "exterior", room: "" },
+        { src: portfolio117, alt: "House in Agios Tychonas - Garden and Palm Landscape", type: "exterior", room: "" },
+        { src: portfolio118, alt: "House in Agios Tychonas - Poolside Lounge Deck", type: "exterior", room: "" },
+        { src: portfolio122, alt: "House in Agios Tychonas - Living Room with Slatted Timber Wall", type: "interior", room: "living room" },
+        { src: portfolio123, alt: "House in Agios Tychonas - Open Plan Lounge", type: "interior", room: "living room" },
+        { src: portfolio124, alt: "House in Agios Tychonas - Living Area with Feature Lighting", type: "interior", room: "living room" },
+        { src: portfolio125, alt: "House in Agios Tychonas - Dining Area with Pool Views", type: "interior", room: "living room" },
+        { src: portfolio126, alt: "House in Agios Tychonas - Dining and Kitchen Open Space", type: "interior", room: "living room" },
+        { src: portfolio127, alt: "House in Agios Tychonas - Dining Table and Living Room Flow", type: "interior", room: "living room" },
+        { src: portfolio128, alt: "House in Agios Tychonas - Kitchen Island Front View", type: "interior", room: "kitchen" },
+        { src: portfolio129, alt: "House in Agios Tychonas - Kitchen with Garden Outlook", type: "interior", room: "kitchen" },
+        { src: portfolio130, alt: "House in Agios Tychonas - Handleless Kitchen and Timber Accents", type: "interior", room: "kitchen" },
+        { src: portfolio119, alt: "House in Agios Tychonas - Master Bedroom Suite", type: "interior", room: "bedroom" },
+        { src: portfolio120, alt: "House in Agios Tychonas - Master Bedroom with Garden Glazing", type: "interior", room: "bedroom" },
+        { src: portfolio121, alt: "House in Agios Tychonas - Master Bedroom Seating Corner", type: "interior", room: "bedroom" },
+        { src: portfolio131, alt: "House in Agios Tychonas - Guest Bedroom Front View", type: "interior", room: "bedroom" },
+        { src: portfolio132, alt: "House in Agios Tychonas - Guest Bedroom with Terrace View", type: "interior", room: "bedroom" },
+        { src: portfolio133, alt: "House in Agios Tychonas - Timber Panelled Bedroom", type: "interior", room: "bedroom" },
+        { src: portfolio134, alt: "House in Agios Tychonas - Bedroom with Sliding Glass Wall", type: "interior", room: "bedroom" },
       ],
     },
   ];

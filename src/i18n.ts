@@ -16,12 +16,12 @@ i18n
           "nav_quote": "Get a Free Quote Today",
 
           // Hero Section
-          "hero_eyebrow": "3D Visualization Studio · Cyprus & Greece",
+          "hero_eyebrow": "3D Visualization Studio · Worldwide",
           "hero_seo_keywords": "GXVISUALS: Photorealistic 3D Rendering and Kitchen Design",
           "hero_title_part1": "See Your Home",
           "hero_title_part2": "Before It's Built",
           "hero_description": "Photorealistic 3D renders that help you make the right decisions before construction begins.",
-          "hero_trust": "✦ 35 Projects Completed · Cyprus & Greece · Fast Delivery",
+          "hero_trust": "✦ 35 Projects Completed · Worldwide · Fast Delivery",
           "hero_btn_portfolio": "View Our Work",
           "hero_btn_start": "Get a Free Quote Today",
 

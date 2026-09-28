@@ -53,7 +53,7 @@ const Hero = () => {
       <div className="container relative z-10 px-6 py-32 text-center">
 
         <span className="inline-block text-primary font-body text-sm tracking-[0.3em] uppercase mb-6 animate-fade-in">
-          {t('hero_eyebrow', '3D Visualization Studio · Cyprus & Greece')}
+          {t('hero_eyebrow', '3D Visualization Studio · C')}
         </span>
 
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-foreground mb-6 animate-fade-up">
@@ -85,7 +85,7 @@ const Hero = () => {
         {/* Trust line */}
         <div className="mx-auto mt-6 inline-flex max-w-full items-center justify-center rounded-lg border border-white/15 bg-black/35 px-5 py-3 backdrop-blur-md shadow-[0_12px_40px_rgba(0,0,0,0.22)] animate-fade-up">
           <p className="font-body text-xs sm:text-sm text-primary tracking-wide">
-            {t('hero_trust', '✦ 35 Projects Completed · Cyprus & Greece · Fast Delivery')}
+            {t('hero_trust', '✦ 35 Projects Completed · Worldwide · Fast Delivery')}
           </p>
         </div>
 

@@ -100,13 +100,23 @@ const Header = () => {
 
           {/* Controls & Social Links */}
           <div className="flex items-center gap-4">
-            <a
-              href="tel:+35795115014"
-              className="hidden xl:flex items-center gap-2 text-foreground hover:text-primary transition-colors text-sm font-medium mr-2"
-            >
-              <Phone size={14} className="text-primary" />
-              <span>+357 95 115014</span>
-            </a>
+            {/* Phone Numbers Container */}
+            <div className="hidden xl:flex flex-col gap-0.5 mr-2">
+              <a
+                href="tel:+35795115014"
+                className="flex items-center gap-1.5 text-foreground hover:text-primary transition-colors text-xs font-medium"
+              >
+                <Phone size={12} className="text-primary" />
+                <span>+357 95 115014</span>
+              </a>
+              <a
+                href="tel:+447423544725"
+                className="flex items-center gap-1.5 text-foreground hover:text-primary transition-colors text-xs font-medium"
+              >
+                <Phone size={12} className="text-primary" />
+                <span>+44 7423 544725</span>
+              </a>
+            </div>
 
             {/* Language Switcher */}
             <div className="flex items-center gap-2 px-3 border-x border-border/50">
@@ -197,10 +207,15 @@ const Header = () => {
             {t('nav_contact', 'Contact Us')}
           </a>
 
-          <div className="flex items-center gap-6 mt-4">
+          {/* Mobile Phone Numbers */}
+          <div className="flex flex-col items-center gap-2 mt-4">
             <a href="tel:+35795115014" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors text-sm">
               <Phone size={16} className="text-primary" />
               <span>+357 95 115014</span>
+            </a>
+            <a href="tel:+447423544725" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors text-sm">
+              <Phone size={16} className="text-primary" />
+              <span>+44 7423 544725</span>
             </a>
           </div>
 

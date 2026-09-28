@@ -320,6 +320,8 @@ const Portfolio = () => {
         { src: portfolio132, alt: "House in Agios Tychonas - Guest Bedroom with Terrace View", type: "interior", room: "bedroom" },
         { src: portfolio133, alt: "House in Agios Tychonas - Timber Panelled Bedroom", type: "interior", room: "bedroom" },
         { src: portfolio134, alt: "House in Agios Tychonas - Bedroom with Sliding Glass Wall", type: "interior", room: "bedroom" },
+        { src: portfolio135, alt: "House in Agios Tychonas - Modern Bathroom", type: "interior", room: "bathroom" },
+        { src: portfolio136, alt: "House in Agios Tychonas - Modern Bathroom", type: "interior", room: "bathroom" },
       ],
     },
   ];

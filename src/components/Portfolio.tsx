@@ -98,6 +98,9 @@ import portfolio131 from "@/assets/portfolio-131.webp";
 import portfolio132 from "@/assets/portfolio-132.webp";
 import portfolio133 from "@/assets/portfolio-133.webp";
 import portfolio134 from "@/assets/portfolio-134.webp";
+import portfolio134 from "@/assets/portfolio-135.webp";
+import portfolio134 from "@/assets/portfolio-136.webp";
+
 
 
 const Portfolio = () => {

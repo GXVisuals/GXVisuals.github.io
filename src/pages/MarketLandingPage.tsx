@@ -21,12 +21,13 @@ const marketConfig = {
     metaTitle: "3D Rendering Cyprus | Architectural Visualisation | GX Visuals",
     metaDescription: "Photorealistic 3D rendering and architectural visualisation in Cyprus for architects, developers, interior designers and homeowners.",
     pricing: "Interior and exterior renders from €150. Final pricing depends on project scope and complexity.",
-    alternateHref: "/uk",
-    alternateLabel: "UK projects",
     contactHeading: "Request a Cyprus project quote",
     contactSubheading: "Send your plans, project location and required views. We’ll reply with scope, timing and a personalised quote.",
     contactLocation: "Cyprus · Remote projects welcome",
     phonePlaceholder: "+357 99 123456",
+    phoneHref: "tel:+35795115014",
+    phoneDisplay: "+357 95 115014",
+    whatsappHref: "https://wa.me/35795115014",
     subject: "New Cyprus architectural visualisation enquiry",
     currency: "EUR" as const,
   },
@@ -39,12 +40,13 @@ const marketConfig = {
     metaTitle: "Architectural Visualisation UK | Property CGI | GX Visuals",
     metaDescription: "Architectural visualisation and property CGI for UK architects, developers and interior designers. Interior CGI, exterior CGI and 3D walkthroughs.",
     pricing: "UK projects receive a fixed GBP quote based on scope, number of views and required turnaround.",
-    alternateHref: "/cyprus",
-    alternateLabel: "Cyprus projects",
     contactHeading: "Request a UK architectural visualisation quote",
     contactSubheading: "Send your drawings, number of views and deadline. We’ll reply with a fixed GBP quote and production timeline.",
     contactLocation: "United Kingdom · Remote collaboration",
-    phonePlaceholder: "+44 7...",
+    phonePlaceholder: "+44 7423 544725",
+    phoneHref: "tel:+447423544725",
+    phoneDisplay: "+44 7423 544725",
+    whatsappHref: "https://wa.me/447423544725",
     subject: "New UK architectural visualisation enquiry",
     currency: "GBP" as const,
   },
@@ -88,10 +90,7 @@ const MarketLandingPage = ({ market }: { market: Market }) => {
       <header className="sticky top-0 z-50 border-b border-white/5 bg-[#0e0e0e]/95 backdrop-blur-md">
         <div className="container mx-auto flex items-center justify-between px-6 py-4">
           <Link to="/" className="font-display text-xl font-semibold">GX<span className="text-[#00bad3]">VISUALS</span></Link>
-          <div className="flex items-center gap-4">
-            <Link to={config.alternateHref} className="hidden text-xs text-gray-400 hover:text-white sm:block">{config.alternateLabel}</Link>
-            <a href="tel:+35795115014" onClick={() => track("phone_click")} className="inline-flex items-center gap-2 text-sm font-semibold text-[#00bad3] hover:text-white"><Phone size={15} /> +357 95 115014</a>
-          </div>
+          <a href={config.phoneHref} onClick={() => track("phone_click")} className="inline-flex items-center gap-2 text-sm font-semibold text-[#00bad3] hover:text-white"><Phone size={15} /> {config.phoneDisplay}</a>
         </div>
       </header>
 
@@ -132,7 +131,7 @@ const MarketLandingPage = ({ market }: { market: Market }) => {
 
         <ContactForm market={market} heading={config.contactHeading} subheading={config.contactSubheading} pricingText={config.pricing} locationText={config.contactLocation} phonePlaceholder={config.phonePlaceholder} subject={config.subject} currency={config.currency} />
 
-        <section className="px-6 py-16"><div className="container mx-auto max-w-4xl text-center"><h2 className="font-display text-3xl md:text-4xl">Prefer WhatsApp?</h2><p className="mx-auto mt-4 max-w-2xl text-gray-400">Send a short message with your project type and we can tell you what files to prepare for a quote.</p><a href="https://wa.me/35795115014" target="_blank" rel="noreferrer" onClick={() => track("whatsapp_click")} className="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 px-7 py-4 text-sm font-semibold"><MessageCircle size={16} /> WhatsApp GX Visuals</a></div></section>
+        <section className="px-6 py-16"><div className="container mx-auto max-w-4xl text-center"><h2 className="font-display text-3xl md:text-4xl">Prefer WhatsApp?</h2><p className="mx-auto mt-4 max-w-2xl text-gray-400">Send a short message with your project type and we can tell you what files to prepare for a quote.</p><a href={config.whatsappHref} target="_blank" rel="noreferrer" onClick={() => track("whatsapp_click")} className="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 px-7 py-4 text-sm font-semibold"><MessageCircle size={16} /> WhatsApp GX Visuals</a></div></section>
       </main>
       <footer className="border-t border-white/5 px-6 py-8 text-center text-xs text-gray-500">© {new Date().getFullYear()} GX Visuals · Architectural visualisation and 3D rendering</footer>
     </div>

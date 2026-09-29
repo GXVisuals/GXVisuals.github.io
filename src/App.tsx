@@ -8,6 +8,7 @@ import MobileQuotePrompt from "@/components/MobileQuotePrompt";
 
 const PortfolioPage = lazy(() => import("./pages/PortfolioPage"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
+const MarketLandingPage = lazy(() => import("./pages/MarketLandingPage"));
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/free-quote" element={<LandingPage />} />
+            <Route path="/cyprus" element={<MarketLandingPage market="cyprus" />} />
+            <Route path="/uk" element={<MarketLandingPage market="uk" />} />
           </Routes>
           <MobileQuotePrompt />
         </Suspense>

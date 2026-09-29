@@ -21,8 +21,6 @@ const marketConfig = {
     metaTitle: "3D Rendering Cyprus | Architectural Visualisation | GX Visuals",
     metaDescription: "Photorealistic 3D rendering and architectural visualisation in Cyprus for architects, developers, interior designers and homeowners.",
     pricing: "Interior and exterior renders from €150. Final pricing depends on project scope and complexity.",
-    alternateHref: "/uk",
-    alternateLabel: "UK projects",
     contactHeading: "Request a Cyprus project quote",
     contactSubheading: "Send your plans, project location and required views. We’ll reply with scope, timing and a personalised quote.",
     contactLocation: "Cyprus · Remote projects welcome",
@@ -42,8 +40,6 @@ const marketConfig = {
     metaTitle: "Architectural Visualisation UK | Property CGI | GX Visuals",
     metaDescription: "Architectural visualisation and property CGI for UK architects, developers and interior designers. Interior CGI, exterior CGI and 3D walkthroughs.",
     pricing: "UK projects receive a fixed GBP quote based on scope, number of views and required turnaround.",
-    alternateHref: "/cyprus",
-    alternateLabel: "Cyprus projects",
     contactHeading: "Request a UK architectural visualisation quote",
     contactSubheading: "Send your drawings, number of views and deadline. We’ll reply with a fixed GBP quote and production timeline.",
     contactLocation: "United Kingdom · Remote collaboration",
@@ -94,10 +90,7 @@ const MarketLandingPage = ({ market }: { market: Market }) => {
       <header className="sticky top-0 z-50 border-b border-white/5 bg-[#0e0e0e]/95 backdrop-blur-md">
         <div className="container mx-auto flex items-center justify-between px-6 py-4">
           <Link to="/" className="font-display text-xl font-semibold">GX<span className="text-[#00bad3]">VISUALS</span></Link>
-          <div className="flex items-center gap-4">
-            <Link to={config.alternateHref} className="hidden text-xs text-gray-400 hover:text-white sm:block">{config.alternateLabel}</Link>
-            <a href={config.phoneHref} onClick={() => track("phone_click")} className="inline-flex items-center gap-2 text-sm font-semibold text-[#00bad3] hover:text-white"><Phone size={15} /> {config.phoneDisplay}</a>
-          </div>
+          <a href={config.phoneHref} onClick={() => track("phone_click")} className="inline-flex items-center gap-2 text-sm font-semibold text-[#00bad3] hover:text-white"><Phone size={15} /> {config.phoneDisplay}</a>
         </div>
       </header>
 

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -29,8 +30,15 @@ const trustPoints = [
 const About = () => {
   const { t } = useTranslation();
 
+  // The homepage loads this section lazily, after the browser handles the hash.
+  useEffect(() => {
+    if (window.location.hash === "#about") {
+      document.getElementById("about")?.scrollIntoView();
+    }
+  }, []);
+
   return (
-    <section id="about" className="py-24 bg-[#0e0e0e] text-white">
+    <section id="about" className="scroll-mt-32 py-24 bg-[#0e0e0e] text-white">
       <div className="container mx-auto px-6">
 
         {/* Section Heading */}

@@ -20,6 +20,8 @@ type ContactFormProps = {
   subheading?: string;
   pricingText?: string;
   phonePlaceholder?: string;
+  phoneHref?: string;
+  phoneDisplay?: string;
   locationText?: string;
   subject?: string;
   currency?: "EUR" | "GBP";
@@ -31,6 +33,8 @@ const ContactForm = ({
   subheading,
   pricingText,
   phonePlaceholder,
+  phoneHref = "tel:+35795115014",
+  phoneDisplay = "+357 95115014",
   locationText,
   subject,
   currency = "EUR",
@@ -148,7 +152,7 @@ const ContactForm = ({
   );
 
   return (
-    <section id="contact" className="py-24 bg-background">
+    <section id="contact" className="scroll-mt-32 py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16">
           <div>
@@ -183,9 +187,9 @@ const ContactForm = ({
                 <Mail className="w-5 h-5 text-primary" />
                 <p className="font-body">info@gxvisuals.com</p>
               </a>
-              <a href="tel:+35795115014" className="flex items-center gap-4 hover:text-primary transition-colors">
+              <a href={phoneHref} className="flex items-center gap-4 hover:text-primary transition-colors">
                 <Phone className="w-5 h-5 text-primary" />
-                <p className="font-body">+357 95115014</p>
+                <p className="font-body">{phoneDisplay}</p>
               </a>
               <div className="flex items-center gap-4">
                 <MapPin className="w-5 h-5 text-primary" />
@@ -201,6 +205,17 @@ const ContactForm = ({
             <p className="text-muted-foreground font-body text-xs mb-6">
               {t("contact_form_sub", "Fill in 3 fields — we'll do the rest.")}
             </p>
+
+            {market !== "general" && (
+              <div className="mb-6 rounded-xl border border-primary/20 bg-primary/5 p-4">
+                <p className="text-sm font-semibold text-foreground">What happens next</p>
+                <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-muted-foreground">
+                  <li><span className="font-medium text-foreground">Send drawings.</span> Include a link to your CAD/PDF plans, the views you need and your deadline in the message, or email drawings to info@gxvisuals.com.</li>
+                  <li><span className="font-medium text-foreground">Quote within 24h.</span> We’ll confirm scope, price and timing.</li>
+                  <li><span className="font-medium text-foreground">Production starts after approval.</span> Review and approve your quote before work begins.</li>
+                </ol>
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>

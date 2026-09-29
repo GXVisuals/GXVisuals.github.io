@@ -20,6 +20,8 @@ type ContactFormProps = {
   subheading?: string;
   pricingText?: string;
   phonePlaceholder?: string;
+  phoneHref?: string;
+  phoneDisplay?: string;
   locationText?: string;
   subject?: string;
   currency?: "EUR" | "GBP";
@@ -31,6 +33,8 @@ const ContactForm = ({
   subheading,
   pricingText,
   phonePlaceholder,
+  phoneHref = "tel:+35795115014",
+  phoneDisplay = "+357 95115014",
   locationText,
   subject,
   currency = "EUR",
@@ -148,9 +152,9 @@ const ContactForm = ({
   );
 
   return (
-    <section id="contact" className="py-24 bg-background">
+    <section id="contact" className="scroll-mt-32 py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid min-w-0 grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
             <span className="text-primary font-body text-sm tracking-[0.3em] uppercase">{t("contact_eyebrow")}</span>
             <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground mt-4 mb-4">
@@ -183,9 +187,9 @@ const ContactForm = ({
                 <Mail className="w-5 h-5 text-primary" />
                 <p className="font-body">info@gxvisuals.com</p>
               </a>
-              <a href="tel:+35795115014" className="flex items-center gap-4 hover:text-primary transition-colors">
+              <a href={phoneHref} className="flex items-center gap-4 hover:text-primary transition-colors">
                 <Phone className="w-5 h-5 text-primary" />
-                <p className="font-body">+357 95115014</p>
+                <p className="font-body">{phoneDisplay}</p>
               </a>
               <div className="flex items-center gap-4">
                 <MapPin className="w-5 h-5 text-primary" />
@@ -194,13 +198,24 @@ const ContactForm = ({
             </div>
           </div>
 
-          <div className="bg-card rounded-xl p-8 border border-border">
+          <div className="min-w-0 bg-card rounded-xl p-4 sm:p-8 border border-border">
             <p className="font-display text-lg text-foreground italic mb-1">
               {t("contact_form_title", "Get your free quote")}
             </p>
             <p className="text-muted-foreground font-body text-xs mb-6">
               {t("contact_form_sub", "Fill in 3 fields — we'll do the rest.")}
             </p>
+
+            {market !== "general" && (
+              <div className="mb-6 rounded-xl border border-primary/20 bg-primary/5 p-4">
+                <p className="text-sm font-semibold text-foreground">What happens next</p>
+                <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-muted-foreground">
+                  <li><span className="font-medium text-foreground">Send drawings.</span> Include a link to your CAD/PDF plans, the views you need and your deadline in the message, or email drawings to info@gxvisuals.com.</li>
+                  <li><span className="font-medium text-foreground">Quote within 24h.</span> We’ll confirm scope, price and timing.</li>
+                  <li><span className="font-medium text-foreground">Production starts after approval.</span> Review and approve your quote before work begins.</li>
+                </ol>
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
@@ -243,6 +258,7 @@ const ContactForm = ({
 
               <div className="flex justify-center py-1">
                 <HCaptcha
+                  size={market === "general" ? "normal" : "compact"}
                   sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
                   ref={captchaRef}
                   onVerify={(token) => setCaptchaToken(token)}

@@ -14,7 +14,27 @@ declare global {
   }
 }
 
-const ContactForm = () => {
+type ContactFormProps = {
+  market?: "cyprus" | "uk" | "general";
+  heading?: string;
+  subheading?: string;
+  pricingText?: string;
+  phonePlaceholder?: string;
+  locationText?: string;
+  subject?: string;
+  currency?: "EUR" | "GBP";
+};
+
+const ContactForm = ({
+  market = "general",
+  heading,
+  subheading,
+  pricingText,
+  phonePlaceholder,
+  locationText,
+  subject,
+  currency = "EUR",
+}: ContactFormProps) => {
   const { t, i18n } = useTranslation();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -76,21 +96,28 @@ const ContactForm = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({
           access_key: "dad3212c-5a89-4f2c-9d9c-ca8234e156f5",
           ...formData,
+          market,
+          page_url: window.location.href,
+          subject: subject || `New GX Visuals enquiry - ${market}`,
           "h-captcha-response": captchaToken,
         }),
       });
 
       if (response.ok) {
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'conversion', {
-            'send_to': 'AW-17899630675/vebnCKHztusbENPgmtdC',
-            'value': 1.0,
-            'currency': 'EUR',
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "generate_lead", {
+            market,
+            lead_source: "website_contact_form",
+          });
+          window.gtag("event", "conversion", {
+            send_to: "AW-17899630675/vebnCKHztusbENPgmtdC",
+            value: 1.0,
+            currency,
           });
         }
 
@@ -115,24 +142,29 @@ const ContactForm = () => {
     }
   };
 
+  const resolvedPricingText = pricingText || t(
+    "contact_pricing_desc",
+    "Projects typically start from €150. Every quote is free, personalised, and sent within 24 hours — no commitment required."
+  );
+
   return (
     <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16">
-
-          {/* Left side */}
           <div>
             <span className="text-primary font-body text-sm tracking-[0.3em] uppercase">{t("contact_eyebrow")}</span>
-            <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground mt-4 mb-4">{t("contact_header")}</h2>
-            <p className="font-body text-muted-foreground mb-6 max-w-md">{t("contact_sub")}</p>
+            <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground mt-4 mb-4">
+              {heading || t("contact_header")}
+            </h2>
+            <p className="font-body text-muted-foreground mb-6 max-w-md">
+              {subheading || t("contact_sub")}
+            </p>
 
-            {/* Pricing hint */}
             <div className="bg-primary/10 border border-primary/20 rounded-xl px-5 py-4 mb-8">
               <p className="text-primary font-body text-sm font-semibold mb-1">💡 {t("contact_pricing_title", "How much does it cost?")}</p>
-              <p className="text-muted-foreground font-body text-sm">{t("contact_pricing_desc", "Projects typically start from €150. Every quote is free, personalised, and sent within 24 hours — no commitment required.")}</p>
+              <p className="text-muted-foreground font-body text-sm">{resolvedPricingText}</p>
             </div>
 
-            {/* Trust points */}
             <div className="space-y-3 mb-8">
               {[
                 t("contact_trust_1", "Free quote — no commitment"),
@@ -147,25 +179,22 @@ const ContactForm = () => {
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-center gap-4">
+              <a href="mailto:info@gxvisuals.com" className="flex items-center gap-4 hover:text-primary transition-colors">
                 <Mail className="w-5 h-5 text-primary" />
-                <p className="text-foreground font-body">info@gxvisuals.com</p>
-              </div>
-              <div className="flex items-center gap-4">
+                <p className="font-body">info@gxvisuals.com</p>
+              </a>
+              <a href="tel:+35795115014" className="flex items-center gap-4 hover:text-primary transition-colors">
                 <Phone className="w-5 h-5 text-primary" />
-                <p className="text-foreground font-body">+357 95115014</p>
-              </div>
+                <p className="font-body">+357 95115014</p>
+              </a>
               <div className="flex items-center gap-4">
                 <MapPin className="w-5 h-5 text-primary" />
-                <p className="text-foreground font-body">{t("contact_location")}</p>
+                <p className="text-foreground font-body">{locationText || t("contact_location")}</p>
               </div>
             </div>
           </div>
 
-          {/* Right side — simplified form */}
           <div className="bg-card rounded-xl p-8 border border-border">
-
-            {/* Form header */}
             <p className="font-display text-lg text-foreground italic mb-1">
               {t("contact_form_title", "Get your free quote")}
             </p>
@@ -176,24 +205,13 @@ const ContactForm = () => {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label className="block text-sm font-body text-muted-foreground mb-2">{t("form_name")} *</label>
-                <Input
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="John Doe"
-                />
+                <Input name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" />
                 {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
               </div>
 
               <div>
                 <label className="block text-sm font-body text-muted-foreground mb-2">{t("form_email")} *</label>
-                <Input
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="john@example.com"
-                />
+                <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" />
                 {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
               </div>
 
@@ -205,7 +223,7 @@ const ContactForm = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder={t("contact_details_placeholder", "e.g. I need exterior renders for a 3-bedroom villa in Limassol...")}
+                  placeholder={t("contact_details_placeholder", "e.g. I need exterior renders for a 3-bedroom villa...")}
                   rows={4}
                 />
                 {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
@@ -219,7 +237,7 @@ const ContactForm = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="+357 99 123456"
+                  placeholder={phonePlaceholder || "+357 99 123456"}
                 />
               </div>
 
@@ -229,7 +247,7 @@ const ContactForm = () => {
                   ref={captchaRef}
                   onVerify={(token) => setCaptchaToken(token)}
                   onExpire={() => setCaptchaToken(null)}
-                  language={i18n.language.startsWith('el') ? 'el' : 'en'}
+                  language={i18n.language.startsWith("el") ? "el" : "en"}
                 />
               </div>
 
@@ -243,7 +261,6 @@ const ContactForm = () => {
               </p>
             </form>
           </div>
-
         </div>
       </div>
     </section>

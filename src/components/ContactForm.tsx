@@ -154,7 +154,7 @@ const ContactForm = ({
   return (
     <section id="contact" className="scroll-mt-32 py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid min-w-0 grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
             <span className="text-primary font-body text-sm tracking-[0.3em] uppercase">{t("contact_eyebrow")}</span>
             <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground mt-4 mb-4">
@@ -198,7 +198,7 @@ const ContactForm = ({
             </div>
           </div>
 
-          <div className="bg-card rounded-xl p-8 border border-border">
+          <div className="min-w-0 bg-card rounded-xl p-4 sm:p-8 border border-border">
             <p className="font-display text-lg text-foreground italic mb-1">
               {t("contact_form_title", "Get your free quote")}
             </p>
@@ -258,6 +258,7 @@ const ContactForm = ({
 
               <div className="flex justify-center py-1">
                 <HCaptcha
+                  size={market === "general" ? "normal" : "compact"}
                   sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
                   ref={captchaRef}
                   onVerify={(token) => setCaptchaToken(token)}

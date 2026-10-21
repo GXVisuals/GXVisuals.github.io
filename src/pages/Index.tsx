@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
@@ -18,36 +18,6 @@ const Process = lazy(() => import("@/components/Process"));
 const FAQ = lazy(() => import("@/components/FAQ"));
 const ContactForm = lazy(() => import("@/components/ContactForm"));
 const Footer = lazy(() => import("@/components/Footer"));
-
-// Sender owns the contents of the empty form container.
-const Newsletter = () => {
-  useEffect(() => {
-    const senderWindow = window as Window & {
-      senderFormsLoaded?: boolean;
-      senderForms?: { render: (id: string) => void; destroy: (id: string) => void };
-    };
-    const render = () => senderWindow.senderForms?.render("bqxzo7");
-    window.addEventListener("onSenderFormsLoaded", render);
-    if (senderWindow.senderFormsLoaded) render();
-    return () => {
-      window.removeEventListener("onSenderFormsLoaded", render);
-      senderWindow.senderForms?.destroy("bqxzo7");
-    };
-  }, []);
-
-  return (
-    <section id="newsletter" aria-label="GX Visuals newsletter" className="py-16 bg-muted/20 border-t border-border/50">
-      <div className="max-w-xl mx-auto px-4">
-        <div style={{ textAlign: "left" }} className="sender-form-field" data-sender-form-id="bqxzo7" />
-        <p className="text-center text-sm text-muted-foreground mt-4">
-          <a href="https://stats.sender.net/forms/bqxzo7/view" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-primary">
-            Open the newsletter signup form in a new tab
-          </a>
-        </p>
-      </div>
-    </section>
-  );
-};
 
 const Index = () => {
   return (
@@ -136,7 +106,6 @@ const Index = () => {
           <section id="contact">
             <ContactForm />
           </section>
-          <Newsletter />
           <Footer />
 
         </Suspense>

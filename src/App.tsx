@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import NewsletterPopup from "@/components/NewsletterPopup";
 import Index from "./pages/Index";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,6 +18,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <BrowserRouter>
+        <NewsletterPopup />
         <Suspense fallback={<div className="h-screen w-full bg-[#121212]" />}>
           <Routes>
             <Route path="/" element={<Index />} />

@@ -17,7 +17,7 @@ const marketConfig = {
     canonical: "https://www.gxvisuals.com/cyprus",
     metaTitle: "3D Rendering Cyprus | Architectural Visualisation | GX Visuals",
     metaDescription: "Photorealistic 3D rendering and architectural visualisation in Cyprus for architects, developers, interior designers and homeowners.",
-    pricing: "Interior and exterior renders from €150. Final pricing depends on project scope and complexity.",
+    pricing: "3D modeling: €250 per project. Interior and exterior renders: €200 per view, plus 19% VAT. Your quote confirms the scope and total.",
     contactHeading: "Request a Cyprus project quote",
     contactSubheading: "Send your plans, project location and required views. We’ll reply with scope, timing and a personalised quote.",
     contactLocation: "Cyprus · Remote projects welcome",

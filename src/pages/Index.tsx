@@ -12,7 +12,6 @@ import portfolio2 from "@/assets/portfolio-23.webp";
 import portfolio3 from "@/assets/portfolio-55.webp";
 
 const About = lazy(() => import("@/components/About"));
-const Testimonials = lazy(() => import("@/components/Testimonials"));
 const Services = lazy(() => import("@/components/Services"));
 const Process = lazy(() => import("@/components/Process"));
 const FAQ = lazy(() => import("@/components/FAQ"));
@@ -27,37 +26,6 @@ const Index = () => {
         <Hero />
 
         <Suspense fallback={<div className="h-32 bg-background" />}>
-
-          {/* SOCIAL PROOF TRUST BAR */}
-          <section className="py-10 bg-[#0e0e0e] border-b border-white/5">
-            <div className="container mx-auto px-6">
-              <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16">
-                <div className="text-center">
-                  <p className="text-3xl font-display font-semibold text-primary">35+</p>
-                  <p className="text-xs text-muted-foreground font-body tracking-widest uppercase mt-1">Projects Completed</p>
-                </div>
-                <div className="hidden md:block w-px h-10 bg-white/10" />
-                <div className="text-center">
-                  <p className="text-3xl font-display font-semibold text-primary">2</p>
-                  <p className="text-xs text-muted-foreground font-body tracking-widest uppercase mt-1">Countries Served</p>
-                </div>
-                <div className="hidden md:block w-px h-10 bg-white/10" />
-                <div className="text-center">
-                  <p className="text-3xl font-display font-semibold text-primary">100%</p>
-                  <p className="text-xs text-muted-foreground font-body tracking-widest uppercase mt-1">Client Satisfaction</p>
-                </div>
-                <div className="hidden md:block w-px h-10 bg-white/10" />
-                <div className="max-w-xs text-center md:text-left">
-                  <p className="text-white/70 font-body text-sm italic leading-relaxed">
-                    "Their 3D walkthroughs were the key to selling out our project in Paphos off-plan."
-                  </p>
-                  <p className="text-primary text-xs font-body tracking-wider uppercase mt-2">
-                    — Maria Constantinou, Property Developer
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
 
           {/* PORTFOLIO PREVIEW */}
           <section className="py-24 bg-muted/20 border-y border-border/50">
@@ -96,7 +64,6 @@ const Index = () => {
           </section>
 
           <About />
-          <Testimonials />
 
           <section id="services">
             <Services />

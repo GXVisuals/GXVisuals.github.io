@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { CheckCircle2, Send, Star, ArrowDown } from "lucide-react";
+import { CheckCircle2, Send, ArrowDown } from "lucide-react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { z } from "zod";
 import { Link } from "react-router-dom";
@@ -23,17 +23,17 @@ declare global {
 const pricing = [
   {
     service: "Exterior Renders",
-    price: "From €150",
+    price: "€200 / view",
     desc: "Photorealistic exterior views of your home, villa, or building.",
   },
   {
     service: "Interior Renders",
-    price: "From €150",
+    price: "€200 / view",
     desc: "Stunning interior visuals showcasing materials, lighting, and layout.",
   },
   {
     service: "3D Modeling",
-    price: "From €200",
+    price: "€250 / project",
     desc: "Full 3D model of your project ready for renders and walkthroughs.",
   },
 ];
@@ -92,7 +92,8 @@ const LandingPage = () => {
         }),
       });
 
-      if (response.ok) {
+      const submission = await response.json();
+      if (response.ok && submission.success === true) {
         if (typeof window.gtag === "function") {
           window.gtag("event", "conversion", {
             send_to: "AW-17899630675/vebnCKHztusbENPgmtdC",
@@ -140,20 +141,23 @@ const LandingPage = () => {
             {/* Left */}
             <div>
               <span className="text-[#00bad3] font-body text-xs tracking-[0.3em] uppercase block mb-4">
-                3D Renders Cyprus & Greece
+                3D Rendering for Cyprus Projects
               </span>
               <h1 className="font-display text-4xl md:text-5xl font-medium leading-tight mb-4">
-                See Your Home<br />
+                Present Your Project<br />
                 <span className="text-[#00bad3]">Before It's Built</span>
               </h1>
               <p className="text-gray-400 font-body text-base leading-relaxed mb-6">
-                Photorealistic 3D renders that help homeowners and developers make the right decisions — before construction begins. Used by architects and developers across Cyprus and Greece.
+                Interior and exterior renders for developers, architects and property professionals in Cyprus. Show your design clearly for client presentations and property marketing.
               </p>
+
+              <a href="#quote-form" className="inline-flex rounded-full bg-[#00bad3] px-6 py-3 mb-6 font-semibold text-white">Request a project quote</a>
+              <Link to="/portfolio" className="inline-flex px-4 py-3 text-[#00bad3] underline">View portfolio</Link>
 
               {/* Trust badges */}
               <div className="flex flex-wrap gap-3 mb-8">
                 {[
-                  "35+ Projects Completed",
+                  "Interior & Exterior Renders",
                   "Free Quote in 24h",
                   "Up to 3 Revisions",
                 ].map((badge, i) => (
@@ -187,7 +191,7 @@ const LandingPage = () => {
                 ))}
                 <div className="bg-white/[0.02] px-5 py-3 border-t border-white/10">
                   <p className="text-gray-500 font-body text-xs">
-                    Your quote is free, personalised, and arrives within 24 hours — no commitment required.
+                    €250 modeling per project + €200 per view, plus 19% VAT. Your personalised quote confirms the scope and total before work begins.
                   </p>
                 </div>
               </div>
@@ -199,33 +203,34 @@ const LandingPage = () => {
             </div>
 
             {/* Right — Form */}
-            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8">
+            <div id="quote-form" className="min-w-0 scroll-mt-24 bg-white/[0.03] border border-white/10 rounded-2xl p-4 sm:p-8">
               <p className="font-display text-xl italic text-white mb-1">Get a Free Quote Today</p>
               <p className="text-gray-400 font-body text-xs mb-6">Fill in 3 fields — we'll get back to you within 24 hours.</p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-body text-gray-400 mb-2">Full Name *</label>
-                  <Input name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" className="bg-white/5 border-white/10 text-white placeholder:text-gray-600" />
+                  <label htmlFor="quote-name" className="block text-xs font-body text-gray-400 mb-2">Full Name *</label>
+                  <Input id="quote-name" autoComplete="name" required name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" className="bg-white/5 border-white/10 text-white placeholder:text-gray-600" />
                   {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
                 </div>
                 <div>
-                  <label className="block text-xs font-body text-gray-400 mb-2">Email Address *</label>
-                  <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="bg-white/5 border-white/10 text-white placeholder:text-gray-600" />
+                  <label htmlFor="quote-email" className="block text-xs font-body text-gray-400 mb-2">Email Address *</label>
+                  <Input id="quote-email" autoComplete="email" required name="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="bg-white/5 border-white/10 text-white placeholder:text-gray-600" />
                   {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
                 </div>
                 <div>
-                  <label className="block text-xs font-body text-gray-400 mb-2">Tell us about your project *</label>
-                  <Textarea name="message" value={formData.message} onChange={handleChange} placeholder="e.g. I need exterior renders for a 3-bedroom villa in Limassol..." rows={3} className="bg-white/5 border-white/10 text-white placeholder:text-gray-600" />
+                  <label htmlFor="quote-message" className="block text-xs font-body text-gray-400 mb-2">Tell us about your project *</label>
+                  <Textarea id="quote-message" required name="message" value={formData.message} onChange={handleChange} placeholder="e.g. I need exterior renders for a 3-bedroom villa in Limassol..." rows={3} className="bg-white/5 border-white/10 text-white placeholder:text-gray-600" />
                   {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
                 </div>
                 <div>
-                  <label className="block text-xs font-body text-gray-400 mb-2">Phone <span className="text-gray-600">(optional)</span></label>
-                  <Input name="phone" value={formData.phone} onChange={handleChange} placeholder="+357 99 123456" className="bg-white/5 border-white/10 text-white placeholder:text-gray-600" />
+                  <label htmlFor="quote-phone" className="block text-xs font-body text-gray-400 mb-2">Phone <span className="text-gray-600">(optional)</span></label>
+                  <Input id="quote-phone" type="tel" autoComplete="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+357 99 123456" className="bg-white/5 border-white/10 text-white placeholder:text-gray-600" />
                 </div>
 
                 <div className="flex justify-center py-1">
                   <HCaptcha
+                    size="compact"
                     sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
                     ref={captchaRef}
                     onVerify={(token) => setCaptchaToken(token)}
@@ -255,37 +260,6 @@ const LandingPage = () => {
             {[hero1, hero2, hero3, hero4, hero5].map((img, i) => (
               <div key={i} className="aspect-[4/3] rounded-lg overflow-hidden">
                 <img src={img} alt={`GX Visuals project ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="py-12 px-6 border-t border-white/5">
-        <div className="container mx-auto max-w-4xl">
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                text: "GX Visuals transformed our blueprints into a living experience. It helped us secure our biggest contract this year.",
-                name: "Andreas Papadopoulos",
-                role: "Lead Architect, AP Studios",
-              },
-              {
-                text: "Their 3D walkthroughs were the key to selling out our project in Paphos off-plan.",
-                name: "Maria Constantinou",
-                role: "Property Developer",
-              },
-            ].map((review, i) => (
-              <div key={i} className="bg-white/[0.02] border border-white/5 rounded-xl p-6">
-                <div className="flex gap-1 mb-3">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} size={12} className="text-[#00bad3] fill-[#00bad3]" />
-                  ))}
-                </div>
-                <p className="text-gray-400 font-body text-sm italic leading-relaxed mb-4">"{review.text}"</p>
-                <p className="text-white font-body text-sm font-semibold">{review.name}</p>
-                <p className="text-[#00bad3] font-body text-xs uppercase tracking-wide">{review.role}</p>
               </div>
             ))}
           </div>

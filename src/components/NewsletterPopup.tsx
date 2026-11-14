@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 // Sender owns the contents of the empty form container.
@@ -33,7 +34,16 @@ const NewsletterForm = () => {
 
 // Mounted above the routes: closing persists during client-side navigation.
 const NewsletterPopup = () => {
-  const [open, setOpen] = useState(true);
+  const { pathname, search } = useLocation();
+  const isQuotePage = ["/free-quote", "/cyprus", "/uk"].includes(pathname.replace(/\/$/, ""));
+  const params = new URLSearchParams(search);
+  const isPaidVisit = ["gclid", "gbraid", "wbraid"].some((key) => params.has(key)) ||
+    ["cpc", "ppc", "paid", "paid_search"].includes(params.get("utm_medium")?.toLowerCase() || "");
+  const [open, setOpen] = useState(() => !isQuotePage && !isPaidVisit);
+  useEffect(() => {
+    if (isQuotePage || isPaidVisit) setOpen(false);
+  }, [isQuotePage, isPaidVisit]);
+  if (isQuotePage || isPaidVisit) return null;
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent

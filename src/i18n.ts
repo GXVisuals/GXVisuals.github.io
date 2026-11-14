@@ -21,7 +21,7 @@ i18n
           "hero_title_part1": "See Your Home",
           "hero_title_part2": "Before It's Built",
           "hero_description": "Photorealistic 3D renders that help you make the right decisions before construction begins.",
-          "hero_trust": "✦ 35 Projects Completed · Worldwide · Fast Delivery",
+          "hero_trust": "✦ Interior & Exterior Renders · Project-Based Quotes",
           "hero_btn_portfolio": "View Our Work",
           "hero_btn_start": "Get a Free Quote Today",
 
@@ -37,6 +37,7 @@ i18n
           "s_kit_title": "Kitchen Design & Technical Sketches",
           "s_kit_desc": "Precise kitchen layouts and detailed sketches with exact dimensions for accurate manufacturing and installation.",
 
+          "contact_pricing_desc": "3D modeling: €250 per project. Interior or exterior renders: €200 per view, plus 19% VAT. Request a personalised project quote.",
           "contact_eyebrow": "Get In Touch",
           "contact_header": "Start Your Project",
           "contact_sub": "Ready to transform your architectural vision? Send us a message for a custom quote.",
@@ -95,6 +96,7 @@ i18n
       },
       el: {
         translation: {
+          "contact_pricing_desc": "Τρισδιάστατη μοντελοποίηση: €250 ανά έργο. Εσωτερικά ή εξωτερικά renders: €200 ανά εικόνα, πλέον 19% ΦΠΑ. Ζητήστε προσφορά για το έργο σας.",
           "nav_portfolio": "Έργα",
           "nav_about": "Σχετικά με εμάς",
           "nav_services": "Υπηρεσίες",
@@ -107,7 +109,7 @@ i18n
           "hero_title_part1": "Δείτε το Σπίτι σας",
           "hero_title_part2": "Πριν Χτιστεί",
           "hero_description": "Φωτορεαλιστικά 3D renders που σας βοηθούν να παίρνετε τις σωστές αποφάσεις — πριν ξεκινήσει η κατασκευή.",
-          "hero_trust": "✦ 19+ Έργα · Κύπρος & Ελλάδα · Γρήγορη Παράδοση",
+          "hero_trust": "✦ Εσωτερικά & Εξωτερικά Renders · Προσφορά ανά Έργο",
           "hero_btn_portfolio": "Δείτε τα Έργα μας",
           "hero_btn_start": "Δωρεάν Προσφορά Σήμερα",
 

@@ -90,7 +90,8 @@ const MobileQuotePrompt = () => {
         }),
       });
 
-      if (!response.ok) {
+      const submission = await response.json();
+      if (!response.ok || submission.success !== true) {
         throw new Error("Failed");
       }
 
@@ -197,7 +198,7 @@ const MobileQuotePrompt = () => {
               ref={captchaRef}
               onVerify={(token) => setCaptchaToken(token)}
               onExpire={() => setCaptchaToken(null)}
-              language={i18n.language.startsWith("el") ? "el" : "en"}
+              languageOverride={i18n.language.startsWith("el") ? "el" : "en"}
             />
           </div>
 

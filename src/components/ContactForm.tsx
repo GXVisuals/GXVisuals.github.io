@@ -112,7 +112,8 @@ const ContactForm = ({
         }),
       });
 
-      if (response.ok) {
+      const submission = await response.json();
+      if (response.ok && submission.success === true) {
         if (typeof window.gtag === "function") {
           window.gtag("event", "generate_lead", {
             market,
@@ -148,7 +149,7 @@ const ContactForm = ({
 
   const resolvedPricingText = pricingText || t(
     "contact_pricing_desc",
-    "Projects typically start from €150. Every quote is free, personalised, and sent within 24 hours — no commitment required."
+    "3D modeling: €250 per project. Interior or exterior renders: €200 per view. Prices exclude 19% VAT. Request a personalised project quote."
   );
 
   return (
@@ -263,7 +264,7 @@ const ContactForm = ({
                   ref={captchaRef}
                   onVerify={(token) => setCaptchaToken(token)}
                   onExpire={() => setCaptchaToken(null)}
-                  language={i18n.language.startsWith("el") ? "el" : "en"}
+                  languageOverride={i18n.language.startsWith("el") ? "el" : "en"}
                 />
               </div>
 

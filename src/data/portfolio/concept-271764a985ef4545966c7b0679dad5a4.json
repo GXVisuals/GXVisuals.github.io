@@ -1,0 +1,81 @@
+{
+  "id": "concept-271764a985ef4545966c7b0679dad5a4",
+  "title": "MODERN APARTMENT BUILDING, LAKATAMIA NICOSIA",
+  "description": "LUXURY APARTMENT BULDING",
+  "kind": "concept",
+  "gallery": [
+    {
+      "alt": "MODERN APARTMENT BUILDING, LAKATAMIA NICOSIA – exterior 1",
+      "type": "exterior",
+      "room": "",
+      "src": "/portfolio-renders/concept-271764a985ef4545966c7b0679dad5a4/1.webp"
+    },
+    {
+      "alt": "MODERN APARTMENT BUILDING, LAKATAMIA NICOSIA – exterior 2",
+      "type": "exterior",
+      "room": "",
+      "src": "/portfolio-renders/concept-271764a985ef4545966c7b0679dad5a4/2.webp"
+    },
+    {
+      "alt": "MODERN APARTMENT BUILDING, LAKATAMIA NICOSIA – exterior 3",
+      "type": "exterior",
+      "room": "",
+      "src": "/portfolio-renders/concept-271764a985ef4545966c7b0679dad5a4/3.webp"
+    },
+    {
+      "alt": "MODERN APARTMENT BUILDING, LAKATAMIA NICOSIA – exterior 4",
+      "type": "exterior",
+      "room": "",
+      "src": "/portfolio-renders/concept-271764a985ef4545966c7b0679dad5a4/4.webp"
+    },
+    {
+      "alt": "MODERN APARTMENT BUILDING, LAKATAMIA NICOSIA – interior 5",
+      "type": "interior",
+      "room": "kitchen",
+      "src": "/portfolio-renders/concept-271764a985ef4545966c7b0679dad5a4/5.webp"
+    },
+    {
+      "alt": "MODERN APARTMENT BUILDING, LAKATAMIA NICOSIA – exterior 6",
+      "type": "exterior",
+      "room": "",
+      "src": "/portfolio-renders/concept-271764a985ef4545966c7b0679dad5a4/6.webp"
+    },
+    {
+      "alt": "MODERN APARTMENT BUILDING, LAKATAMIA NICOSIA – interior 7",
+      "type": "interior",
+      "room": "kitchen",
+      "src": "/portfolio-renders/concept-271764a985ef4545966c7b0679dad5a4/7.webp"
+    },
+    {
+      "alt": "MODERN APARTMENT BUILDING, LAKATAMIA NICOSIA – interior 8",
+      "type": "interior",
+      "room": "kitchen",
+      "src": "/portfolio-renders/concept-271764a985ef4545966c7b0679dad5a4/8.webp"
+    },
+    {
+      "alt": "MODERN APARTMENT BUILDING, LAKATAMIA NICOSIA – interior 9",
+      "type": "interior",
+      "room": "living room",
+      "src": "/portfolio-renders/concept-271764a985ef4545966c7b0679dad5a4/9.webp"
+    },
+    {
+      "alt": "MODERN APARTMENT BUILDING, LAKATAMIA NICOSIA – interior 10",
+      "type": "interior",
+      "room": "living room",
+      "src": "/portfolio-renders/concept-271764a985ef4545966c7b0679dad5a4/10.webp"
+    },
+    {
+      "alt": "MODERN APARTMENT BUILDING, LAKATAMIA NICOSIA – interior 11",
+      "type": "interior",
+      "room": "bedroom",
+      "src": "/portfolio-renders/concept-271764a985ef4545966c7b0679dad5a4/11.webp"
+    },
+    {
+      "alt": "MODERN APARTMENT BUILDING, LAKATAMIA NICOSIA – interior 12",
+      "type": "interior",
+      "room": "bathroom",
+      "src": "/portfolio-renders/concept-271764a985ef4545966c7b0679dad5a4/12.webp"
+    }
+  ],
+  "coverImage": "/portfolio-renders/concept-271764a985ef4545966c7b0679dad5a4/1.webp"
+}

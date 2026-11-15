@@ -76,6 +76,9 @@ const Portfolio = () => {
     { id: "bedroom", label: t("BEDROOM") },
     { id: "office", label: t("OFFICE") },
     { id: "gym", label: t("GYM") },
+    { id: "dining room", label: t("DINING ROOM", { defaultValue: "Dining room" }) },
+    { id: "lobby area", label: t("LOBBY AREA", { defaultValue: "Lobby area" }) },
+    { id: "sitting area", label: t("SITTING AREA", { defaultValue: "Sitting area" }) },
   ];
 
   const handleOpenFolder = (feedItem: any) => {

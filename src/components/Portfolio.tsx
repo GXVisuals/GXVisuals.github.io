@@ -29,7 +29,7 @@ const Portfolio = () => {
         title: project.title,
         description: project.description,
         displayImage: project.coverImage,
-        initialIndexInGallery: 0,
+        initialIndexInGallery: project.kind ? Math.max(0, project.gallery.findIndex((photo) => photo.src === project.coverImage)) : 0,
         associatedProject: project,
         tagLabel: project.kind === "concept" ? "Concept" : t("Full Project Portfolio"),
         hoverSubtitle: project.title,

@@ -1,0 +1,39 @@
+{
+  "id": "concept-546046459ba14735ab2857fd5c03482e",
+  "title": "Apartment Building, Dali NIcosia",
+  "description": "Open Plan Kitchen - Living Room - Dining room",
+  "kind": "concept",
+  "gallery": [
+    {
+      "alt": "Apartment Building, Dali NIcosia – interior 1",
+      "type": "interior",
+      "room": "kitchen",
+      "src": "/portfolio-renders/concept-546046459ba14735ab2857fd5c03482e/1.webp"
+    },
+    {
+      "alt": "Apartment Building, Dali NIcosia – interior 2",
+      "type": "interior",
+      "room": "kitchen",
+      "src": "/portfolio-renders/concept-546046459ba14735ab2857fd5c03482e/2.webp"
+    },
+    {
+      "alt": "Apartment Building, Dali NIcosia – exterior 3",
+      "type": "exterior",
+      "room": "",
+      "src": "/portfolio-renders/concept-546046459ba14735ab2857fd5c03482e/3.webp"
+    },
+    {
+      "alt": "Apartment Building, Dali NIcosia – interior 4",
+      "type": "interior",
+      "room": "kitchen",
+      "src": "/portfolio-renders/concept-546046459ba14735ab2857fd5c03482e/4.webp"
+    },
+    {
+      "alt": "Apartment Building, Dali NIcosia – interior 5",
+      "type": "interior",
+      "room": "kitchen",
+      "src": "/portfolio-renders/concept-546046459ba14735ab2857fd5c03482e/5.webp"
+    }
+  ],
+  "coverImage": "/portfolio-renders/concept-546046459ba14735ab2857fd5c03482e/1.webp"
+}

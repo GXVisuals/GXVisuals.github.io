@@ -1,0 +1,21 @@
+{
+  "id": "concept-35c7b88147ff47acbddb449a7d345858",
+  "title": "Modern Villa, Nicosia",
+  "description": "Modern Kitchen",
+  "kind": "concept",
+  "gallery": [
+    {
+      "alt": "Modern Villa, Nicosia – interior 1",
+      "type": "interior",
+      "room": "kitchen",
+      "src": "/portfolio-renders/concept-35c7b88147ff47acbddb449a7d345858/1.webp"
+    },
+    {
+      "alt": "Modern Villa, Nicosia – interior 2",
+      "type": "interior",
+      "room": "kitchen",
+      "src": "/portfolio-renders/concept-35c7b88147ff47acbddb449a7d345858/2.webp"
+    }
+  ],
+  "coverImage": "/portfolio-renders/concept-35c7b88147ff47acbddb449a7d345858/1.webp"
+}
